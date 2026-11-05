@@ -1,4 +1,4 @@
-// Inédita para Mac e Windows: janela do app + servidor local (o mesmo do app do Mac).
+// Inéditas para Mac e Windows: janela do app + servidor local (o mesmo do app do Mac).
 // A IA entra pelo PLANO da pessoa (Claude Code ou Codex), nunca por chave de API.
 const { app, BrowserWindow, shell, Menu, dialog } = require("electron");
 const path = require("node:path");
@@ -22,11 +22,11 @@ async function abrir() {
     const { iniciar } = await import(pathToFileURL(path.join(__dirname, "app", "servidor.mjs")).href);
     base = `http://127.0.0.1:${await iniciar({ abrir: false })}`;
   } catch (e) {
-    dialog.showErrorBox("O Inédita não conseguiu abrir", String((e && e.message) || e));
+    dialog.showErrorBox("O Inéditas não conseguiu abrir", String((e && e.message) || e));
     return app.quit();
   }
   janela = new BrowserWindow({
-    width: 1360, height: 880, minWidth: 980, minHeight: 640, title: "Inédita",
+    width: 1360, height: 880, minWidth: 980, minHeight: 640, title: "Inéditas",
     titleBarStyle: ehMac ? "hiddenInset" : "default", backgroundColor: "#f2f2f7", autoHideMenuBar: !ehMac,
     webPreferences: { contextIsolation: true, sandbox: true }
   });

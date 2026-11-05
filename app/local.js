@@ -1,5 +1,5 @@
-// Ponte do Inédita no Mac: o mesmo app do link do Claude, rodando com o servidor local.
-// Dá ao app as peças que o Claude dá no link (db, user, downloads e sample), só que salvando em ~/Documents/Inédita
+// Ponte do Inéditas no Mac: o mesmo app do link do Claude, rodando com o servidor local.
+// Dá ao app as peças que o Claude dá no link (db, user, downloads e sample), só que salvando em ~/Documents/Inéditas
 // e gerando as questões com o Claude Code ou o Codex no login do PLANO da pessoa.
 (function () {
   "use strict";

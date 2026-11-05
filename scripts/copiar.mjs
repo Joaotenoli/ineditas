@@ -1,4 +1,4 @@
-// Copia para app/ a página e o servidor do Inédita (as mesmas peças do app do Mac).
+// Copia para app/ a página e o servidor do Inéditas (as mesmas peças do app do Mac).
 import { copyFileSync, mkdirSync } from "node:fs";
 const raiz = new URL("../../", import.meta.url), app = new URL("../app/", import.meta.url);
 mkdirSync(app, { recursive: true });

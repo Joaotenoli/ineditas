@@ -1,4 +1,4 @@
-<title>Inédita Questões</title>
+<title>Inéditas</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%22190%22%20height%3D%22190%22%20rx%3D%2246%22%20fill%3D%22%23fff%22/%3E%3Cg%20fill%3D%22%23111%22%3E%3Cpath%20d%3D%22M94%2074%20C82%2063%2066%2059%2054%2060%20Q47%2061%2047%2068%20L47%20136%20Q47%20143%2054%20143%20C68%20143%2082%20147%2094%20158%20Z%22/%3E%3Cpath%20d%3D%22M106%2092%20C117%2084%20130%2081%20141%2082%20Q148%2083%20148%2090%20L148%20136%20Q148%20143%20141%20143%20C128%20143%20116%20147%20106%20158%20Z%22/%3E%3Cpath%20d%3D%22M134%2034%20Q136%2056%20158%2058%20Q136%2060%20134%2082%20Q132%2060%20110%2058%20Q132%2056%20134%2034%20Z%22/%3E%3C/g%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -484,7 +484,7 @@ const LEIS = [
 ];
 const EXEMPLO = {
   id: "exemplo", exemplo: true, ts: Date.parse("2026-11-03T12:00:00"),
-  cfg: { modo: "certame", esfera: "Municipal", uf: "PE", municipio: "Caruaru", orgao: "Prefeitura Municipal", cargo: "Analista Administrativo", nivel: "Superior", banca: "FGV", tipo: "ME5", dific: "mista", estilo: "misto", qtd: 3, disc: ["Direito Constitucional","Língua Portuguesa"] },
+  cfg: { modo: "certame", esfera: "Municipal", uf: "PE", municipio: "Caruaru", orgao: "Prefeitura Municipal", cargo: "Analista administrativo", nivel: "Superior", banca: "FGV", tipo: "ME5", dific: "mista", estilo: "misto", qtd: 3, disc: ["Direito Constitucional","Língua Portuguesa"] },
   answers: {},
   questions: [
     { tipo: "ME", dificuldade: "medio", disciplina: "Direito Constitucional", assunto: "Concurso público", estilo: "literalidade",
@@ -569,7 +569,7 @@ function puppy(n) {
 }
 function mascot(cls = "") {
   const w = document.createElement("span");
-  w.innerHTML = `<svg class="mascot logo-mark ${cls}" viewBox="30 22 140 150" role="img" aria-label="Inédita"><g fill="currentColor"><path d="M94 74 C82 63 66 59 54 60 Q47 61 47 68 L47 136 Q47 143 54 143 C68 143 82 147 94 158 Z"/><path d="M106 92 C117 84 130 81 141 82 Q148 83 148 90 L148 136 Q148 143 141 143 C128 143 116 147 106 158 Z"/><path d="M134 34 Q136 56 158 58 Q136 60 134 82 Q132 60 110 58 Q132 56 134 34 Z"/></g></svg>`;
+  w.innerHTML = `<svg class="mascot logo-mark ${cls}" viewBox="30 22 140 150" role="img" aria-label="Inéditas"><g fill="currentColor"><path d="M94 74 C82 63 66 59 54 60 Q47 61 47 68 L47 136 Q47 143 54 143 C68 143 82 147 94 158 Z"/><path d="M106 92 C117 84 130 81 141 82 Q148 83 148 90 L148 136 Q148 143 141 143 C128 143 116 147 106 158 Z"/><path d="M134 34 Q136 56 158 58 Q136 60 134 82 Q132 60 110 58 Q132 56 134 34 Z"/></g></svg>`;
   return w.firstElementChild;
 }
 function logoIcon(cls = "") {
@@ -586,6 +586,7 @@ const $ = id => document.getElementById(id);
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 function btn(cls, label, onclick, icon) { const b = el("button", cls); b.type = "button"; if (icon) b.insertAdjacentHTML("beforeend", icon); if (label) b.append(document.createTextNode(label)); if (onclick) b.onclick = onclick; return b; }
 function iconBtn(icon, label, onclick, pressed) { const b = btn("iconbtn", null, onclick, icon); b.setAttribute("aria-label", label); b.title = label; if (pressed != null) b.setAttribute("aria-pressed", String(pressed)); return b; }
+const pl = (n, um, varios) => n + " " + (n === 1 ? um : varios);
 const norm = s => String(s || "").trim().toUpperCase();
 const fold = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const fmtDate = ts => new Date(ts).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
@@ -693,7 +694,7 @@ function localLabel(c) {
   return (c.municipio || "Município") + " – " + c.uf;
 }
 const cadTitle = c => c.titulo || ((c.cfg.orgao || "Órgão") + (c.cfg.esfera === "Federal" ? "" : " · " + localLabel(c.cfg)));
-function cadSub(c) { const t = c.tipo === "CE" ? "Certo/Errado" : c.tipo === "ME4" ? "A–D" : "A–E"; return [c.cargo, "estilo " + c.banca, t].filter(Boolean).join(" · "); }
+function cadSub(c) { const t = c.tipo === "CE" ? "Certo ou errado" : c.tipo === "ME4" ? "A a D" : "A a E"; return [c.cargo, "estilo " + c.banca, t].filter(Boolean).join(" · "); }
 function cadStats(c) { const ids = Object.keys(c.answers || {}).filter(i => c.questions[i]); const ok = ids.filter(i => isRight(c.questions[i], c.answers[i])).length; return { total: c.questions.length, ans: ids.length, ok }; }
 
 /* ================= Shell ================= */
@@ -715,7 +716,7 @@ function render() {
   const lay = el("div", "layout");
   const col = el("div", "content");
   const mtop = el("div", "mtop page");
-  const mb = btn("brand", null, () => go("inicio"));  const mbt = el("span"); mbt.append(el("b", null, "Inédita")); mb.append(mbt);
+  const mb = btn("brand", null, () => go("inicio"));  const mbt = el("span"); mbt.append(el("b", null, "Inéditas")); mb.append(mbt);
   const nm = meuNome() || "Visitante";
   const av = btn("avatar", nm.trim()[0]?.toUpperCase() || "V", openSheet); av.setAttribute("aria-label", "Conta e mais opções");
   mtop.append(mb, av);
@@ -737,7 +738,7 @@ function sidebar() {
   const side = el("aside", "sidebar");
   const inner = glass("div", "sidebar-in");
   const b = btn("brand", null, () => go("inicio"));
-  const t = el("span"); t.append(el("b", null, "Inédita"), el("small", null, "Questões para concursos")); b.append(t);
+  const t = el("span"); t.append(el("b", null, "Inéditas"), el("small", null, "Questões para concursos")); b.append(t);
   const nav = el("nav", "snav"); nav.setAttribute("aria-label", "Seções");
   NAV_GROUPS.forEach(([grp, items]) => {
     if (grp) nav.append(el("span", "grp", grp));
@@ -808,9 +809,9 @@ function openSettings() {
   const pv = el("p", "preview-q", "João tomou posse e entrou em exercício. Após dois anos, afirmou que já era estável.");
   if (window.ineditasLocal) { const ia = el("div", "ia-box"); ia.append(el("h3", null, "Sua IA"), planoBox()); m.append(hd, ia); hd.after(ia); m.append(el("h3", "sub-h", "Leitura")); }
   else m.append(hd);
-  const nmI = input("u-nome", meuNome(), "Como quer ser chamado");
+  const nmI = input("u-nome", meuNome(), "Nome ou apelido");
   nmI.onchange = () => { state.prefs.nome = nmI.value.trim(); Store.savePrefs(); softRefresh(); };
-  m.append(field("Seu nome", nmI), field("Tema", th), field("Letra das questões", rd), field("Tamanho do texto", sz), pv, el("p", "hint", "Vale só para este navegador."));
+  m.append(field("Seu nome", nmI), field("Tema", th), field("Letra das questões", rd), field("Tamanho do texto", sz), pv, el("p", "hint", "Vale só para este aparelho."));
   wrap.append(m);
   document.body.append(wrap);
   th.querySelector("[aria-pressed=true]")?.focus();
@@ -831,7 +832,7 @@ function planoBox(onPronto, L = window.ineditasLocal) {
       const row = el("div", "plano-row" + (c.conectado ? " on" : ""));
       const tx = el("div", "tx");
       row.append(el("span", "dot" + (c.conectado ? " on" : "")));
-      tx.append(el("b", null, nome + (c.conectado && c.conta && c.conta.email ? " · " + c.conta.email : "")), el("span", null, !c.disponivel ? c.erro : c.conectado ? "Plano " + ((c.conta && c.conta.plano) || nome) : c.pendente ? (c.pendente.codigo ? "Copie o código que apareceu no navegador e cole aqui." : "Termine o login no navegador que abriu.") : c.instalando ? "Instalando o Claude neste computador…" : c.instalavel ? "Usa o seu plano do Claude. Na primeira vez o app prepara o Claude sozinho (uns 30 segundos)." : "Usa o seu plano do " + nome + ", sem chave de API."));
+      tx.append(el("b", null, nome + (c.conectado && c.conta && c.conta.email ? " · " + c.conta.email : "")), el("span", null, !c.disponivel ? c.erro : c.conectado ? "Plano " + ((c.conta && c.conta.plano) || nome) : c.pendente ? (c.pendente.codigo ? "Copie o código que apareceu no navegador e cole aqui." : "Termine o login no navegador que abriu.") : c.instalando ? "Instalando o Claude neste computador…" : c.instalavel ? "Usa o seu plano do Claude. Na primeira vez, o app prepara o Claude sozinho (cerca de 30 segundos)." : "Usa o seu plano do " + nome + ", sem chave de API."));
       row.append(tx);
       const acts = el("div", "acts");
       if (c.disponivel) {
@@ -870,7 +871,7 @@ function avisoPlano() {
 /* ================= Login ================= */
 function loginShell() {
   const root = el("div", "login2");
-  const brand = el("div", "l-brand"); brand.append(logoIcon(), el("b", null, "Inédita"));
+  const brand = el("div", "l-brand"); brand.append(logoIcon(), el("b", null, "Inéditas"));
   const th = iconBtn(I.moon, "Alternar tema claro/escuro", () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; setUI({ theme: dark ? "light" : "dark" }); });
   th.classList.add("l-theme");
   const wrap = el("div", "l-wrap");
@@ -893,7 +894,7 @@ function contaForm(card, api, extra) {
   const email = el("input"); email.type = "email"; email.id = "l-email"; email.placeholder = "voce@email.com"; email.autocomplete = "email";
   const senha = el("input"); senha.type = "password"; senha.id = "l-senha";
   const pw = el("div", "pw"); const mostrar = btn("", "Mostrar", () => { const v = senha.type === "password"; senha.type = v ? "text" : "password"; mostrar.textContent = v ? "Esconder" : "Mostrar"; }); pw.append(senha, mostrar);
-  const fNome = field("Como podemos te chamar?", nome);
+  const fNome = field("Como podemos chamar você?", nome);
   const fSenha = el("div", "field"); const lS = el("label", null, "Senha"); lS.htmlFor = "l-senha"; fSenha.append(lS, pw);
   const go = btn("btn lg block", "Criar conta"); go.type = "submit";
   const msg = el("p", "l-msg"); msg.setAttribute("role", "alert");
@@ -902,7 +903,7 @@ function contaForm(card, api, extra) {
   const sync = () => {
     const c = segVal(modo) === "criar";
     title.textContent = c ? "Crie sua conta" : "Entre na sua conta";
-    sub.textContent = c ? "Leva menos de um minuto." : "Que bom te ver de novo.";
+    sub.textContent = c ? "Leva menos de um minuto." : "Que bom ver você de novo.";
     fNome.hidden = !c; go.textContent = c ? "Criar conta" : "Entrar";
     senha.placeholder = c && (api.senhaMin || 8) > 1 ? "Crie uma senha (8 ou mais caracteres)" : c ? "Crie uma senha" : "Sua senha"; senha.autocomplete = c ? "new-password" : "current-password"; msg.textContent = "";
   };
@@ -910,7 +911,7 @@ function contaForm(card, api, extra) {
   card.onsubmit = async e => {
     e.preventDefault();
     const acao = segVal(modo);
-    if (acao === "criar" && !nome.value.trim()) { msg.textContent = "Diga como podemos te chamar."; nome.focus(); return; }
+    if (acao === "criar" && !nome.value.trim()) { msg.textContent = "Diga como podemos chamar você."; nome.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { msg.textContent = "Digite um e-mail válido."; email.focus(); return; }
     const min = api.senhaMin || 8;
     if (senha.value.length < min) { msg.textContent = min > 1 ? "A senha precisa ter pelo menos " + min + " caracteres." : "Digite uma senha."; senha.focus(); return; }
@@ -938,7 +939,7 @@ function viewLogin() {
     L.perfilInfo().then(i => { if (i && i.existe) card.querySelector('#l-modo [data-v="entrar"]')?.click(); });
     return root;
   }
-  card.append(el("h2", "l-title", "Entre no Inédita"), el("p", "l-sub", "Use a sua conta do Claude. Sem senha."));
+  card.append(el("h2", "l-title", "Entre no Inéditas"), el("p", "l-sub", "Use a sua conta do Claude. Sem senha."));
   const who = el("div", "l-who"); const av = el("span", "avatar", "…"); const wt = el("div"); const wn = el("b", null, "Conectando…"); const ws = el("div", "hint", ""); wt.append(wn, ws); who.append(av, wt);
   const enter = btn("btn lg block", "Conectando…"); enter.disabled = true;
   const guest = btn("btn-sec", "Entrar como visitante", () => doLogin(false)); guest.hidden = true;
@@ -980,7 +981,7 @@ function viewInicio(main) {
   main.append(hello);
 
   const modes = el("section", "modes");
-  [["certame", I.home, "Por certame", "Cidade, órgão, cargo e banca"], ["lei", I.scale, "Por lei", "Cole os artigos que quer cobrar"], ["edital", I.doc, "Por edital", "Cole o conteúdo programático"]].forEach(([m, ic, t, d]) => {
+  [["certame", I.home, "Das disciplinas", "Cidade, órgão, cargo e banca"], ["lei", I.scale, "De uma lei", "Cole os artigos que você quer cobrar"], ["edital", I.doc, "Do edital", "Cole o conteúdo programático"]].forEach(([m, ic, t, d]) => {
     const b = glass("button", "mode"); b.type = "button"; b.onclick = () => go("gerar", { genMode: m });
     b.innerHTML = `<span class="ic">${ic}</span>`; const tx = el("span"); tx.append(el("b", null, t), el("span", null, d)); b.append(tx);
     modes.append(b);
@@ -991,7 +992,7 @@ function viewInicio(main) {
   const ans = all.filter(x => x.a != null), ok = ans.filter(x => isRight(x.q, x.a)).length;
   const st = glass("section", "stats");
   st.append(ring(ans.length ? pct(ok, ans.length) : null));
-  [[String(all.length), "questões no banco"], [String(ans.length), "respondidas"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
+  [[String(all.length), all.length === 1 ? "questão no banco" : "questões no banco"], [String(ans.length), ans.length === 1 ? "respondida" : "respondidas"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
   main.append(st);
 
   const rec = el("section", "sec");
@@ -1038,12 +1039,12 @@ function viewGerar(main) {
   const reg = input("g-reg", last.regiao || "", "Ex.: TRF 5ª Região, TRT 6ª Região, CREA-PE");
   reg.setAttribute("list", "g-reg-list");
   const dl = el("datalist"); dl.id = "g-reg-list"; REGIOES.forEach(r => { const o = el("option"); o.value = r; dl.append(o); });
-  const org = input("g-org", last.orgao, "Prefeitura, Câmara, TJ, PM…"), cargo = input("g-cargo", last.cargo, "Ex.: Agente Administrativo");
+  const org = input("g-org", last.orgao, "Prefeitura, câmara, TJ, PM…"), cargo = input("g-cargo", last.cargo, "Ex.: Agente administrativo");
   const fUf = field("Estado", uf), fMun = field("Cidade", mun), fReg = field("Região ou tribunal", reg); fReg.append(dl);
   const g1 = el("div", "grid3"); g1.append(fReg, fUf, fMun, field("Órgão", org)); s1.append(g1);
   const banca = select("g-banca", BANCAS, last.banca), nivel = select("g-nivel", ["Fundamental", "Médio", "Técnico", "Superior"], last.nivel);
   const g2 = el("div", "grid3"); g2.append(field("Cargo", cargo), field("Banca", banca), field("Escolaridade", nivel)); s1.append(g2);
-  const HINTS = { Federal: "União: ministérios, autarquias, Polícia Federal, INSS, Receita.", Regional: "Tribunais regionais (TRF, TRT, TRE) e conselhos de classe.", Estadual: "Governo do estado, TJ, MP, polícias, assembleia.", Distrital: "Governo do Distrito Federal e seus órgãos.", Municipal: "Prefeitura, câmara, autarquias e secretarias da cidade." };
+  const HINTS = { Federal: "União: ministérios, autarquias, Polícia Federal, INSS, Receita Federal.", Regional: "Tribunais regionais (TRF, TRT, TRE) e conselhos de classe.", Estadual: "Governo do estado, TJ, MP, polícias, assembleia.", Distrital: "Governo do Distrito Federal e seus órgãos.", Municipal: "Prefeitura, câmara, autarquias e secretarias da cidade." };
   const syncEsf = () => {
     const e = segVal(esf); esfHint.textContent = HINTS[e];
     fMun.hidden = e !== "Municipal"; fReg.hidden = e !== "Regional"; fUf.hidden = e === "Federal" || e === "Distrital";
@@ -1062,17 +1063,17 @@ function viewGerar(main) {
   const baseF = field("Texto da lei", base, "(opcional, mas deixa as questões mais fiéis)");
   const edital = el("textarea"); edital.id = "g-edital"; edital.placeholder = "Ex.: LÍNGUA PORTUGUESA: 1 Compreensão de textos. 2 Ortografia oficial…";
   const edF = field("Conteúdo programático", edital);
-  const ass = input("g-assunto", pre.assunto || "", "Ex.: Lei 14.133/2021");
+  const ass = input("g-assunto", pre.assunto || "", "Ex.: Lei nº 14.133/2021");
   const assF = field("Qual lei?", ass);
   const chosen = new Set(pre.disc || last.disc || []);
   const chipBox = el("div", "chips");
   const renderChips = () => { chipBox.textContent = ""; [...new Set([...DISCIPLINAS, ...chosen])].forEach(d => { const b = btn("chip", d, () => { chosen.has(d) ? chosen.delete(d) : chosen.add(d); renderChips(); upd(); }); b.setAttribute("aria-pressed", String(chosen.has(d))); chipBox.append(b); }); };
   renderChips();
-  const extra = input("g-extra", "", "Outra disciplina e Enter");
+  const extra = input("g-extra", "", "Digite outra disciplina e tecle Enter");
   extra.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); const v = extra.value.trim(); if (v) { chosen.add(v); extra.value = ""; renderChips(); upd(); } } });
   const df = el("div", "field"); df.append(el("span", "lbl", "Disciplinas"), chipBox, extra);
   s2.append(df, assF, baseF, edF);
-  const MODE_HINTS = { certame: "Escolha as matérias. As questões saem no estilo da banca, sobre o conteúdo mais cobrado.", lei: "Todas as questões sobre uma lei. Colar os artigos evita que a IA erre o texto.", edital: "Cole o conteúdo programático e as questões são distribuídas pelos tópicos." };
+  const MODE_HINTS = { certame: "Escolha as disciplinas. As questões saem no estilo da banca, sobre o conteúdo mais cobrado.", lei: "Todas as questões sobre uma lei. Colar os artigos evita que a IA erre o texto.", edital: "Cole o conteúdo programático e as questões são distribuídas pelos tópicos." };
   function syncMode() { const m = segVal(mode); state.genMode = m; modeHint.textContent = MODE_HINTS[m]; df.hidden = m !== "certame"; assF.hidden = baseF.hidden = m !== "lei"; edF.hidden = m !== "edital"; upd(); }
   mode.addEventListener("change", syncMode);
 
@@ -1196,9 +1197,9 @@ function parseLine(line) {
 const ERR = {
   not_granted: "O uso do Claude não foi autorizado nesta página.",
   sampling_disabled: "O Claude não está disponível para esta conta.",
-  rate_limited: "Muitas gerações seguidas ou o limite do seu plano acabou. Espere um pouco e tente de novo.",
+  rate_limited: "Você gerou muitas questões em pouco tempo ou o limite do seu plano acabou. Espere um pouco e tente de novo.",
   not_logged: "Entre com a sua conta do Claude ou do ChatGPT em Preferências.",
-  not_configured: "Instale o Claude Code ou o app do ChatGPT neste Mac para gerar questões.",
+  not_configured: "A IA ainda não está pronta neste computador. Feche o app, abra de novo e entre com a sua conta em Preferências.",
   session_expired: "Sua sessão expirou. Entre de novo no Claude.",
   refused: "O Claude recusou este pedido. Ajuste o assunto ou o texto.",
   prompt_too_large: "O texto colado é grande demais. Cole só os artigos que interessam."
@@ -1215,10 +1216,10 @@ async function generate(cfg, base, edital) {
   try {
     await caps.sample(buildPrompt(cfg, cfg.qtd, base, edital), { signal: ctl.signal, cache: false, onText: ({ delta }) => { const ls = (pending + delta).split("\n"); pending = ls.pop(); ls.forEach(push); } });
     if (pending.trim()) push(pending);
-    state.genStatus = cad.questions.length ? [`${cad.questions.length} questões prontas e salvas no seu banco.`, ""] : ["Nenhuma questão veio no formato esperado. Tente de novo.", "err"];
+    state.genStatus = cad.questions.length ? [pl(cad.questions.length, "questão pronta e salva", "questões prontas e salvas") + " no seu banco.", ""] : ["Nenhuma questão veio no formato esperado. Tente de novo.", "err"];
   } catch (err) {
     if (pending.trim()) push(pending);
-    state.genStatus = err && err.code === "cancelled" ? [`Parado com ${cad.questions.length} questões.`, ""] : [errMsg(err), "err"];
+    state.genStatus = err && err.code === "cancelled" ? ["Geração parada com " + pl(cad.questions.length, "questão", "questões") + ".", ""] : [errMsg(err), "err"];
   } finally {
     state.running = null; state.runningCad = null;
     if (cad.questions.length) Store.saveCad(cad);
@@ -1378,7 +1379,7 @@ function setStatus(txt, kind) { const s = $("genStatus"); if (!s) return; s.text
 function scoreCad(cad) {
   const sc = $("cadScore"); if (!sc) return;
   const s = cadStats(cad); sc.textContent = "";
-  [[s.ans + "/" + s.total, "respondidas"], [String(s.ok), "acertos"]].forEach(([b, l]) => { const d = el("div", "mini-stat"); d.append(el("b", null, b), el("span", null, l)); sc.append(d); });
+  [[s.ans + "/" + s.total, "respondidas"], [String(s.ok), s.ok === 1 ? "acerto" : "acertos"]].forEach(([b, l]) => { const d = el("div", "mini-stat"); d.append(el("b", null, b), el("span", null, l)); sc.append(d); });
   sc.append(ring(s.ans ? pct(s.ok, s.ans) : null));
 }
 function confirmBtn(question, onYes) {
@@ -1417,7 +1418,7 @@ function editCad(cad) {
   const org = input("e-org", cad.cfg.orgao, "Ex.: Prefeitura de Caruaru"), car = input("e-car", cad.cfg.cargo, "Ex.: Agente administrativo"), ban = input("e-ban", cad.cfg.banca, "Ex.: FGV");
   const nt = area("e-notas", cad.notas, "Ex.: revisar artigos 37 a 41 antes da prova", 3);
   const g = el("div", "grid2"); g.append(field("Órgão", org), field("Cargo", car));
-  f.append(field("Nome do caderno", tit, "vazio usa o órgão e o local"), g, field("Banca", ban), field("Anotações", nt));
+  f.append(field("Nome do caderno", tit, "se ficar vazio, usa o órgão e o local"), g, field("Banca", ban), field("Anotações", nt));
   let close;
   const save = () => {
     cad.titulo = tit.value.trim(); cad.notas = nt.value.trim();
@@ -1438,8 +1439,8 @@ function editQ(cad, i) {
   const altsF = field("Alternativas", alts, "uma por linha");
   const gab = el("select"); gab.id = "e-gab";
   const df = seg("e-dif", [["facil", "Fácil"], ["medio", "Médio"], ["dificil", "Difícil"]], DIF_LABEL[q.dificuldade] ? q.dificuldade : "medio", true);
-  const di = input("e-disc", q.disciplina, "Ex.: Direito Administrativo"), as = input("e-ass", q.assunto, "Ex.: Lei 8.112/1990");
-  const co = area("e-com", q.comentario, "Por que o gabarito é esse", 3), fu = input("e-fund", q.fundamento, "Ex.: Art. 41 da CF");
+  const di = input("e-disc", q.disciplina, "Ex.: Direito Administrativo"), as = input("e-ass", q.assunto, "Ex.: Lei nº 8.112/1990");
+  const co = area("e-com", q.comentario, "Por que esse é o gabarito", 3), fu = input("e-fund", q.fundamento, "Ex.: CF/88, art. 41");
   const g = el("div", "grid2"); g.append(field("Disciplina", di), field("Assunto", as));
   const drawGab = () => {
     const t = segVal(tp), cur = gab.value || q.gabarito; gab.textContent = "";
@@ -1484,7 +1485,7 @@ function editSim(k) {
 
 /* ================= Cadernos ================= */
 function viewCadernos(main) {
-  main.append(phead("Cadernos", Store.mode === "db" ? "Salvos na sua conta. Só você vê." : "Salvos neste navegador.", btn("btn sm", "Novo", () => go("gerar"), I.spark)));
+  main.append(phead("Cadernos", Store.mode === "db" ? "Salvos na sua conta. Só você tem acesso." : "Salvos neste navegador.", btn("btn sm", "Novo", () => go("gerar"), I.spark)));
   const sb = el("div", "searchbox"); sb.innerHTML = I.search;
   const fi = el("input"); fi.type = "search"; fi.id = "cadFilter"; fi.placeholder = "Buscar por órgão, cidade ou banca"; sb.append(fi);
   main.append(sb);
@@ -1498,7 +1499,7 @@ function viewCadernos(main) {
       const card = glass("button", "cad"); card.type = "button"; card.onclick = () => go("caderno", { cur: c.id, showAll: false });
       card.append(el("span", "date", fmtDate(c.ts) + " · " + c.cfg.banca + (c.exemplo ? " · exemplo" : "")), el("h3", null, cadTitle(c)));
       const bar = el("span", "bar"); const bi = el("i"); bi.style.width = pct(s.ans, s.total) + "%"; bar.append(bi);
-      const ft = el("span", "foot"); ft.append(el("span", null, s.ans + " de " + s.total + " respondidas"), el("span", null, s.ans ? pct(s.ok, s.ans) + "% acertos" : ""));
+      const ft = el("span", "foot"); ft.append(el("span", null, s.ans + " de " + s.total + " respondidas"), el("span", null, s.ans ? pct(s.ok, s.ans) + "% de acertos" : ""));
       card.append(bar, ft); grid.append(card);
     });
     if (!list.length) grid.append(emptyState("Nenhum caderno com essa busca."));
@@ -1535,14 +1536,14 @@ function viewBanco(main) {
   const box = glass("div", "filters");
   const sb = el("div", "searchbox"); sb.innerHTML = I.search;
   const q = el("input"); q.type = "search"; q.id = "b-q"; q.placeholder = "Buscar no enunciado"; q.value = f.q; sb.append(q);
-  const stt = seg("b-st", [["", "Todas"], ["nao", "Não feitas"], ["acertei", "Acertei"], ["errei", "Errei"], ["fav", "Favoritas"]], f.status);
+  const stt = seg("b-st", [["", "Todas"], ["nao", "Não respondidas"], ["acertei", "Acertei"], ["errei", "Errei"], ["fav", "Favoritas"]], f.status);
   const fr = el("div", "frow");
   const sDisc = select("b-disc", uniq(x => x.q.disciplina), f.disc, "Todas as disciplinas");
   const sBanca = select("b-banca", uniq(x => x.cad.cfg.banca), f.banca, "Todas as bancas");
   const sDif = select("b-dif", ["facil", "medio", "dificil"], f.dific, "Qualquer dificuldade");
   [...sDif.options].forEach(o => { if (o.value) o.textContent = DIF_LABEL[o.value]; });
   const sTipo = select("b-tipo", ["ME", "CE"], f.tipo, "Todos os formatos");
-  [...sTipo.options].forEach(o => { if (o.value) o.textContent = o.value === "ME" ? "Múltipla escolha" : "Certo/Errado"; });
+  [...sTipo.options].forEach(o => { if (o.value) o.textContent = o.value === "ME" ? "Múltipla escolha" : "Certo ou errado"; });
   const sUf = select("b-uf", uniq(x => x.cad.cfg.esfera === "Federal" ? "" : x.cad.cfg.uf), f.uf, "Todas as UFs");
   [sDisc, sBanca, sDif, sTipo, sUf].forEach(s => { s.setAttribute("aria-label", s.options[0].textContent); fr.append(s); });
   box.append(sb, stt, fr);
@@ -1576,10 +1577,10 @@ function simSetup(main) {
   const uniq = fn => [...new Set(all.map(fn).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR"));
   const card = glass("div", "fsec");
   const sDisc = select("s-disc", uniq(x => x.q.disciplina), "", "Todas as disciplinas"), sBanca = select("s-banca", uniq(x => x.cad.cfg.banca), "", "Todas as bancas");
-  const st = seg("s-st", [["", "Todas"], ["nao", "Só não feitas"], ["errei", "Só as que errei"]], "", true);
+  const st = seg("s-st", [["", "Todas"], ["nao", "Só as não respondidas"], ["errei", "Só as que errei"]], "", true);
   const qtd = seg("s-qtd", [["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"]], "10", true);
   const tempo = seg("s-tempo", [["0", "Livre"], ["2", "2 min"], ["3", "3 min"], ["4", "4 min"]], "3", true);
-  if (pre) card.append(el("h3", null, pre.length + " questões selecionadas"));
+  if (pre) card.append(el("h3", null, pl(pre.length, "questão selecionada", "questões selecionadas")));
   else { const r = el("div", "grid2"); r.append(field("Disciplina", sDisc), field("Banca", sBanca)); card.append(r, field("Quais questões", st)); }
   const r2 = el("div", "grid2"); r2.append(field("Quantidade", qtd), field("Tempo por questão", tempo)); card.append(r2);
   const info = el("p", "hint");
@@ -1597,7 +1598,7 @@ function simSetup(main) {
     state.sim = { phase: "run", items: p, picks: {}, cur: 0, start: Date.now(), limit: per ? per * 60 * p.length : 0 };
     render(); window.scrollTo({ top: 0 });
   });
-  const upd = () => { const p = pool(); const n = Math.min(p.length, Number(segVal(qtd))); info.textContent = p.length ? n + " questões" + (Number(segVal(tempo)) ? " · " + n * Number(segVal(tempo)) + " minutos" : " · sem limite de tempo") : "Nenhuma questão com esses filtros."; startB.disabled = !p.length; };
+  const upd = () => { const p = pool(); const n = Math.min(p.length, Number(segVal(qtd))); info.textContent = p.length ? pl(n, "questão", "questões") + (Number(segVal(tempo)) ? " · " + n * Number(segVal(tempo)) + " minutos" : " · sem limite de tempo") : "Nenhuma questão com esses filtros."; startB.disabled = !p.length; };
   [sDisc, sBanca, st, qtd, tempo].forEach(c => c.addEventListener("change", upd));
   const act = el("div", "toolbar"); act.append(startB, info);
   card.append(act); upd();
@@ -1676,7 +1677,7 @@ function finishSim() {
 function simResult(main) {
   const s = state.sim;
   const top = glass("section", "cover");
-  const t = el("div", "left"); t.append(el("h1", null, pct(s.ok, s.items.length) >= 70 ? "Mandou bem!" : "Simulado entregue"), el("p", null, s.ok + " de " + s.items.length + " acertos · tempo " + fmtTime(s.secs)));
+  const t = el("div", "left"); t.append(el("h1", null, pct(s.ok, s.items.length) >= 70 ? "Mandou bem!" : "Simulado entregue"), el("p", null, "Você acertou " + s.ok + " de " + s.items.length + " · tempo " + fmtTime(s.secs)));
   const r = el("div", "right"); r.append(mascot("float"), ring(pct(s.ok, s.items.length)));
   top.append(t, r); main.append(top);
   const tb = el("div", "toolbar"); tb.append(btn("btn sm", "Novo simulado", () => { state.sim = null; render(); }), btn("tbtn", "Ver desempenho", () => { state.sim = null; go("desempenho"); }));
@@ -1696,7 +1697,7 @@ function viewDesempenho(main) {
   const ok = rows.filter(x => isRight(x.q, x.a)).length;
   const st = glass("section", "stats");
   st.append(ring(rows.length ? pct(ok, rows.length) : null));
-  [[String(rows.length), "respondidas"], [String(ok), "acertos"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
+  [[String(rows.length), rows.length === 1 ? "respondida" : "respondidas"], [String(ok), ok === 1 ? "acerto" : "acertos"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
   main.append(st);
   if (!rows.length) { main.append(emptyState("Responda questões ou faça um simulado. Seu desempenho aparece aqui por disciplina, dificuldade e banca.", btn("btn sm", "Ir para o banco", () => go("banco")))); return; }
   const grp = (fn, order) => {
@@ -1745,7 +1746,7 @@ function viewLeis(main) {
       c.append(acts); grid.append(c);
     });
     const ext = glass("div", "lawcard");
-    ext.append(el("span", "n", "Municipais e estaduais"), el("h3", null, "Buscar no LexML"), el("p", "hint", "Copie os artigos da lei local e cole no gerador, aba Por lei."));
+    ext.append(el("span", "n", "Municipais e estaduais"), el("h3", null, "Buscar no LexML"), el("p", "hint", "Copie os artigos da lei local e cole-os no gerador, na opção De uma lei."));
     const acts = el("div", "acts"); acts.append(btn("btn sm", "Colar lei", () => go("gerar", { genMode: "lei" })), link("https://www.lexml.gov.br/", "LexML"));
     ext.append(acts); grid.append(ext);
   };
@@ -1781,7 +1782,7 @@ function asDoc(cad) {
     out += P(`<b>Questão ${i + 1}</b>`, "font-size:14pt;color:#363642;background:#d0cece");
     out += P("Aba Cadastro de Questão", "font-size:12pt;color:#0070C0");
     out += P(`<b>PROVA:</b> ${esc(cadTitle(cad))} / ${esc(c.cargo)} / estilo ${esc(c.banca)} / ${new Date().getFullYear()}`);
-    out += P(`<b>TIPO:</b> ${ce ? "Certo/Errado" : "Múltipla Escolha"}`);
+    out += P(`<b>TIPO:</b> ${ce ? "Certo/Errado" : "Múltipla escolha"}`);
     out += P(`<b>DIFICULDADE:</b> ${DIF_LABEL[q.dificuldade] || ""} · <b>DISCIPLINA:</b> ${esc(q.disciplina)}`);
     out += P("<b>ENUNCIADO:</b>") + P(esc(q.enunciado));
     if (!ce) q.alternativas.forEach((a, k) => out += P(`(${"ABCDE"[k]}) ${esc(a)}`));

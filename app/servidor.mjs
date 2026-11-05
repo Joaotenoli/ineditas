@@ -1,5 +1,5 @@
-// Inédita no Mac: servidor local (só 127.0.0.1) que abre o app no navegador ou dentro da janela do Mac.
-// - Cadernos: ~/Documents/Inédita/dados/<id>.json (um arquivo por documento)
+// Inéditas no Mac: servidor local (só 127.0.0.1) que abre o app no navegador ou dentro da janela do Mac.
+// - Cadernos: ~/Documents/Inéditas/dados/<id>.json (um arquivo por documento)
 // - IA: o Claude Code ou o Codex com o login do PLANO da pessoa (Claude Pro/Max ou ChatGPT), numa pasta de
 //   configuração só deste app. Não usa chave de API: as variáveis de API do ambiente são removidas desses processos.
 // Baseado no servidor do Simulador de Copy. Uso: node servidor.mjs [--porta 5199] [--sem-navegador]
@@ -25,9 +25,17 @@ const args = process.argv.slice(2);
 const PORTA = Number(args[args.indexOf("--porta") + 1]) || Number(process.env.INEDITAS_PORTA) || 5199;
 const ABRIR = !args.includes("--sem-navegador");
 const HOME = os.homedir();
-const DADOS = process.env.INEDITAS_DADOS || path.join(HOME, "Documents", "Inédita");
+// o app se chamava "Inédita": leva as pastas antigas para o nome novo, sem perder cadernos nem logins
+for (const [velho, novo] of [
+  [path.join(HOME, "Documents", "Inédita"), path.join(HOME, "Documents", "Inéditas")],
+  MAC ? [path.join(HOME, "Library", "Application Support", "Inédita"), path.join(HOME, "Library", "Application Support", "Inéditas")]
+    : WIN ? [path.join(process.env.APPDATA || path.join(HOME, "AppData", "Roaming"), "Inédita"), path.join(process.env.APPDATA || path.join(HOME, "AppData", "Roaming"), "Inéditas")] : null
+].filter(Boolean)) {
+  try { if (fs.existsSync(velho) && !fs.existsSync(novo)) fs.renameSync(velho, novo); } catch {}
+}
+const DADOS = process.env.INEDITAS_DADOS || path.join(HOME, "Documents", "Inéditas");
 const DOCS = path.join(DADOS, "dados");
-const LOCAL = MAC ? path.join(HOME, "Library", "Application Support", "Inédita") : WIN ? path.join(process.env.APPDATA || path.join(HOME, "AppData", "Roaming"), "Inédita") : path.join(HOME, ".config", "ineditas");
+const LOCAL = MAC ? path.join(HOME, "Library", "Application Support", "Inéditas") : WIN ? path.join(process.env.APPDATA || path.join(HOME, "AppData", "Roaming"), "Inéditas") : path.join(HOME, ".config", "ineditas");
 const CLAUDE_HOME = path.join(LOCAL, "claude");
 const CODEX_HOME = path.join(LOCAL, "codex");
 const TRABALHO = path.join(LOCAL, "trabalho");          // pasta vazia: a IA não lê arquivo de projeto nenhum
@@ -85,7 +93,7 @@ function perfil(d) {
     return usar(novaConta(nome, email, senha));
   }
   const a = Buffer.from(hashSenha(senha, atual.sal), "hex"), b = Buffer.from(atual.hash, "hex");
-  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return [401, { erro: "Esse e-mail já tem conta neste computador com outra senha." }];
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return [401, { erro: "Já existe uma conta com este e-mail neste computador, e a senha não confere." }];
   return usar(atual);
 }
 function nomeDoMac() { if (MAC) { try { return execFileSync("id", ["-F"], { encoding: "utf8" }).trim(); } catch {} } return os.userInfo().username; }
@@ -109,7 +117,7 @@ function instalarClaude() {
                      : ["/bin/bash", ["-c", "curl -fsSL https://claude.ai/install.sh | bash"]];
   P.instalando = new Promise(ok => execFile(c, a, { env: envLimpo({}), timeout: 5 * 60 * 1000, windowsHide: true }, () => {
     P.bin = acharClaude(); P.instalando = null;
-    if (!P.bin) P.erro = "Não consegui instalar o Claude. Confira a internet e tente de novo.";
+    if (!P.bin) P.erro = "Não consegui instalar o Claude. Confira sua conexão com a internet e tente de novo.";
     avisar({ type: "conta" }); ok();
   }));
   return P.instalando;
@@ -128,7 +136,7 @@ function envLimpo(extra) { const env = { ...process.env, ...extra }; for (const 
 const PROV = {
   claude: {
     nome: "Claude", bin: acharClaude(),
-    faltando: "O Claude Code não está instalado neste Mac.",
+    faltando: "O Claude Code não está instalado neste computador.",
     env: () => envLimpo({ CLAUDE_CONFIG_DIR: CLAUDE_HOME }),
     hosts: HOSTS_CLAUDE, abrir: true,
     argsLogin: ["auth", "login", "--claudeai"], argsSair: ["auth", "logout"], argsStatus: ["auth", "status", "--json"],
@@ -144,7 +152,7 @@ const PROV = {
   openai: {
     nome: "ChatGPT", bin: achar(["codex"], [process.env.INEDITAS_CODEX_BIN, "/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex", "/Applications/Codex.app/Contents/Resources/codex",
       path.join(HOME, ".local/bin/codex"), "/opt/homebrew/bin/codex", "/usr/local/bin/codex"]),
-    faltando: "O Codex não foi encontrado. Instale o app do ChatGPT para Mac (ele já traz o Codex).",
+    faltando: "O Codex não foi encontrado. Feche o app e abra de novo.",
     env: () => envLimpo({ CODEX_HOME }),
     hosts: HOSTS_OPENAI, abrir: false,                     // o próprio Codex abre o navegador
     argsLogin: ["login"], argsSair: ["logout"], argsStatus: ["login", "status"],
@@ -160,7 +168,7 @@ for (const k in PROV) Object.assign(PROV[k], { conta: null, lida: 0, login: null
 const MODELOS = [
   { id: "opus", prov: "claude", nome: "Claude Opus", descricao: "O mais capaz. Melhor para cadernos difíceis." },
   { id: "sonnet", prov: "claude", nome: "Claude Sonnet", descricao: "Rápido e forte. Bom para o dia a dia." },
-  { id: "haiku", prov: "claude", nome: "Claude Haiku", descricao: "O mais rápido. Cadernos curtos." },
+  { id: "haiku", prov: "claude", nome: "Claude Haiku", descricao: "O mais rápido. Bom para cadernos curtos." },
   { id: "chatgpt", prov: "openai", nome: "ChatGPT", descricao: "O modelo padrão do Codex no seu plano do ChatGPT." },
 ];
 const modeloAtual = () => { const m = lerAjustes().modelo; return MODELOS.find(x => x.id === m) || MODELOS[0]; };
@@ -222,7 +230,7 @@ async function entrar(k) {
     setTimeout(() => fim(null), 20000);
   });
   let host = ""; try { host = new URL(url).hostname; } catch {}
-  if (!url || !P.hosts.some(h => host === h || host.endsWith("." + h))) { if (P.login && P.login.proc === p) P.login = null; try { p.kill(); } catch {} P.erro = "O " + P.nome + " não devolveu um endereço de login esperado."; return estadoConta(); }
+  if (!url || !P.hosts.some(h => host === h || host.endsWith("." + h))) { if (P.login && P.login.proc === p) P.login = null; try { p.kill(); } catch {} P.erro = "O " + P.nome + " não devolveu o endereço de login."; return estadoConta(); }
   if (P.login && P.login.proc === p) P.login.url = url;
   if (P.abrir) abrirNoSistema(url);
   return estadoConta();
@@ -314,7 +322,7 @@ function lerCorpo(req) {
 }
 const json = (res, code, o) => { res.writeHead(code, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" }); res.end(JSON.stringify(o)); };
 const HOSTS = new Set([`127.0.0.1:${PORTA}`, `localhost:${PORTA}`]);
-// o site público do Inédita pode usar o plano de IA deste Mac (só contas e geração; cadernos e arquivos ficam fechados)
+// o site público do Inéditas pode usar o plano de IA deste Mac (só contas e geração; cadernos e arquivos ficam fechados)
 const SITES = new Set(["https://ineditas-questoes.vercel.app"]);
 const ROTAS_SITE = new Set(["/api/ok", "/api/conta", "/api/conta/entrar", "/api/conta/codigo", "/api/conta/cancelar", "/api/conta/sair", "/api/ajustes", "/api/ia"]);
 
@@ -370,7 +378,7 @@ const srv = http.createServer(async (req, res) => {
 });
 
 process.on("uncaughtException", e => console.error("erro:", e && e.message));
-// liga o servidor; se a porta já estiver com um Inédita aberto, usa esse mesmo
+// liga o servidor; se a porta já estiver com um Inéditas aberto, usa esse mesmo
 export function iniciar({ abrir = false } = {}) {
   return new Promise((ok, falha) => {
     srv.once("error", async e => {
@@ -381,7 +389,7 @@ export function iniciar({ abrir = false } = {}) {
       falha(e);
     });
     srv.listen(PORTA, "127.0.0.1", () => {
-      console.log(`Inédita em http://127.0.0.1:${PORTA}  ·  cadernos em ${DOCS}`);
+      console.log(`Inéditas em http://127.0.0.1:${PORTA}  ·  cadernos em ${DOCS}`);
       lerConta("claude", true); lerConta("openai", true);
       if (abrir) abrirNoSistema(`http://127.0.0.1:${PORTA}/`);
       ok(PORTA);

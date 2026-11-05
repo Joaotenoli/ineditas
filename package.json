@@ -1,9 +1,9 @@
 {
   "name": "ineditas",
-  "productName": "Inedita",
-  "version": "1.0.3",
+  "productName": "Ineditas",
+  "version": "1.0.4",
   "description": "Questões inéditas para concursos, geradas com o seu plano do Claude ou do ChatGPT.",
-  "author": "Inédita",
+  "author": "Inéditas",
   "license": "MIT",
   "main": "main.cjs",
   "scripts": {
@@ -19,8 +19,8 @@
   },
   "build": {
     "appId": "br.com.ineditas.app",
-    "productName": "Inedita",
-    "artifactName": "Inedita-${version}-${os}-${arch}.${ext}",
+    "productName": "Ineditas",
+    "artifactName": "Ineditas-${version}-${os}-${arch}.${ext}",
     "directories": {
       "output": "dist"
     },
@@ -42,12 +42,12 @@
       "category": "public.app-category.education",
       "identity": null,
       "extendInfo": {
-        "CFBundleDisplayName": "Inédita"
+        "CFBundleDisplayName": "Inéditas"
       },
       "hardenedRuntime": false
     },
     "dmg": {
-      "title": "Inédita",
+      "title": "Inéditas",
       "contents": [
         {
           "x": 140,

@@ -1,4 +1,4 @@
-# Inédita
+# Inéditas
 
 Questões inéditas para qualquer concurso do Brasil, geradas com o **seu plano do Claude ou do ChatGPT**. Nada de chave de API: o uso sai da assinatura que você já paga (Claude Pro ou Max, ChatGPT Plus ou Pro).
 
@@ -13,34 +13,34 @@ Vá em **[Releases](../../releases/latest)** e baixe o arquivo do seu computador
 
 | Computador | Arquivo |
 | --- | --- |
-| Mac com chip Apple (M1, M2, M3, M4…) | `Inedita-…-mac-arm64.dmg` |
-| Mac com Intel | `Inedita-…-mac-x64.dmg` |
-| Windows | `Inedita-…-win-x64.zip` |
+| Mac com chip Apple (M1, M2, M3, M4…) | `Ineditas-…-mac-arm64.dmg` |
+| Mac com Intel | `Ineditas-…-mac-x64.dmg` |
+| Windows | `Ineditas-…-win-x64.zip` |
 
 ### Instalar no Mac
 
-1. Abra o `.dmg` e arraste o **Inedita** para a pasta **Aplicativos**.
-2. Abra o Inedita. Como o app ainda não é assinado pela Apple, o Mac avisa que não pode verificar o app. Clique em **OK** (não em "Mover para o Lixo").
-3. Abra **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado de "Inedita foi bloqueado". Confirme com a sua senha do Mac.
-4. Pronto: das próximas vezes ele abre direto.
+1. Abra o `.dmg` e arraste o **Ineditas** para a pasta **Aplicativos**.
+2. Abra o Ineditas. Como o app ainda não é assinado pela Apple, o Mac avisa que não pode verificar o app. Clique em **OK** (não em "Mover para o Lixo").
+3. Abra **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado de "Ineditas foi bloqueado". Confirme com a sua senha do Mac.
+4. Pronto: nas próximas vezes, ele abre direto.
 
-Se o Mac disser que o app "está danificado", abra o Terminal e rode `xattr -cr /Applications/Inedita.app`. Depois abra de novo.
+Se o Mac disser que o app "está danificado", abra o Terminal e rode `xattr -cr /Applications/Ineditas.app`. Depois abra de novo.
 
 ### Instalar no Windows
 
 1. Descompacte o `.zip` numa pasta.
-2. Abra o **Inedita.exe**. Se o Windows mostrar "O Windows protegeu o computador", clique em **Mais informações → Executar assim mesmo** (o app ainda não é assinado).
+2. Abra o **Ineditas.exe**. Se o Windows mostrar "O Windows protegeu o computador", clique em **Mais informações → Executar assim mesmo** (o app ainda não é assinado).
 
 ## Conectar o seu plano
 
-O Inédita usa os programas oficiais para entrar na sua conta:
+O Inéditas usa os programas oficiais para entrar na sua conta:
 
-- **ChatGPT:** não precisa instalar nada. O Codex (o programa oficial da OpenAI, de código aberto) já vem dentro do Inédita.
-- **Claude:** não precisa instalar nada antes. Na primeira vez que você clicar em Entrar com Claude, o Inédita instala o Claude Code com o instalador oficial da Anthropic (leva uns 30 segundos).
+- **ChatGPT:** não precisa instalar nada. O Codex (o programa oficial da OpenAI, de código aberto) já vem dentro do Inéditas.
+- **Claude:** não precisa instalar nada antes. Na primeira vez que você clicar em Entrar com Claude, o Inéditas instala o Claude Code com o instalador oficial da Anthropic (leva cerca de 30 segundos).
 
-Depois, no Inédita: entre com qualquer e-mail e senha (se ainda não tiver conta, ela é criada na hora e fica só no seu computador) ou como visitante, clique em **Entrar** e escolha **Entrar com Claude** ou **Entrar com ChatGPT**. O login oficial abre no navegador. O app recusa logins por chave de API.
+Depois, no Inéditas: entre com qualquer e-mail e senha (se ainda não tiver conta, ela é criada na hora e fica só no seu computador) ou como visitante, abra **Preferências** e escolha **Entrar com Claude** ou **Entrar com ChatGPT**. O login oficial abre no navegador. O app recusa logins por chave de API.
 
-Os cadernos ficam na pasta **Documentos/Inédita** do seu computador.
+Os cadernos ficam na pasta **Documentos/Inéditas** do seu computador.
 
 ## Outras formas de usar
 
