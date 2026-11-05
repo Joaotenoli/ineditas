@@ -1,13 +1,13 @@
 {
   "name": "ineditas",
   "productName": "Inedita",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Questões inéditas para concursos, geradas com o seu plano do Claude ou do ChatGPT.",
   "author": "Inédita",
   "license": "MIT",
   "main": "main.cjs",
   "scripts": {
-    "copiar": "node scripts/copiar.mjs",
+    "copiar": "node scripts/copiar.mjs && node scripts/baixar-codex.mjs",
     "abrir": "npm run copiar && electron .",
     "mac": "npm run copiar && electron-builder --mac",
     "win": "npm run copiar && electron-builder --win",
@@ -73,6 +73,12 @@
       "icon": "build/icon.png",
       "signAndEditExecutable": false
     },
-    "afterPack": "scripts/assinar.cjs"
+    "afterPack": "scripts/assinar.cjs",
+    "extraResources": [
+      {
+        "from": "vendor/codex/${os}-${arch}",
+        "to": "codex"
+      }
+    ]
   }
 }

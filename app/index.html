@@ -817,7 +817,7 @@ function planoBox(onPronto, L = window.ineditasLocal) {
       const row = el("div", "plano-row" + (c.conectado ? " on" : ""));
       const tx = el("div", "tx");
       row.append(el("span", "dot" + (c.conectado ? " on" : "")));
-      tx.append(el("b", null, nome + (c.conectado && c.conta && c.conta.email ? " · " + c.conta.email : "")), el("span", null, !c.disponivel ? c.erro : c.conectado ? "Plano " + ((c.conta && c.conta.plano) || nome) : c.pendente ? (c.pendente.codigo ? "Copie o código que apareceu no navegador e cole aqui." : "Termine o login no navegador que abriu.") : "Usa o seu plano do " + nome + ", sem chave de API."));
+      tx.append(el("b", null, nome + (c.conectado && c.conta && c.conta.email ? " · " + c.conta.email : "")), el("span", null, !c.disponivel ? c.erro : c.conectado ? "Plano " + ((c.conta && c.conta.plano) || nome) : c.pendente ? (c.pendente.codigo ? "Copie o código que apareceu no navegador e cole aqui." : "Termine o login no navegador que abriu.") : c.instalando ? "Instalando o Claude neste computador…" : c.instalavel ? "Usa o seu plano do Claude. Na primeira vez o app prepara o Claude sozinho (uns 30 segundos)." : "Usa o seu plano do " + nome + ", sem chave de API."));
       row.append(tx);
       const acts = el("div", "acts");
       if (c.disponivel) {
@@ -826,7 +826,7 @@ function planoBox(onPronto, L = window.ineditasLocal) {
           pend = true;
           if (c.pendente.codigo) { const i = input("cod-" + k, "", "Código do navegador"); const ok = btn("btn sm", "Confirmar", async () => { ok.disabled = true; await L.codigo(i.value, k); draw(); }); acts.append(i, ok); }
           acts.append(btn("tbtn", "Cancelar", async () => { await L.cancelar(k); draw(); }));
-        } else acts.append(btn("btn sm", "Entrar com " + nome, async e => { e.currentTarget.disabled = true; await L.entrar(k); draw(); }));
+        } else { const b = btn("btn sm", c.instalando ? "Instalando…" : "Entrar com " + nome, async () => { b.disabled = true; b.textContent = c.instalavel ? "Instalando o Claude…" : "Abrindo o login…"; await L.entrar(k); draw(); }); b.disabled = !!c.instalando; acts.append(b); }
       }
       row.append(acts);
       if (c.erro && c.disponivel) row.append(el("p", "hint err", c.erro));

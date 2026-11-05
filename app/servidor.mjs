@@ -97,6 +97,23 @@ function avisar(msg) { const s = "data: " + JSON.stringify(msg) + "\n\n"; for (c
 /* ---------- contas de IA: só pelo PLANO (Claude Pro/Max ou ChatGPT). Nunca chave de API. ---------- */
 const HOSTS_CLAUDE = ["claude.com", "claude.ai", "platform.claude.com", "console.anthropic.com", "anthropic.com"];
 const HOSTS_OPENAI = ["auth.openai.com", "openai.com", "chatgpt.com"];
+function acharClaude() {
+  return achar(["claude"], [process.env.INEDITAS_CLAUDE_BIN, path.join(HOME, ".local", "bin", WIN ? "claude.exe" : "claude"), "/opt/homebrew/bin/claude", "/usr/local/bin/claude", path.join(HOME, ".claude", "local", "claude")]);
+}
+// sem o Claude Code no computador: instala com o instalador oficial da Anthropic (só quando a pessoa clica em Entrar com Claude)
+function instalarClaude() {
+  const P = PROV.claude;
+  if (P.instalando) return P.instalando;
+  P.erro = null;
+  const [c, a] = WIN ? ["powershell.exe", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", "irm https://claude.ai/install.ps1 | iex"]]
+                     : ["/bin/bash", ["-c", "curl -fsSL https://claude.ai/install.sh | bash"]];
+  P.instalando = new Promise(ok => execFile(c, a, { env: envLimpo({}), timeout: 5 * 60 * 1000, windowsHide: true }, () => {
+    P.bin = acharClaude(); P.instalando = null;
+    if (!P.bin) P.erro = "Não consegui instalar o Claude. Confira a internet e tente de novo.";
+    avisar({ type: "conta" }); ok();
+  }));
+  return P.instalando;
+}
 function achar(nomes, extra) {
   for (const p of extra) if (p && fs.existsSync(p)) return p;
   const exts = WIN ? [".exe", ".cmd", ""] : [""];
@@ -110,7 +127,7 @@ function envLimpo(extra) { const env = { ...process.env, ...extra }; for (const 
 
 const PROV = {
   claude: {
-    nome: "Claude", bin: achar(["claude"], [process.env.INEDITAS_CLAUDE_BIN, path.join(HOME, ".local/bin/claude"), "/opt/homebrew/bin/claude", "/usr/local/bin/claude", path.join(HOME, ".claude/local/claude")]),
+    nome: "Claude", bin: acharClaude(),
     faltando: "O Claude Code não está instalado neste Mac.",
     env: () => envLimpo({ CLAUDE_CONFIG_DIR: CLAUDE_HOME }),
     hosts: HOSTS_CLAUDE, abrir: true,
@@ -175,7 +192,8 @@ async function estadoUm(k) {
   const P = PROV[k];
   if (P.login && Date.now() > P.login.expira) { cancelarLogin(k); P.erro = "O tempo para entrar terminou. Comece de novo."; }
   await lerConta(k);
-  return { nome: P.nome, disponivel: !!P.bin, conectado: !!P.conta, conta: P.conta, pendente: P.login && P.login.url ? { url: P.login.url, codigo: k === "claude" } : null, erro: P.bin ? P.erro : P.faltando };
+  const instalavel = k === "claude" && !P.bin;
+  return { nome: P.nome, disponivel: !!P.bin || instalavel, instalavel, instalando: !!P.instalando, conectado: !!P.conta, conta: P.conta, pendente: P.login && P.login.url ? { url: P.login.url, codigo: k === "claude" } : null, erro: P.bin || instalavel ? P.erro : P.faltando };
 }
 async function estadoConta() {
   const contas = { claude: await estadoUm("claude"), openai: await estadoUm("openai") };
@@ -186,6 +204,7 @@ async function estadoConta() {
 function cancelarLogin(k) { for (const q of k ? [k] : Object.keys(PROV)) { const P = PROV[q]; if (P.login) { P.login.cancelado = true; try { P.login.proc.kill(); } catch {} P.login = null; } } }
 async function entrar(k) {
   const P = PROV[k];
+  if (k === "claude" && !P.bin) { await instalarClaude(); if (!P.bin) return estadoConta(); }
   await lerConta(k, true);
   if (P.conta || P.login || !P.bin) return estadoConta();
   P.erro = null;

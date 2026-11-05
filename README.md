@@ -35,8 +35,8 @@ Se o Mac disser que o app "está danificado", abra o Terminal e rode `xattr -cr 
 
 O Inédita usa os programas oficiais para entrar na sua conta:
 
-- **Claude:** o [Claude Code](https://claude.com/claude-code) precisa estar instalado.
-- **ChatGPT:** no Mac, basta o app do ChatGPT (ele já traz o Codex). No Windows, instale o Codex (`npm install -g @openai/codex`).
+- **ChatGPT:** não precisa instalar nada. O Codex (o programa oficial da OpenAI, de código aberto) já vem dentro do Inédita.
+- **Claude:** não precisa instalar nada antes. Na primeira vez que você clicar em Entrar com Claude, o Inédita instala o Claude Code com o instalador oficial da Anthropic (leva uns 30 segundos).
 
 Depois, no Inédita: entre com qualquer e-mail e senha (se ainda não tiver conta, ela é criada na hora e fica só no seu computador) ou como visitante, clique em **Entrar** e escolha **Entrar com Claude** ou **Entrar com ChatGPT**. O login oficial abre no navegador. O app recusa logins por chave de API.
 

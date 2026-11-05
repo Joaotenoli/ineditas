@@ -15,6 +15,9 @@ if (ehMac) {
 
 async function abrir() {
   process.env.INEDITAS_PAGINA = path.join(__dirname, "app", "index.html");
+  // o Codex vai dentro do app: quem usa só entra com a conta do ChatGPT
+  const codex = path.join(process.resourcesPath, "codex", "bin", process.platform === "win32" ? "codex.exe" : "codex");
+  if (require("node:fs").existsSync(codex)) process.env.INEDITAS_CODEX_BIN = codex;
   try {
     const { iniciar } = await import(pathToFileURL(path.join(__dirname, "app", "servidor.mjs")).href);
     base = `http://127.0.0.1:${await iniciar({ abrir: false })}`;
