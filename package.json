@@ -1,0 +1,76 @@
+{
+  "name": "ineditas",
+  "productName": "Inedita",
+  "version": "1.0.0",
+  "description": "Questões inéditas para concursos, geradas com o seu plano do Claude ou do ChatGPT.",
+  "author": "Inédita",
+  "license": "MIT",
+  "main": "main.cjs",
+  "scripts": {
+    "copiar": "node scripts/copiar.mjs",
+    "abrir": "npm run copiar && electron .",
+    "mac": "npm run copiar && electron-builder --mac",
+    "win": "npm run copiar && electron-builder --win",
+    "tudo": "npm run copiar && electron-builder --mac --win"
+  },
+  "devDependencies": {
+    "electron": "38.4.0",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "br.com.ineditas.app",
+    "productName": "Inedita",
+    "artifactName": "Inedita-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "app/**"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.education",
+      "identity": null,
+      "extendInfo": {
+        "CFBundleDisplayName": "Inédita"
+      }
+    },
+    "dmg": {
+      "title": "Inédita",
+      "contents": [
+        {
+          "x": 140,
+          "y": 200
+        },
+        {
+          "x": 400,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": false
+    }
+  }
+}

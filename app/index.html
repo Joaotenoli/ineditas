@@ -1,0 +1,1709 @@
+<title>Inédita Questões</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: app de estudo em vidro, estilo Apple. Desktop: menu lateral de vidro flutuante + conteúdo com títulos grandes. Estreito: conteúdo em coluna e barra de abas de vidro presa embaixo. Cor só no vermelho de ação e no mascote. */
+:root {
+  --bg: #f2f2f7;
+  --bg-blob-1: rgba(255, 149, 128, 0.22);
+  --bg-blob-2: rgba(150, 170, 255, 0.20);
+  --glass: rgba(255, 255, 255, 0.66);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+  --glass-line: rgba(255, 255, 255, 0.75);
+  --hair: rgba(60, 60, 67, 0.12);
+  --fill: rgba(118, 118, 128, 0.12);
+  --fill-2: rgba(118, 118, 128, 0.2);
+  --ink: #1c1c1e;
+  --ink-2: #3a3a3c;
+  --muted: #8e8e93;
+  --accent: #ff3b30;
+  --accent-press: #d70015;
+  --accent-soft: rgba(255, 59, 48, 0.1);
+  --on-accent: #ffffff;
+  --ok: #248a3d; --ok-soft: rgba(52, 199, 89, 0.14);
+  --bad: #d70015; --bad-soft: rgba(255, 59, 48, 0.12);
+  --warn: #a05a00; --warn-soft: rgba(255, 149, 0, 0.14);
+  --shadow: 0 1px 1px rgba(0,0,0,.03), 0 8px 28px rgba(30, 30, 60, 0.08);
+  --shadow-lg: 0 20px 60px rgba(30, 30, 60, 0.16);
+  --f-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, "Segoe UI", sans-serif;
+  --f-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  --f-text: "Source Serif 4", "New York", Georgia, serif;
+  --f-read: var(--f-ui);
+  --f-mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --bg-blob-1: rgba(255, 90, 70, 0.16); --bg-blob-2: rgba(90, 110, 255, 0.16);
+    --glass: rgba(28, 28, 32, 0.62); --glass-strong: rgba(38, 38, 44, 0.86); --glass-line: rgba(255, 255, 255, 0.09);
+    --hair: rgba(255, 255, 255, 0.1); --fill: rgba(118, 118, 128, 0.24); --fill-2: rgba(118, 118, 128, 0.34);
+    --ink: #f5f5f7; --ink-2: #d1d1d6; --muted: #98989f;
+    --accent: #ff453a; --accent-press: #ff6961; --accent-soft: rgba(255, 69, 58, 0.16);
+    --ok: #30d158; --ok-soft: rgba(48, 209, 88, 0.16); --bad: #ff6961; --bad-soft: rgba(255, 69, 58, 0.16); --warn: #ffb340; --warn-soft: rgba(255, 159, 10, 0.16);
+    --shadow: 0 1px 1px rgba(0,0,0,.2), 0 8px 28px rgba(0, 0, 0, 0.4); --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --bg-blob-1: rgba(255, 90, 70, 0.16); --bg-blob-2: rgba(90, 110, 255, 0.16);
+  --glass: rgba(28, 28, 32, 0.62); --glass-strong: rgba(38, 38, 44, 0.86); --glass-line: rgba(255, 255, 255, 0.09);
+  --hair: rgba(255, 255, 255, 0.1); --fill: rgba(118, 118, 128, 0.24); --fill-2: rgba(118, 118, 128, 0.34);
+  --ink: #f5f5f7; --ink-2: #d1d1d6; --muted: #98989f;
+  --accent: #ff453a; --accent-press: #ff6961; --accent-soft: rgba(255, 69, 58, 0.16);
+  --ok: #30d158; --ok-soft: rgba(48, 209, 88, 0.16); --bad: #ff6961; --bad-soft: rgba(255, 69, 58, 0.16); --warn: #ffb340; --warn-soft: rgba(255, 159, 10, 0.16);
+  --shadow: 0 1px 1px rgba(0,0,0,.2), 0 8px 28px rgba(0, 0, 0, 0.4); --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html.app-mac .sidebar { padding-top: 46px; }
+html.app-mac .l-theme { top: 14px; }
+:root[data-read="serif"] { --f-read: "Source Serif 4", "New York", Georgia, serif; }
+:root[data-size="lg"] .stem { font-size: 19.5px; }
+:root[data-size="lg"] .alt { font-size: 17.5px; }
+:root[data-size="lg"] .sol p, :root[data-size="lg"] .law { font-size: 17px; }
+[hidden] { display: none !important; }
+html, body { min-height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-ui); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(40% 35% at 85% 0%, var(--bg-blob-1), transparent 70%), radial-gradient(45% 40% at 0% 100%, var(--bg-blob-2), transparent 70%); }
+#app { position: relative; z-index: 1; }
+button { font: inherit; color: inherit; }
+a { color: var(--accent); }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--f-display); letter-spacing: -0.022em; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+input[type=text], input[type=search], input[type=password], input[type=email], select, textarea { font: inherit; font-size: 15px; color: var(--ink); background: var(--fill); border: 0; border-radius: 12px; padding: 11px 14px; width: 100%; min-width: 0; -webkit-appearance: none; appearance: none; }
+select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 52%, calc(100% - 13px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 34px; }
+textarea { resize: vertical; min-height: 110px; font-size: 14px; line-height: 1.5; }
+input::placeholder, textarea::placeholder { color: var(--muted); }
+input:disabled, select:disabled { opacity: .45; }
+.glass { background: var(--glass); -webkit-backdrop-filter: blur(28px) saturate(180%); backdrop-filter: blur(28px) saturate(180%); border: 1px solid var(--glass-line); box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.35); }
+.muted { color: var(--muted); }
+.hint { font-size: 13px; color: var(--muted); }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent); color: var(--on-accent); border: 0; border-radius: 999px; padding: 12px 22px; font-weight: 600; font-size: 15px; cursor: pointer; text-decoration: none; transition: transform .15s ease, background .15s ease; }
+.btn:hover { background: var(--accent-press); }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .5; cursor: progress; }
+.btn.lg { padding: 15px 26px; font-size: 16px; }
+.btn.sm { padding: 8px 15px; font-size: 14px; }
+.btn.block { width: 100%; }
+.btn svg, .tbtn svg { width: 17px; height: 17px; flex: none; }
+.tbtn { display: inline-flex; align-items: center; gap: 6px; background: var(--fill); border: 0; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--ink); text-decoration: none; transition: background .15s; }
+.tbtn:hover { background: var(--fill-2); }
+.tbtn.danger { color: var(--bad); }
+.tbtn.plain { background: transparent; color: var(--accent); padding-inline: 6px; }
+.tbtn[aria-pressed=true] { color: var(--accent); background: var(--accent-soft); }
+.iconbtn { width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--fill); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; flex: none; }
+.iconbtn svg { width: 18px; height: 18px; }
+
+/* Controles segmentados (estilo iOS) */
+.segc { display: inline-flex; flex-wrap: wrap; gap: 2px; background: var(--fill); border-radius: 12px; padding: 3px; max-width: 100%; }
+.segc button { border: 0; background: transparent; border-radius: 9px; padding: 7px 14px; font-size: 14px; font-weight: 500; cursor: pointer; color: var(--ink); white-space: nowrap; transition: background .15s, box-shadow .15s; }
+.segc button[aria-pressed=true] { background: var(--ink); color: var(--bg); box-shadow: 0 2px 8px rgba(0,0,0,.18); font-weight: 700; }
+.segc button[aria-pressed=true]::before { content: "✓ "; font-weight: 700; }
+.segc button:not([aria-pressed=true]):hover { background: var(--fill-2); }
+.segc.full { display: flex; }
+.segc.full button { flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: 14px; border: 0; background: var(--fill); color: var(--ink); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.chip[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+
+/* Shell */
+.layout { display: grid; grid-template-columns: 268px minmax(0, 1fr); min-height: 100vh; }
+.sidebar { position: sticky; top: 0; height: 100vh; padding: 14px 0 14px 14px; padding-left: max(14px, env(safe-area-inset-left, 0px)); }
+.sidebar-in { height: 100%; border-radius: 26px; padding: 22px 14px 14px; display: flex; flex-direction: column; gap: 22px; overflow-y: auto; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; background: none; border: 0; cursor: pointer; text-align: left; }
+.brand .appicon { width: 40px; height: 40px; }
+.brand b { display: block; font-family: var(--f-display); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.brand small { display: block; font-size: 12px; color: var(--muted); }
+.snav { display: flex; flex-direction: column; gap: 2px; }
+.snav .grp { font-size: 12px; font-weight: 600; color: var(--muted); padding: 14px 12px 6px; }
+.snav button { display: flex; align-items: center; gap: 12px; border: 0; background: transparent; padding: 9px 12px; font-size: 15px; cursor: pointer; border-radius: 12px; color: var(--ink); text-align: left; width: 100%; }
+.snav button svg { width: 19px; height: 19px; flex: none; color: var(--muted); }
+.snav button:hover { background: var(--fill); }
+.snav button[aria-current=page] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.snav button[aria-current=page] svg { color: var(--accent); }
+.snav .count { margin-left: auto; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.me { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 6px 2px; border-top: 1px solid var(--hair); }
+.me .uname { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--fill-2); color: var(--ink); font-weight: 600; display: grid; place-items: center; font-size: 14px; flex: none; border: 0; cursor: pointer; }
+.content { min-width: 0; display: flex; flex-direction: column; }
+.page { width: 100%; max-width: 1000px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 1001px) { .page { padding-left: 44px; padding-right: max(44px, env(safe-area-inset-right, 0px)); } }
+main.page { padding-block: 44px 64px; display: flex; flex-direction: column; gap: 32px; flex: 1; }
+.tabbar, .sheet-wrap, .mtop { display: none; }
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { display: none; }
+  main.page { padding-block: 8px 130px; gap: 26px; }
+  .mtop { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+  .mtop .brand { padding: 0; }
+  .mtop .brand .appicon { width: 34px; height: 34px; }
+  .tabbar { display: flex; position: fixed; z-index: 20; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); margin: 0 auto; max-width: 520px; border-radius: 30px; padding: 6px; justify-content: space-between; }
+  .tabbar button { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; border: 0; background: transparent; border-radius: 24px; padding: 7px 2px 6px; font-size: 10.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+  .tabbar button svg { width: 23px; height: 23px; }
+  .tabbar button[aria-current=page] { color: var(--accent); background: var(--accent-soft); }
+  .tabbar button.make svg { width: 26px; height: 26px; }
+  .sheet-wrap:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 30; background: rgba(0,0,0,.25); }
+  .sheet { position: absolute; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); max-width: 520px; margin: 0 auto; border-radius: 28px; padding: 10px; display: flex; flex-direction: column; gap: 2px; background: var(--glass-strong); }
+  .sheet button { display: flex; align-items: center; gap: 14px; border: 0; background: transparent; padding: 13px 14px; border-radius: 16px; font-size: 16px; cursor: pointer; text-align: left; color: var(--ink); }
+  .sheet button:hover { background: var(--fill); }
+  .sheet button svg { width: 21px; height: 21px; color: var(--muted); }
+  .sheet hr { border: 0; border-top: 1px solid var(--hair); margin: 4px 10px; }
+}
+
+/* Cabeçalho de página */
+.phead { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.phead h1 { font-size: clamp(30px, 4vw, 40px); font-weight: 700; line-height: 1.08; }
+.phead p { color: var(--muted); font-size: 16px; margin-top: 6px; max-width: 60ch; }
+.sec { display: flex; flex-direction: column; gap: 12px; }
+.sec-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sec-title { font-size: 21px; font-weight: 700; }
+
+/* Cartões e listas agrupadas */
+.card { border-radius: 24px; padding: 24px; }
+.group { border-radius: 20px; overflow: hidden; }
+.row { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 18px; border: 0; background: transparent; text-align: left; cursor: pointer; color: var(--ink); position: relative; }
+.row + .row::before { content: ""; position: absolute; top: 0; left: 64px; right: 0; border-top: 1px solid var(--hair); }
+.row:hover { background: var(--fill); }
+.row .ic { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; flex: none; background: var(--fill); color: var(--ink-2); }
+.row .ic svg { width: 19px; height: 19px; }
+.row .tx { flex: 1; min-width: 0; }
+.row .tx b { display: block; font-size: 15.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .tx span { display: block; font-size: 13.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .chev { width: 16px; height: 16px; color: var(--muted); flex: none; }
+.row .meta { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; flex: none; }
+
+/* Mascote */
+.mascot { display: block; width: 120px; height: 120px; flex: none; filter: drop-shadow(0 10px 14px rgba(120, 60, 20, 0.22)); }
+.appicon { display: block; width: 40px; height: 40px; flex: none; filter: drop-shadow(0 4px 8px rgba(255, 90, 50, 0.3)); }
+.mascot.float { animation: float 4s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-6px); } }
+
+/* Login */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 32px 0; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.login-card { width: 100%; max-width: 420px; border-radius: 32px; padding: 36px 30px 28px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; box-shadow: var(--shadow-lg); }
+.login-card .appicon { width: 104px; height: 104px; filter: drop-shadow(0 14px 24px rgba(255, 90, 50, 0.35)); }
+.login-card h1 { font-size: 34px; font-weight: 700; }
+.login-card .lead { font-size: 16px; color: var(--muted); max-width: 30ch; }
+.login-card .acts { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.login-feats { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.login-feats span { display: inline-flex; align-items: center; gap: 6px; }
+.login-feats svg { width: 15px; height: 15px; }
+
+/* Login: uma tela só no fundo da marca, texto e formulário lado a lado, centrados na página */
+.login2 { position: relative; min-height: 100vh; display: grid; place-items: center; overflow: hidden; background: linear-gradient(155deg, #ffa765 0%, #ff7748 45%, #e8463a 100%); padding-block: 96px 56px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+.login2::before { content: ""; position: absolute; width: 640px; height: 640px; border-radius: 50%; background: rgba(255,255,255,.09); top: -260px; right: -180px; }
+.login2::after { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: rgba(255,255,255,.07); bottom: -200px; left: -140px; }
+.l-wrap { position: relative; z-index: 1; width: min(1040px, 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 64px; align-items: center; }
+.l-hero { color: #fff; display: flex; flex-direction: column; gap: 20px; }
+.l-brand { position: absolute; z-index: 2; top: 28px; left: max(32px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 18px; }
+.l-brand .appicon { width: 34px; height: 34px; }
+.l-theme { position: absolute !important; z-index: 2; top: 24px; right: max(28px, env(safe-area-inset-right, 0px)); background: rgba(255,255,255,.22) !important; color: #fff !important; }
+.l-hero .mascot { width: 150px; height: 150px; filter: drop-shadow(0 18px 24px rgba(120, 30, 10, .35)); }
+.l-hero h1 { font-size: clamp(34px, 4.4vw, 54px); font-weight: 800; line-height: 1.05; color: #fff; max-width: 13ch; }
+.l-hero p { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.92); max-width: 40ch; }
+.l-feats { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.l-feats li { display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 600; }
+.l-feats .ic { width: 38px; height: 38px; border-radius: 12px; background: rgba(255,255,255,.2); display: grid; place-items: center; flex: none; }
+.l-feats .ic svg { width: 20px; height: 20px; }
+.l-form { width: 100%; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; background: var(--glass-strong); -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%); border: 1px solid var(--glass-line); box-shadow: 0 30px 80px rgba(110, 30, 10, .35); }
+.l-form .l-title { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+.l-form .l-sub { color: var(--muted); font-size: 15px; margin-top: -8px; }
+.l-form input[type=email], .l-form input[type=password], .l-form input[type=text] { padding: 14px 16px; font-size: 16px; }
+.pw { position: relative; }
+.pw input { padding-right: 96px !important; }
+.pw button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; color: var(--muted); font-weight: 600; font-size: 14px; padding: 8px 10px; cursor: pointer; border-radius: 8px; }
+.pw button:hover { color: var(--ink); }
+.l-msg { font-size: 14px; color: var(--bad); text-align: center; }
+.l-msg:empty { display: none; }
+.or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13px; }
+.or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--hair); }
+.l-form .tbtn.plain { align-self: center; }
+.l-note { text-align: center; font-size: 12.5px; color: var(--muted); }
+.l-who { display: flex; align-items: center; gap: 12px; padding: 4px 2px; }
+@media (max-width: 900px) {
+  .l-wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; justify-items: center; }
+  .l-hero { align-items: center; text-align: center; }
+  .l-hero .mascot { width: 104px; height: 104px; }
+  .l-hero h1 { font-size: 34px; margin-inline: auto; }
+  .l-hero p { margin-inline: auto; }
+  .l-feats { display: none; }
+  .l-form { max-width: 440px; padding: 22px; }
+  .l-brand { left: max(20px, env(safe-area-inset-left, 0px)); top: 20px; }
+  .l-theme { top: 16px; right: max(16px, env(safe-area-inset-right, 0px)); }
+}
+
+/* Início */
+.hello { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: center; border-radius: 28px; padding: 30px 32px; }
+.hello h1 { font-size: clamp(28px, 3.6vw, 36px); font-weight: 700; line-height: 1.1; }
+.hello p { color: var(--muted); font-size: 16px; margin-top: 6px; }
+.hello .acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.hello .mascot { width: 150px; height: 150px; }
+@media (max-width: 560px) { .hello { grid-template-columns: minmax(0, 1fr); padding: 24px; } .hello .mascot { width: 96px; height: 96px; grid-row: 1; } }
+.modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.mode { border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 12px; text-align: left; cursor: pointer; color: var(--ink); transition: transform .15s; }
+.mode:hover { transform: translateY(-2px); }
+.mode .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--fill); color: var(--ink-2); }
+.mode .ic svg { width: 21px; height: 21px; }
+.mode b { display: block; font-size: 16px; font-weight: 600; }
+.mode span { font-size: 13.5px; color: var(--muted); }
+@media (max-width: 640px) { .modes { grid-template-columns: minmax(0, 1fr); } .mode { flex-direction: row; align-items: center; } }
+.stats { display: grid; grid-template-columns: auto repeat(2, minmax(0, 1fr)); gap: 24px; align-items: center; border-radius: 24px; padding: 22px 26px; }
+.stat b { display: block; font-family: var(--f-display); font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { font-size: 13.5px; color: var(--muted); }
+.ring { position: relative; width: 84px; height: 84px; }
+.ring svg { width: 84px; height: 84px; transform: rotate(-90deg); }
+.ring b { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); font-size: 19px; font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 480px) { .stats { grid-template-columns: auto minmax(0, 1fr); } .stats .stat:last-child { grid-column: 2; } }
+
+/* Formulário */
+.form { display: flex; flex-direction: column; gap: 22px; }
+.fsec { border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.fsec h3 { font-size: 17px; font-weight: 600; }
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field > label, .field > .lbl { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 720px) { .grid3, .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.stepper { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stepper button { width: 100%; display: flex; align-items: center; gap: 10px; border: 0; background: transparent; padding: 6px 4px; cursor: pointer; color: var(--muted); text-align: left; font-size: 14px; font-weight: 600; }
+.stepper .n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--fill); font-size: 13px; flex: none; font-variant-numeric: tabular-nums; }
+.stepper li { border-bottom: 3px solid var(--fill); }
+.stepper li.cur { border-color: var(--accent); }
+.stepper li.cur button { color: var(--ink); }
+.stepper li.cur .n { background: var(--accent); color: #fff; }
+.stepper li.done { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.stepper li.done .n { background: var(--accent-soft); color: var(--accent); }
+@media (max-width: 480px) { .stepper .t { font-size: 13px; } }
+details.more summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--accent); list-style: none; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more[open] summary { margin-bottom: 14px; }
+.gen-bar { position: sticky; bottom: 16px; z-index: 5; display: flex; align-items: center; gap: 14px; border-radius: 999px; padding: 8px 8px 8px 20px; }
+.gen-bar .sum { flex: 1; min-width: 0; font-size: 14px; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 1000px) { .gen-bar { bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); } }
+
+/* Questões */
+.list { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.cover { border-radius: 26px; padding: 24px 26px; display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; justify-content: space-between; }
+.cover h1 { font-size: clamp(24px, 3vw, 30px); font-weight: 700; line-height: 1.15; }
+.cover p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.cover .left { min-width: 0; flex: 1 1 280px; }
+.cover .right { display: flex; align-items: center; gap: 18px; }
+.mini-stat { text-align: center; }
+.mini-stat b { display: block; font-family: var(--f-display); font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.mini-stat span { font-size: 12px; color: var(--muted); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.toolbar .sp { flex: 1; }
+.status { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.status.err { color: var(--bad); }
+.status .mascot { width: 40px; height: 40px; }
+.q { border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.q-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.q-num { font-size: 13px; font-weight: 700; color: var(--ink); margin-right: 4px; font-variant-numeric: tabular-nums; }
+.tag { font-size: 12px; font-weight: 500; border-radius: 999px; padding: 3px 10px; background: var(--fill); color: var(--ink-2); }
+.tag.d-facil { background: var(--ok-soft); color: var(--ok); }
+.tag.d-medio { background: var(--warn-soft); color: var(--warn); }
+.tag.d-dificil { background: var(--bad-soft); color: var(--bad); }
+.q-head .sp { flex: 1; }
+.q-acts { display: flex; gap: 4px; }
+.q-acts .iconbtn { width: 32px; height: 32px; background: transparent; color: var(--muted); }
+.q-acts .iconbtn:hover { background: var(--fill); }
+.q-acts .iconbtn[aria-pressed=true] { color: var(--accent); }
+.q-src { font-size: 13px; color: var(--muted); margin-top: -6px; }
+.stem { font-family: var(--f-read); font-size: 17px; line-height: 1.6; letter-spacing: -0.005em; white-space: pre-wrap; overflow-wrap: anywhere; }
+.alts { display: flex; flex-direction: column; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.alt { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; width: 100%; text-align: left; font-family: var(--f-read); font-size: 16px; line-height: 1.5; color: var(--ink); background: var(--fill); border: 1.5px solid transparent; border-radius: 14px; padding: 10px 12px; cursor: pointer; transition: background .15s; }
+.alt:hover:not(:disabled) { background: var(--fill-2); }
+.alt:disabled { cursor: default; }
+.bubble { width: 28px; height: 28px; border-radius: 50%; background: var(--glass-strong); display: grid; place-items: center; font-family: var(--f-ui); font-size: 13px; font-weight: 700; color: var(--ink-2); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.alt.picked { border-color: var(--accent); background: var(--accent-soft); }
+.alt.picked .bubble { background: var(--accent); color: #fff; }
+.alt.right { border-color: var(--ok); background: var(--ok-soft); }
+.alt.right .bubble { background: var(--ok); color: #fff; }
+.alt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.alt.wrong .bubble { background: var(--bad); color: #fff; }
+.altrow { display: flex; gap: 4px; align-items: center; }
+.altrow .alt { flex: 1; min-width: 0; }
+.cut { width: 34px; height: 34px; background: transparent; color: var(--muted); opacity: 0; transition: opacity .15s; }
+.altrow:hover .cut, .cut:focus-visible, .cut[aria-pressed=true] { opacity: 1; }
+@media (hover: none) { .cut { opacity: .7; } }
+.cut[aria-pressed=true] { color: var(--ink); }
+.alt.struck > span:last-child { text-decoration: line-through; opacity: .4; }
+.alt.struck .bubble { opacity: .4; }
+.plano { display: flex; flex-direction: column; gap: 10px; }
+.plano-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; padding: 12px 14px; border-radius: 16px; background: var(--fill); }
+.plano-row.on { box-shadow: none; }
+.plano-row .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--fill-2); flex: none; }
+.plano-row .dot.on { background: #34c759; box-shadow: 0 0 0 4px rgba(52,199,89,.18); }
+.plano-row .tx { flex: 1 1 180px; min-width: 0; }
+.plano-row .tx b { display: block; font-size: 15px; }
+.plano-row .tx span { display: block; font-size: 13px; color: var(--muted); }
+.plano-row .acts { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.plano-row .acts input { width: 160px; }
+.plano-row .err { width: 100%; color: var(--bad); }
+.ia-box { display: flex; flex-direction: column; gap: 12px; padding: 14px; border-radius: 18px; background: var(--fill); }
+.ia-box h3, .sub-h { font-size: 16px; font-weight: 700; }
+.ia-box .plano-row { background: var(--glass-strong); }
+.modal { max-height: calc(100vh - 32px); overflow-y: auto; }
+.aviso-plano { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between; margin-top: 14px; padding: 12px 14px; border-radius: 16px; border: 1px solid var(--hair); font-size: 14px; }
+.answer-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.modal-wrap { position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,.4); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: grid; place-items: center; padding: 16px; }
+.modal { width: min(460px, 100%); border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; background: var(--glass-strong); -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%); border: 1px solid var(--glass-line); box-shadow: var(--shadow-lg); }
+.modal-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.modal-h h2 { font-size: 21px; font-weight: 700; }
+@media (max-width: 1000px) { .modal-wrap { align-items: end; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); } }
+.preview-q { background: var(--fill); border-radius: 14px; padding: 12px 14px; font-family: var(--f-read); font-size: 15.5px; line-height: 1.55; }
+:root[data-size="lg"] .preview-q { font-size: 17.5px; }
+.ce { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.ce .alt { grid-template-columns: 28px auto; align-items: center; justify-content: center; font-family: var(--f-ui); font-size: 15px; font-weight: 600; }
+.sol { border-top: 1px solid var(--hair); padding-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.verdict { font-weight: 700; font-size: 15px; }
+.verdict.ok { color: var(--ok); } .verdict.bad { color: var(--bad); }
+.sol p { font-family: var(--f-read); font-size: 15.5px; line-height: 1.6; overflow-wrap: anywhere; color: var(--ink-2); }
+.law { background: var(--fill); border-radius: 14px; padding: 12px 14px; font-family: var(--f-read); font-size: 14.5px; line-height: 1.55; overflow-wrap: anywhere; white-space: pre-wrap; }
+.law .lab { display: block; font-family: var(--f-ui); font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 4px; white-space: normal; }
+.check { font-size: 13px; background: var(--warn-soft); color: var(--warn); border-radius: 12px; padding: 8px 12px; }
+.empty { border-radius: 24px; padding: 36px 24px; text-align: center; color: var(--muted); display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.empty .mascot { width: 96px; height: 96px; }
+.skeleton { height: 150px; border-radius: 22px; background: var(--fill); position: relative; overflow: hidden; }
+.skeleton::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); animation: shimmer 1.4s infinite; }
+@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+.confirm { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; flex-wrap: wrap; }
+.badge { display: inline-block; font-size: 11.5px; font-weight: 600; border-radius: 999px; padding: 2px 9px; background: var(--fill); color: var(--muted); vertical-align: middle; }
+
+/* Cadernos */
+.cads { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.cad { border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px; cursor: pointer; text-align: left; color: var(--ink); transition: transform .15s; }
+.cad:hover { transform: translateY(-2px); }
+.cad .date { font-size: 12.5px; color: var(--muted); }
+.cad h3 { font-size: 17px; font-weight: 600; line-height: 1.3; }
+.cad .foot { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { height: 6px; border-radius: 999px; background: var(--fill); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+
+/* Banco */
+.searchbox { display: flex; align-items: center; gap: 8px; background: var(--fill); border-radius: 14px; padding: 0 12px; }
+.searchbox svg { width: 18px; height: 18px; color: var(--muted); flex: none; }
+.searchbox input { background: transparent; padding-left: 4px; }
+.filters { display: flex; flex-direction: column; gap: 14px; border-radius: 22px; padding: 18px; }
+.frow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.frow select { width: auto; flex: 1 1 160px; }
+
+/* Simulado */
+.sheet-ans { display: grid; grid-template-columns: repeat(auto-fill, 40px); gap: 8px; }
+.sheet-ans button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--fill); font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sheet-ans button.done { color: var(--ink); background: var(--fill-2); }
+.sheet-ans button[aria-current=true] { background: var(--accent); color: #fff; }
+.sheet-ans button.right { background: var(--ok); color: #fff; }
+.sheet-ans button.wrong { background: var(--bad); color: #fff; }
+.timer { font-family: var(--f-display); font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.timer.low { color: var(--bad); }
+.split { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 1000px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.sidecard { border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 14px; position: sticky; top: 16px; }
+@media (max-width: 1000px) { .sidecard { position: static; } }
+
+/* Desempenho */
+.perf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .perf { grid-template-columns: minmax(0, 1fr); } }
+.perf-card { border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.perf-card h3 { font-size: 16px; font-weight: 600; }
+.prow { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr) 84px; gap: 12px; align-items: center; font-size: 14px; }
+.prow .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.prow .vl { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.prow .bar { height: 8px; }
+.prow .bar i.ok { background: var(--ok); } .prow .bar i.mid { background: var(--warn); } .prow .bar i.low { background: var(--bad); }
+.tbl-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--hair); white-space: nowrap; }
+th { font-size: 12px; color: var(--muted); font-weight: 600; }
+td.num { font-variant-numeric: tabular-nums; }
+
+/* Leis */
+.laws { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.lawcard { border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.lawcard h3 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+.lawcard .n { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lawcard .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+
+.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); transform: translateX(-50%); background: var(--glass-strong); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); color: var(--ink); font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 999px; z-index: 40; max-width: calc(100% - 32px); box-shadow: var(--shadow-lg); }
+@media (max-width: 1000px) { .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 100px); } }
+footer { padding-block: 0 28px; font-size: 12.5px; color: var(--muted); }
+@media (max-width: 1000px) { footer { display: none; } }
+@media (prefers-reduced-motion: reduce) { .mascot.float, .skeleton::after { animation: none; } .btn, .mode, .cad { transition: none; } }
+</style>
+
+<div id="app"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ================= Dados fixos ================= */
+const UFS = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
+const DISCIPLINAS = ["Língua Portuguesa","Raciocínio Lógico","Direito Constitucional","Direito Administrativo","Informática","Conhecimentos do Município","Legislação Específica","Atualidades","Administração Pública","Contabilidade Pública","AFO","Direito Penal","Processo Penal","Ética no Serviço Público","Saúde Pública (SUS)","Legislação Educacional","Legislação de Trânsito"];
+const BANCAS = ["FGV","Cebraspe","FCC","Vunesp","Cesgranrio","Instituto AOCP","IBFC","Quadrix","IDECAN","Consulplan","Fundatec","Banca municipal genérica"];
+const DIF_LABEL = { facil: "Fácil", medio: "Médio", dificil: "Difícil" };
+const LEIS = [
+  { nome: "Constituição Federal", num: "CF/1988", area: "Constitucional", disc: "Direito Constitucional", url: "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm", desc: "Direitos fundamentais, organização do Estado e administração pública." },
+  { nome: "Estatuto dos Servidores Federais", num: "Lei nº 8.112/1990", area: "Administrativo", disc: "Direito Administrativo", url: "https://www.planalto.gov.br/ccivil_03/leis/l8112cons.htm", desc: "Provimento, posse, estágio probatório, direitos, deveres e penalidades." },
+  { nome: "Processo Administrativo", num: "Lei nº 9.784/1999", area: "Administrativo", disc: "Direito Administrativo", url: "https://www.planalto.gov.br/ccivil_03/leis/l9784.htm", desc: "Princípios, competência, impedimento, prazos e recursos." },
+  { nome: "Licitações e Contratos", num: "Lei nº 14.133/2021", area: "Administrativo", disc: "Direito Administrativo", url: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14133.htm", desc: "Modalidades, fases, contratação direta e contratos." },
+  { nome: "Improbidade Administrativa", num: "Lei nº 8.429/1992", area: "Administrativo", disc: "Direito Administrativo", url: "https://www.planalto.gov.br/ccivil_03/leis/l8429.htm", desc: "Atos de improbidade, sanções e procedimento." },
+  { nome: "Acesso à Informação", num: "Lei nº 12.527/2011", area: "Administrativo", disc: "Legislação Específica", url: "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm", desc: "Transparência, prazos de resposta e sigilo." },
+  { nome: "Proteção de Dados (LGPD)", num: "Lei nº 13.709/2018", area: "Administrativo", disc: "Legislação Específica", url: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm", desc: "Bases legais, direitos do titular e poder público." },
+  { nome: "Responsabilidade Fiscal", num: "LC nº 101/2000", area: "Financeiro", disc: "AFO", url: "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm", desc: "Receita, despesa com pessoal e limites de endividamento." },
+  { nome: "Direito Financeiro", num: "Lei nº 4.320/1964", area: "Financeiro", disc: "Contabilidade Pública", url: "https://www.planalto.gov.br/ccivil_03/leis/l4320.htm", desc: "Orçamento, receita, despesa, empenho e restos a pagar." },
+  { nome: "Código Penal", num: "Decreto-Lei nº 2.848/1940", area: "Penal", disc: "Direito Penal", url: "https://www.planalto.gov.br/ccivil_03/decreto-lei/del2848compilado.htm", desc: "Parte geral e crimes contra a administração pública." },
+  { nome: "Estatuto da Criança e do Adolescente", num: "Lei nº 8.069/1990", area: "Social", disc: "Legislação Específica", url: "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm", desc: "Direitos fundamentais, Conselho Tutelar e medidas de proteção." },
+  { nome: "Diretrizes e Bases da Educação", num: "Lei nº 9.394/1996", area: "Social", disc: "Legislação Educacional", url: "https://www.planalto.gov.br/ccivil_03/leis/l9394.htm", desc: "Níveis de ensino, profissionais e financiamento." },
+  { nome: "Lei Orgânica da Saúde", num: "Lei nº 8.080/1990", area: "Social", disc: "Saúde Pública (SUS)", url: "https://www.planalto.gov.br/ccivil_03/leis/l8080.htm", desc: "Princípios e diretrizes do SUS." },
+  { nome: "Código de Trânsito", num: "Lei nº 9.503/1997", area: "Penal", disc: "Legislação de Trânsito", url: "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm", desc: "Infrações, penalidades e crimes de trânsito." }
+];
+const EXEMPLO = {
+  id: "exemplo", exemplo: true, ts: Date.parse("2026-11-03T12:00:00"),
+  cfg: { modo: "certame", esfera: "Municipal", uf: "PE", municipio: "Caruaru", orgao: "Prefeitura Municipal", cargo: "Analista Administrativo", nivel: "Superior", banca: "FGV", tipo: "ME5", dific: "mista", estilo: "misto", qtd: 3, disc: ["Direito Constitucional","Língua Portuguesa"] },
+  answers: {},
+  questions: [
+    { tipo: "ME", dificuldade: "medio", disciplina: "Direito Constitucional", assunto: "Concurso público", estilo: "literalidade",
+      enunciado: "De acordo com a Constituição Federal de 1988, o prazo de validade do concurso público realizado pela Prefeitura Municipal de Caruaru será de",
+      alternativas: ["até um ano, prorrogável uma vez, por igual período.","até dois anos, prorrogável uma vez, por igual período.","até dois anos, improrrogável.","até quatro anos, prorrogável uma vez, pela metade do período.","até três anos, prorrogável por igual período, sem limite de vezes."],
+      gabarito: "B", comentario: "A CF/88 fixa validade de até dois anos, com uma única prorrogação por igual período. A regra vale para todos os entes, inclusive os municípios.",
+      fundamento: "CF/88, art. 37, III – o prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período;", conferir: false },
+    { tipo: "CE", dificuldade: "facil", disciplina: "Direito Constitucional", assunto: "Estabilidade", estilo: "caso prático",
+      enunciado: "João foi aprovado em concurso público da Prefeitura de Caruaru, nomeado para cargo de provimento efetivo e entrou em exercício. Após dois anos de efetivo exercício, afirmou a um colega que já havia adquirido estabilidade. À luz da Constituição Federal, a afirmação de João está correta.",
+      gabarito: "ERRADO", comentario: "A estabilidade exige três anos de efetivo exercício, e não dois. João ainda não é estável.",
+      fundamento: "CF/88, art. 41 – São estáveis após três anos de efetivo exercício os servidores nomeados para cargo de provimento efetivo em virtude de concurso público.", conferir: false },
+    { tipo: "ME", dificuldade: "dificil", disciplina: "Língua Portuguesa", assunto: "Crase", estilo: "aplicação",
+      enunciado: "Assinale a alternativa em que o emprego do acento indicativo de crase está de acordo com a norma-padrão.",
+      alternativas: ["O edital foi enviado à todos os candidatos inscritos.","A reunião da comissão ocorrerá das 8h às 12h.","O candidato ficou frente à frente com o fiscal de sala.","Começou à chover pouco antes do início da prova.","O servidor entregou o recurso à uma colega do setor."],
+      gabarito: "B", comentario: "Em “das 8h às 12h”, há preposição + artigo definido diante de horas determinadas, em correlação com “das”. Nas demais não há crase: diante de pronome indefinido (todos), em expressão com palavras repetidas (frente a frente), diante de verbo (chover) e diante de artigo indefinido (uma).",
+      fundamento: "", conferir: false }
+  ]
+};
+
+/* ================= Ícones (traço fino, estilo SF Symbols) ================= */
+const sv = (d, extra = "") => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
+const I = {
+  home: sv('<path d="M3.5 10.5L12 4l8.5 6.5V19a1 1 0 01-1 1H15v-5.5H9V20H4.5a1 1 0 01-1-1z"/>'),
+  spark: sv('<path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>'),
+  plus: sv('<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'),
+  tray: sv('<path d="M4 13l2.5-7.5h11L20 13v5a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M4 13h4.5l1 2h5l1-2H20"/>'),
+  book: sv('<path d="M5 4.5h11.5a2 2 0 012 2V20H7a2 2 0 01-2-2z"/><path d="M5 18a2 2 0 012-2h11.5"/>'),
+  clock: sv('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  chart: sv('<path d="M5 20V11M11 20V5M17 20v-6"/>'),
+  scale: sv('<path d="M12 4v16M8 20h8M5 8h14M5 8l-2.5 6a2.5 2.5 0 005 0zM19 8l-2.5 6a2.5 2.5 0 005 0z"/>'),
+  more: sv('<circle cx="6" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="18" cy="12" r="1.3" fill="currentColor"/>'),
+  search: sv('<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>'),
+  moon: sv('<path d="M19.5 14.5A7.5 7.5 0 019.5 4.5a7.5 7.5 0 1010 10z"/>'),
+  logout: sv('<path d="M14 4.5h4a1 1 0 011 1v13a1 1 0 01-1 1h-4M10 16.5L14.5 12 10 7.5M14.5 12H4"/>'),
+  chev: sv('<path d="M9 5l7 7-7 7"/>'),
+  star: sv('<path d="M12 3.8l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.8l-5.1 2.6 1-5.6-4.1-4 5.7-.8z"/>'),
+  starF: sv('<path d="M12 3.8l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.8l-5.1 2.6 1-5.6-4.1-4 5.7-.8z" fill="currentColor"/>'),
+  flag: sv('<path d="M5.5 20.5V4.5M5.5 4.5h11l-2 4 2 4h-11"/>'),
+  swap: sv('<path d="M4.5 8.5h13l-3-3M19.5 15.5h-13l3 3"/>'),
+  doc: sv('<path d="M7 3.5h7l4.5 4.5v11.5a1 1 0 01-1 1H7a1 1 0 01-1-1v-15a1 1 0 011-1z"/><path d="M14 3.5V8h4.5M9 13h6M9 16.5h6"/>'),
+  copy: sv('<rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5V6a1.5 1.5 0 00-1.5-1.5H6A1.5 1.5 0 004.5 6v8A1.5 1.5 0 006 15.5h2.5"/>'),
+  eye: sv('<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>'),
+  redo: sv('<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4.5 9M4.5 4.5V9H9"/>'),
+  trash: sv('<path d="M5 7h14M9.5 7V5h5v2M7 7l1 12.5h8L17 7"/>'),
+  arrow: sv('<path d="M7 17L17 7M8.5 7H17v8.5"/>'),
+  check: sv('<path d="M5 12.5l4.5 4.5L19 7.5"/>'),
+  cut: sv('<circle cx="6" cy="7" r="2.6"/><circle cx="6" cy="17" r="2.6"/><path d="M8.2 8.4L20 16.5M8.2 15.6L20 7.5"/>'),
+  gear: sv('<circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.2 7.5l2.1 1.2M17.7 15.3l2.1 1.2M4.2 16.5l2.1-1.2M17.7 8.7l2.1-1.2"/><circle cx="12" cy="12" r="7"/>'),
+  close: sv('<path d="M6 6l12 12M18 6L6 18"/>'),
+  lock: sv('<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/>')
+};
+
+/* ================= Mascote e logo: Gabi, a cachorrinha estudante (vetor, sem fundo) ================= */
+let mascotN = 0;
+function puppy(n) {
+  return `
+  <defs>
+    <radialGradient id="ph${n}" cx="42%" cy="32%" r="75%"><stop offset="0" stop-color="#ffe2b8"/><stop offset=".6" stop-color="#f7bf7c"/><stop offset="1" stop-color="#e59a52"/></radialGradient>
+    <linearGradient id="pe${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c97a3c"/><stop offset="1" stop-color="#9c5524"/></linearGradient>
+    <linearGradient id="pc${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b3b48"/><stop offset="1" stop-color="#17171d"/></linearGradient>
+  </defs>
+  <path d="M52 78c-20 4-30 30-26 56 3 18 16 24 26 14 8-9 12-34 14-52 1-12-4-20-14-18z" fill="url(#pe${n})"/>
+  <path d="M148 78c20 4 30 30 26 56-3 18-16 24-26 14-8-9-12-34-14-52-1-12 4-20 14-18z" fill="url(#pe${n})"/>
+  <ellipse cx="100" cy="112" rx="60" ry="55" fill="url(#ph${n})"/>
+  <ellipse cx="86" cy="76" rx="28" ry="12" fill="#fff" opacity=".35"/>
+  <ellipse cx="100" cy="138" rx="30" ry="21" fill="#fff4e3"/>
+  <ellipse cx="64" cy="132" rx="9" ry="5.5" fill="#ff8f7a" opacity=".45"/><ellipse cx="136" cy="132" rx="9" ry="5.5" fill="#ff8f7a" opacity=".45"/>
+  <ellipse cx="79" cy="110" rx="6.5" ry="8" fill="#22222a"/><ellipse cx="121" cy="110" rx="6.5" ry="8" fill="#22222a"/>
+  <circle cx="81.5" cy="107" r="2.4" fill="#fff"/><circle cx="123.5" cy="107" r="2.4" fill="#fff"/>
+  <circle cx="79" cy="110" r="18" fill="#fff" fill-opacity=".14" stroke="#2a2a33" stroke-width="4.5"/>
+  <circle cx="121" cy="110" r="18" fill="#fff" fill-opacity=".14" stroke="#2a2a33" stroke-width="4.5"/>
+  <path d="M97 108q3-3 6 0" fill="none" stroke="#2a2a33" stroke-width="4" stroke-linecap="round"/>
+  <path d="M93 126c0-4 14-4 14 0 0 4-4 7-7 7s-7-3-7-7z" fill="#2a2228"/>
+  <path d="M100 133v4M100 137c-3 4-8 4-10 1M100 137c3 4 8 4 10 1" fill="none" stroke="#2a2228" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M96 140q4 8 8 0z" fill="#ff7b8a"/>
+  <g transform="rotate(-8 100 50)">
+    <path d="M100 30L146 46 100 62 54 46z" fill="url(#pc${n})"/>
+    <path d="M78 54v9c7 5 14 7 22 7s15-2 22-7v-9l-22 8z" fill="#23232b"/>
+    <path d="M146 46v19" stroke="#ffcc4d" stroke-width="2.6" stroke-linecap="round"/><circle cx="146" cy="68" r="4.2" fill="#ffcc4d"/>
+  </g>`;
+}
+function mascot(cls = "") {
+  const n = ++mascotN;
+  const w = document.createElement("span");
+  w.innerHTML = `<svg class="mascot ${cls}" viewBox="14 20 172 170" role="img" aria-label="Gabi, a mascote do Inédita">${puppy(n)}</svg>`;
+  return w.firstElementChild;
+}
+function logoIcon(cls = "") {
+  const n = ++mascotN;
+  const w = document.createElement("span");
+  w.innerHTML = `<svg class="appicon ${cls}" viewBox="0 0 200 200" aria-hidden="true">
+  <defs>
+    <linearGradient id="ig${n}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb26b"/><stop offset=".55" stop-color="#ff7a45"/><stop offset="1" stop-color="#ff4b3a"/></linearGradient>
+    <linearGradient id="is${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#ig${n})"/>
+  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#is${n})"/>
+  <rect x="5" y="5" width="190" height="190" rx="45" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+  <g transform="translate(18 26) scale(.82)">${puppy(n)}</g>
+</svg>`;
+  return w.firstElementChild;
+}
+
+/* ================= Utilidades ================= */
+const $ = id => document.getElementById(id);
+function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+function btn(cls, label, onclick, icon) { const b = el("button", cls); b.type = "button"; if (icon) b.insertAdjacentHTML("beforeend", icon); if (label) b.append(document.createTextNode(label)); if (onclick) b.onclick = onclick; return b; }
+function iconBtn(icon, label, onclick, pressed) { const b = btn("iconbtn", null, onclick, icon); b.setAttribute("aria-label", label); b.title = label; if (pressed != null) b.setAttribute("aria-pressed", String(pressed)); return b; }
+const norm = s => String(s || "").trim().toUpperCase();
+const fold = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const fmtDate = ts => new Date(ts).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+let toastT;
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 2600); }
+function lsGet(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } }
+function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+function seg(id, options, value, full) {
+  const s = el("div", "segc" + (full ? " full" : "")); s.id = id; s.setAttribute("role", "group");
+  options.forEach(([v, label]) => { const b = btn("", label); b.dataset.v = v; b.setAttribute("aria-pressed", String(v === value)); s.append(b); });
+  s.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; s.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); s.dispatchEvent(new Event("change")); });
+  return s;
+}
+const segVal = s => s.querySelector("[aria-pressed=true]")?.dataset.v ?? "";
+function field(label, control, hint) { const f = el("div", "field"); const l = el(control.id ? "label" : "span", control.id ? null : "lbl", label); if (control.id) l.htmlFor = control.id; if (hint) l.append(" ", el("span", "hint", hint)); f.append(l, control); return f; }
+function input(id, value, ph) { const i = el("input"); i.type = "text"; i.id = id; i.value = value || ""; if (ph) i.placeholder = ph; return i; }
+function select(id, opts, value, allLabel) { const s = el("select"); s.id = id; if (allLabel) { const o = el("option", null, allLabel); o.value = ""; s.append(o); } opts.forEach(v => { const o = el("option", null, v); o.value = v; if (v === value) o.selected = true; s.append(o); }); return s; }
+function glass(tag, cls) { return el(tag, "glass " + cls); }
+function phead(title, sub, right) { const h = el("header", "phead"); const l = el("div"); l.append(el("h1", null, title)); if (sub) l.append(el("p", null, sub)); h.append(l); if (right) h.append(right); return h; }
+function ring(p) {
+  const r = 36, c = 2 * Math.PI * r;
+  const w = el("div", "ring");
+  w.innerHTML = `<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--fill-2)" stroke-width="8"/><circle cx="42" cy="42" r="${r}" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - (p || 0) / 100)}"/></svg>`;
+  w.append(el("b", null, p == null ? "–" : p + "%"));
+  return w;
+}
+
+/* ================= Estado ================= */
+const state = {
+  user: null, logged: lsGet("ineditas.logged", false), view: "inicio",
+  cads: [], prefs: { favs: [], reports: [], sims: [] },
+  cur: null, showAll: false, running: null, runningCad: null, genStatus: null,
+  banco: { q: "", disc: "", banca: "", esfera: "", uf: "", dific: "", tipo: "", status: "", limit: 20 },
+  sim: null, genPrefill: null, genMode: "certame"
+};
+let caps = { sample: null, downloads: null, db: null, user: null, ready: false };
+
+/* ================= Armazenamento ================= */
+const Store = {
+  mode: "local", col: null, timers: {},
+  async init() {
+    if (caps.db && caps.user) {
+      try {
+        const id = await caps.user.id();
+        if (id) {
+          this.mode = "db"; this.col = caps.db.collection("data/users/" + id);
+          let first = true;
+          const to = setTimeout(() => { if (first) { first = false; render(); } }, 10000);
+          this.col.onSnapshot(snap => {
+            const cads = [], prefsDoc = snap.docs.find(d => d.id === "prefs");
+            snap.docs.forEach(d => { if (d.id.startsWith("cad_")) { const v = d.data(); if (v && Array.isArray(v.questions)) cads.push({ ...v, id: d.id }); } });
+            cads.sort((a, b) => b.ts - a.ts);
+            state.cads = cads;
+            if (prefsDoc) state.prefs = { favs: [], reports: [], sims: [], ...prefsDoc.data() };
+            if (first) { first = false; clearTimeout(to); render(); } else softRefresh();
+          }, () => { clearTimeout(to); this.fallback(); });
+          return;
+        }
+      } catch {}
+    }
+    this.fallback();
+  },
+  fallback() { this.mode = "local"; state.cads = lsGet("ineditas.v2.cads", []); state.prefs = { favs: [], reports: [], sims: [], ...lsGet("ineditas.v2.prefs", {}) }; render(); },
+  plain(c) { return JSON.parse(JSON.stringify({ ts: c.ts, cfg: c.cfg, titulo: c.titulo || "", questions: c.questions, answers: c.answers || {} })); },
+  saveCad(c) {
+    if (c.exemplo) return;
+    if (!state.cads.find(x => x.id === c.id)) state.cads.unshift(c);
+    if (this.mode === "db") this.col.doc(c.id).set(this.plain(c)).catch(() => toast("Não foi possível salvar o caderno."));
+    else lsSet("ineditas.v2.cads", state.cads.slice(0, 60).map(x => ({ ...this.plain(x), id: x.id })));
+  },
+  saveAnswers(c) {
+    if (c.exemplo) return;
+    clearTimeout(this.timers[c.id]);
+    this.timers[c.id] = setTimeout(() => {
+      if (this.mode === "db") this.col.doc(c.id).update({ answers: { ...c.answers } }).catch(() => toast("Não foi possível salvar suas respostas."));
+      else this.saveCad(c);
+    }, 700);
+  },
+  delCad(id) {
+    state.cads = state.cads.filter(c => c.id !== id);
+    if (this.mode === "db") this.col.doc(id).delete().catch(() => toast("Não foi possível excluir."));
+    else lsSet("ineditas.v2.cads", state.cads.map(x => ({ ...this.plain(x), id: x.id })));
+  },
+  savePrefs() {
+    clearTimeout(this.timers.prefs);
+    this.timers.prefs = setTimeout(() => {
+      const p = { favs: state.prefs.favs.slice(-500), reports: state.prefs.reports.slice(-200), sims: state.prefs.sims.slice(0, 40) };
+      if (this.mode === "db") this.col.doc("prefs").set(p).catch(() => toast("Não foi possível salvar suas preferências."));
+      else lsSet("ineditas.v2.prefs", p);
+    }, 500);
+  }
+};
+
+/* ================= Derivados ================= */
+const visibleCads = () => state.cads.length ? state.cads : [EXEMPLO];
+const getCad = id => id === "exemplo" ? EXEMPLO : (state.runningCad && state.runningCad.id === id ? state.runningCad : state.cads.find(c => c.id === id));
+function allQs() { const out = []; visibleCads().forEach(c => c.questions.forEach((q, i) => out.push({ q, i, cad: c, qid: c.id + ":" + i }))); return out; }
+const isRight = (q, a) => norm(a) === norm(q.gabarito);
+function localLabel(c) {
+  if (c.esfera === "Federal") return "Esfera federal";
+  if (c.esfera === "Regional") return c.regiao || "Regional";
+  if (c.esfera === "Estadual") return "Estado · " + c.uf;
+  if (c.esfera === "Distrital") return (c.municipio ? c.municipio + " · " : "") + "DF";
+  return (c.municipio || "Município") + " – " + c.uf;
+}
+const cadTitle = c => c.titulo || ((c.cfg.orgao || "Órgão") + (c.cfg.esfera === "Federal" ? "" : " · " + localLabel(c.cfg)));
+function cadSub(c) { const t = c.tipo === "CE" ? "Certo/Errado" : c.tipo === "ME4" ? "A–D" : "A–E"; return [c.cargo, "estilo " + c.banca, t].filter(Boolean).join(" · "); }
+function cadStats(c) { const ids = Object.keys(c.answers || {}).filter(i => c.questions[i]); const ok = ids.filter(i => isRight(c.questions[i], c.answers[i])).length; return { total: c.questions.length, ans: ids.length, ok }; }
+
+/* ================= Shell ================= */
+const NAV = {
+  inicio: ["Início", I.home], gerar: ["Gerar", I.spark], banco: ["Banco de questões", I.tray], cadernos: ["Cadernos", I.book],
+  simulado: ["Simulados", I.clock], desempenho: ["Desempenho", I.chart], leis: ["Leis", I.scale]
+};
+const NAV_GROUPS = [["", ["inicio", "gerar"]], ["Estudar", ["banco", "cadernos", "simulado"]], ["Acompanhar", ["desempenho", "leis"]]];
+const TABS = ["inicio", "banco", "gerar", "cadernos"];
+function go(view, opts = {}) {
+  if (state.sim && state.sim.phase === "run" && view !== "simulado") { toast("Entregue ou abandone o simulado antes de sair."); return; }
+  state.view = view; Object.assign(state, opts);
+  render(); window.scrollTo({ top: 0 });
+}
+const isCurrent = v => state.view === v || (v === "cadernos" && state.view === "caderno");
+function render() {
+  const app = $("app"); app.textContent = "";
+  if (!state.logged) { app.append(viewLogin()); return; }
+  const lay = el("div", "layout");
+  const col = el("div", "content");
+  const mtop = el("div", "mtop page");
+  const mb = btn("brand", null, () => go("inicio"));  const mbt = el("span"); mbt.append(el("b", null, "Inédita")); mb.append(mbt);
+  const nm = (state.user && state.user.name) || "Visitante";
+  const av = btn("avatar", nm.trim()[0]?.toUpperCase() || "V", openSheet); av.setAttribute("aria-label", "Conta e mais opções");
+  mtop.append(mb, av);
+  const main = el("main", "page"); main.id = "main";
+  col.append(mtop, main);
+  lay.append(sidebar(), col);
+  app.append(lay, tabbar(), sheet());
+  ({ inicio: viewInicio, gerar: viewGerar, banco: viewBanco, cadernos: viewCadernos, caderno: viewCaderno, simulado: viewSimulado, desempenho: viewDesempenho, leis: viewLeis }[state.view] || viewInicio)(main);
+  const f = el("footer", "page", "Questões geradas por IA. Confira o fundamento no texto oficial da lei antes de publicar.");
+  col.append(f);
+}
+function softRefresh() {
+  if (!state.logged) return;
+  if (state.view === "banco") renderBancoResults();
+  else if (["inicio", "cadernos", "desempenho"].includes(state.view)) render();
+  document.querySelectorAll("[data-count]").forEach(c => c.textContent = state.cads.length);
+}
+function sidebar() {
+  const side = el("aside", "sidebar");
+  const inner = glass("div", "sidebar-in");
+  const b = btn("brand", null, () => go("inicio"));
+  const t = el("span"); t.append(el("b", null, "Inédita"), el("small", null, "Questões para concursos")); b.append(t);
+  const nav = el("nav", "snav"); nav.setAttribute("aria-label", "Seções");
+  NAV_GROUPS.forEach(([grp, items]) => {
+    if (grp) nav.append(el("span", "grp", grp));
+    items.forEach(v => {
+      const [label, icon] = NAV[v];
+      const x = btn("", label, () => go(v), icon);
+      if (isCurrent(v)) x.setAttribute("aria-current", "page");
+      if (v === "cadernos") { const c = el("span", "count", String(state.cads.length)); c.dataset.count = ""; x.append(c); }
+      nav.append(x);
+    });
+  });
+  const me = el("div", "me");
+  const nm = (state.user && state.user.name) || "Visitante";
+  me.append(el("span", "avatar", nm.trim()[0]?.toUpperCase() || "V"), el("span", "uname", nm), iconBtn(I.gear, "Preferências", openSettings), iconBtn(I.logout, "Sair", logout));
+  inner.append(b, nav, me);
+  side.append(inner);
+  return side;
+}
+function tabbar() {
+  const t = glass("nav", "tabbar"); t.setAttribute("aria-label", "Seções");
+  TABS.forEach(v => {
+    const [label, icon] = NAV[v];
+    const b = btn(v === "gerar" ? "make" : "", null, () => go(v), v === "gerar" ? I.plus : icon);
+    b.append(el("span", null, v === "banco" ? "Banco" : label));
+    if (isCurrent(v)) b.setAttribute("aria-current", "page");
+    t.append(b);
+  });
+  const more = btn("", null, openSheet, I.more); more.append(el("span", null, "Mais"));
+  if (["simulado", "desempenho", "leis"].includes(state.view)) more.setAttribute("aria-current", "page");
+  t.append(more);
+  return t;
+}
+function sheet() {
+  const w = el("div", "sheet-wrap"); w.id = "sheet"; w.hidden = true;
+  w.onclick = e => { if (e.target === w) w.hidden = true; };
+  const s = glass("div", "sheet");
+  ["simulado", "desempenho", "leis"].forEach(v => { const [label, icon] = NAV[v]; s.append(btn("", label, () => { w.hidden = true; go(v); }, icon)); });
+  s.append(el("hr"));
+  s.append(btn("", "Preferências", () => { w.hidden = true; openSettings(); }, I.gear), btn("", "Sair", logout, I.logout));
+  w.append(s);
+  return w;
+}
+function openSheet() { const s = $("sheet"); if (s) s.hidden = false; }
+/* Preferências de leitura e tema (por pessoa, neste navegador) */
+const UI_DEF = { theme: "auto", read: "sans", size: "md" };
+function getUI() { return { ...UI_DEF, ...lsGet("ineditas.ui", {}) }; }
+function applyUI(ui) {
+  const r = document.documentElement;
+  if (ui.theme === "auto") delete r.dataset.theme; else r.dataset.theme = ui.theme;
+  r.dataset.read = ui.read; r.dataset.size = ui.size;
+}
+function setUI(patch) { const ui = { ...getUI(), ...patch }; lsSet("ineditas.ui", ui); applyUI(ui); }
+function openSettings() {
+  const ui = getUI();
+  const wrap = el("div", "modal-wrap");
+  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); if (window.ineditasLocal && ["inicio", "gerar"].includes(state.view)) render(); };
+  const onKey = e => { if (e.key === "Escape") close(); };
+  document.addEventListener("keydown", onKey);
+  wrap.onclick = e => { if (e.target === wrap) close(); };
+  const m = el("div", "modal"); m.setAttribute("role", "dialog"); m.setAttribute("aria-label", "Preferências");
+  const hd = el("div", "modal-h"); hd.append(el("h2", null, "Preferências"), iconBtn(I.close, "Fechar", close));
+  const th = seg("u-theme", [["auto", "Automático"], ["light", "Claro"], ["dark", "Escuro"]], ui.theme, true);
+  const rd = seg("u-read", [["sans", "Sem serifa"], ["serif", "Com serifa"]], ui.read, true);
+  const sz = seg("u-size", [["md", "Normal"], ["lg", "Grande"]], ui.size, true);
+  th.addEventListener("change", () => setUI({ theme: segVal(th) }));
+  rd.addEventListener("change", () => setUI({ read: segVal(rd) }));
+  sz.addEventListener("change", () => setUI({ size: segVal(sz) }));
+  const pv = el("p", "preview-q", "João tomou posse e entrou em exercício. Após dois anos, afirmou que já era estável.");
+  if (window.ineditasLocal) { const ia = el("div", "ia-box"); ia.append(el("h3", null, "Sua IA"), planoBox()); m.append(hd, ia); hd.after(ia); m.append(el("h3", "sub-h", "Leitura")); }
+  else m.append(hd);
+  m.append(field("Tema", th), field("Letra das questões", rd), field("Tamanho do texto", sz), pv, el("p", "hint", "Vale só para este navegador."));
+  wrap.append(m);
+  document.body.append(wrap);
+  th.querySelector("[aria-pressed=true]")?.focus();
+}
+function logout() { state.logged = false; lsSet("ineditas.logged", false); render(); }
+
+/* ================= Contas do plano (só no app do Mac) ================= */
+function planoBox(onPronto, L = window.ineditasLocal) {
+  const box = el("div", "plano");
+  let timer = null;
+  const draw = async () => {
+    clearTimeout(timer);
+    let st; try { st = await L.conta(); } catch { box.textContent = "Não deu para falar com o app. Feche e abra de novo."; return; }
+    box.textContent = "";
+    let pend = false;
+    for (const k of ["claude", "openai"]) {
+      const c = st.contas[k], nome = k === "claude" ? "Claude" : "ChatGPT";
+      const row = el("div", "plano-row" + (c.conectado ? " on" : ""));
+      const tx = el("div", "tx");
+      row.append(el("span", "dot" + (c.conectado ? " on" : "")));
+      tx.append(el("b", null, nome + (c.conectado && c.conta && c.conta.email ? " · " + c.conta.email : "")), el("span", null, !c.disponivel ? c.erro : c.conectado ? "Plano " + ((c.conta && c.conta.plano) || nome) : c.pendente ? (c.pendente.codigo ? "Copie o código que apareceu no navegador e cole aqui." : "Termine o login no navegador que abriu.") : "Usa o seu plano do " + nome + ", sem chave de API."));
+      row.append(tx);
+      const acts = el("div", "acts");
+      if (c.disponivel) {
+        if (c.conectado) acts.append(btn("tbtn", "Sair", async () => { await L.sair(k); draw(); }));
+        else if (c.pendente) {
+          pend = true;
+          if (c.pendente.codigo) { const i = input("cod-" + k, "", "Código do navegador"); const ok = btn("btn sm", "Confirmar", async () => { ok.disabled = true; await L.codigo(i.value, k); draw(); }); acts.append(i, ok); }
+          acts.append(btn("tbtn", "Cancelar", async () => { await L.cancelar(k); draw(); }));
+        } else acts.append(btn("btn sm", "Entrar com " + nome, async e => { e.currentTarget.disabled = true; await L.entrar(k); draw(); }));
+      }
+      row.append(acts);
+      if (c.erro && c.disponivel) row.append(el("p", "hint err", c.erro));
+      box.append(row);
+    }
+    const ligados = st.modelos.filter(m => st.contas[m.prov].conectado);
+    if (ligados.length) {
+      const sel = select("plano-modelo", ligados.map(m => m.nome), (ligados.find(m => m.id === st.modelo) || ligados[0]).nome);
+      sel.onchange = () => L.modelo(ligados.find(m => m.nome === sel.value).id);
+      box.append(field("Quem gera as questões", sel));
+    }
+    if (onPronto) onPronto(ligados.length > 0, st);
+    if (pend) timer = setTimeout(draw, 3000);
+  };
+  window.addEventListener("ineditas-conta", draw);
+  draw();
+  return box;
+}
+
+function avisoPlano() {
+  const box = el("div", "aviso-plano"); box.hidden = true;
+  box.append(el("span", null, "Para a IA gerar as questões, entre com a sua conta do Claude ou do ChatGPT."), btn("btn sm", "Entrar", () => openSettings()));
+  window.ineditasLocal.conta().then(st => { box.hidden = st.contas.claude.conectado || st.contas.openai.conectado; }).catch(() => {});
+  return box;
+}
+
+/* ================= Login ================= */
+function loginShell() {
+  const root = el("div", "login2");
+  const brand = el("div", "l-brand"); brand.append(logoIcon(), el("b", null, "Inédita"));
+  const th = iconBtn(I.moon, "Alternar tema claro/escuro", () => { const r = document.documentElement; const dark = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; setUI({ theme: dark ? "light" : "dark" }); });
+  th.classList.add("l-theme");
+  const wrap = el("div", "l-wrap");
+  const hero = el("section", "l-hero");
+  hero.append(mascot("float"), el("h1", null, "Questões inéditas para o seu concurso."),
+    el("p", null, "Da prefeitura pequena ao tribunal federal. Cadernos no estilo da banca, com gabarito comentado e o artigo da lei."));
+  const ul = el("ul", "l-feats");
+  [[I.spark, "Cadernos por cidade, órgão e banca"], [I.clock, "Simulados com cartão-resposta"], [I.chart, "Desempenho por disciplina"]].forEach(([ic, t]) => { const li = el("li"); li.innerHTML = `<span class="ic">${ic}</span>`; li.append(t); ul.append(li); });
+  hero.append(ul);
+  const card = el("form", "l-form"); card.noValidate = true;
+  wrap.append(hero, card);
+  root.append(th, wrap);
+  return { root, card };
+}
+// formulário de conta (nome, e-mail e senha); api.enviar(acao, dados) devolve { ok, nome, id, erro, status }
+function contaForm(card, api, extra) {
+  const title = el("h2", "l-title"), sub = el("p", "l-sub");
+  const modo = seg("l-modo", [["criar", "Criar conta"], ["entrar", "Já tenho conta"]], api.modoInicial || "criar", true);
+  const nome = input("l-nome", "", "Seu nome"); nome.autocomplete = "given-name";
+  const email = el("input"); email.type = "email"; email.id = "l-email"; email.placeholder = "voce@email.com"; email.autocomplete = "email";
+  const senha = el("input"); senha.type = "password"; senha.id = "l-senha";
+  const pw = el("div", "pw"); const mostrar = btn("", "Mostrar", () => { const v = senha.type === "password"; senha.type = v ? "text" : "password"; mostrar.textContent = v ? "Esconder" : "Mostrar"; }); pw.append(senha, mostrar);
+  const fNome = field("Como podemos te chamar?", nome);
+  const fSenha = el("div", "field"); const lS = el("label", null, "Senha"); lS.htmlFor = "l-senha"; fSenha.append(lS, pw);
+  const go = btn("btn lg block", "Criar conta"); go.type = "submit";
+  const msg = el("p", "l-msg"); msg.setAttribute("role", "alert");
+  card.append(title, sub, modo, fNome, field("E-mail", email), fSenha, go, msg);
+  if (extra) extra(card);
+  const sync = () => {
+    const c = segVal(modo) === "criar";
+    title.textContent = c ? "Crie sua conta" : "Entre na sua conta";
+    sub.textContent = c ? "Leva menos de um minuto." : "Que bom te ver de novo.";
+    fNome.hidden = !c; go.textContent = c ? "Criar conta" : "Entrar";
+    senha.placeholder = c ? "Crie uma senha (8 ou mais caracteres)" : "Sua senha"; senha.autocomplete = c ? "new-password" : "current-password"; msg.textContent = "";
+  };
+  modo.addEventListener("change", sync); sync();
+  card.onsubmit = async e => {
+    e.preventDefault();
+    const acao = segVal(modo);
+    if (acao === "criar" && !nome.value.trim()) { msg.textContent = "Diga como podemos te chamar."; nome.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { msg.textContent = "Digite um e-mail válido."; email.focus(); return; }
+    if (senha.value.length < 8) { msg.textContent = "A senha precisa ter pelo menos 8 caracteres."; senha.focus(); return; }
+    go.disabled = true; msg.textContent = "";
+    try {
+      const r = await api.enviar(acao, { nome: nome.value.trim(), email: email.value.trim(), senha: senha.value });
+      if (!r.ok) { if (r.status === 409) { modo.querySelector('[data-v="entrar"]').click(); } msg.textContent = r.erro || "Não deu certo. Tente de novo."; return; }
+      api.pronto(r);
+    } catch { msg.textContent = "Sem conexão. Confira sua internet e tente de novo."; }
+    finally { go.disabled = false; }
+  };
+}
+function viewLogin() {
+  const { root, card } = loginShell();
+  if (window.ineditasLocal) {
+    // app do Mac: conta com nome, e-mail e senha neste Mac; a IA (plano do Claude ou do ChatGPT) se conecta depois, em Preferências
+    const L = window.ineditasLocal;
+    contaForm(card, {
+      modoInicial: "criar",
+      async enviar(acao, d) { return L.perfil(acao, d); },
+      async pronto(d) {
+        await doLogin(true, d.nome);
+      }
+    }, c => c.append(el("p", "l-note", "Seus cadernos ficam salvos neste Mac.")));
+    L.perfilInfo().then(i => { if (i && i.existe) card.querySelector('#l-modo [data-v="entrar"]')?.click(); });
+    return root;
+  }
+  card.append(el("h2", "l-title", "Entre no Inédita"), el("p", "l-sub", "Use a sua conta do Claude. Sem senha."));
+  const who = el("div", "l-who"); const av = el("span", "avatar", "…"); const wt = el("div"); const wn = el("b", null, "Conectando…"); const ws = el("div", "hint", ""); wt.append(wn, ws); who.append(av, wt);
+  const enter = btn("btn lg block", "Conectando…"); enter.disabled = true;
+  const guest = btn("tbtn plain", "Entrar como visitante", () => doLogin(false)); guest.hidden = true;
+  card.append(who, enter, el("div", "or", "ou"), guest, el("p", "l-note", "As questões usam o seu plano do Claude."));
+  waitCaps().then(() => {
+    if (caps.user && caps.db) {
+      caps.user.me().then(me => {
+        const n = me.name ? me.name.split(" ")[0] : "";
+        av.textContent = (n || "V")[0].toUpperCase(); wn.textContent = n ? "Olá, " + n : "Conta do Claude conectada"; ws.textContent = "Seus cadernos ficam salvos na sua conta.";
+        enter.textContent = n ? "Continuar como " + n : "Continuar com minha conta"; enter.disabled = false; enter.onclick = () => doLogin(true, me.name);
+        guest.hidden = false;
+      });
+    } else {
+      av.textContent = "V"; wn.textContent = "Modo visitante"; ws.textContent = "Fora do Claude, seus cadernos ficam salvos só neste navegador.";
+      enter.textContent = "Entrar como visitante"; enter.disabled = false; enter.onclick = () => doLogin(false);
+    }
+  });
+  return root;
+}
+async function doLogin(withAccount, name) {
+  state.user = { name: name || (withAccount ? "" : "Visitante") };
+  state.logged = true; lsSet("ineditas.logged", true);
+  if (!withAccount) caps.db = null;
+  render();
+  await Store.init();
+}
+
+/* ================= Início ================= */
+function viewInicio(main) {
+  const nm = state.user && state.user.name;
+  const hello = glass("section", "hello");
+  const l = el("div");
+  l.append(el("h1", null, nm ? "Olá, " + nm.split(" ")[0] : "Olá"), el("p", null, state.cads.length ? "O que vamos estudar hoje?" : "Gere seu primeiro caderno. Leva cerca de um minuto."));
+  const acts = el("div", "acts");
+  acts.append(btn("btn", "Gerar caderno", () => go("gerar"), I.spark), btn("tbtn", "Fazer simulado", () => go("simulado"), I.clock));
+  l.append(acts);
+  if (window.ineditasLocal) l.append(avisoPlano());
+  hello.append(l);
+  main.append(hello);
+
+  const modes = el("section", "modes");
+  [["certame", I.home, "Por certame", "Cidade, órgão, cargo e banca"], ["lei", I.scale, "Por lei", "Cole os artigos que quer cobrar"], ["edital", I.doc, "Por edital", "Cole o conteúdo programático"]].forEach(([m, ic, t, d]) => {
+    const b = glass("button", "mode"); b.type = "button"; b.onclick = () => go("gerar", { genMode: m });
+    b.innerHTML = `<span class="ic">${ic}</span>`; const tx = el("span"); tx.append(el("b", null, t), el("span", null, d)); b.append(tx);
+    modes.append(b);
+  });
+  main.append(modes);
+
+  const all = state.cads.flatMap(c => c.questions.map((q, i) => ({ q, a: (c.answers || {})[i] })));
+  const ans = all.filter(x => x.a != null), ok = ans.filter(x => isRight(x.q, x.a)).length;
+  const st = glass("section", "stats");
+  st.append(ring(ans.length ? pct(ok, ans.length) : null));
+  [[String(all.length), "questões no banco"], [String(ans.length), "respondidas"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
+  main.append(st);
+
+  const rec = el("section", "sec");
+  const rh = el("div", "sec-row");
+  rh.append(el("h2", "sec-title", state.cads.length ? "Continue estudando" : "Comece pelo exemplo"), btn("tbtn plain", "Ver todos", () => go("cadernos")));
+  rec.append(rh);
+  const grp = glass("div", "group");
+  visibleCads().slice(0, 4).forEach(c => grp.append(cadRow(c)));
+  rec.append(grp);
+  main.append(rec);
+}
+function cadRow(c) {
+  const s = cadStats(c);
+  const r = btn("row", null, () => go("caderno", { cur: c.id, showAll: false }));
+  r.innerHTML = `<span class="ic">${I.book}</span>`;
+  const tx = el("span", "tx"); tx.append(el("b", null, cadTitle(c)), el("span", null, (c.exemplo ? "Exemplo · " : "") + ((c.cfg.disc || [])[0] || c.cfg.banca) + " · " + s.ans + " de " + s.total + " respondidas"));
+  r.append(tx, el("span", "meta", fmtDate(c.ts)));
+  r.insertAdjacentHTML("beforeend", I.chev.replace("<svg", '<svg class="chev"'));
+  return r;
+}
+function genFromLaw(lw) { state.genPrefill = { assunto: lw.num + " (" + lw.nome + ")", disc: [lw.disc] }; go("gerar", { genMode: "lei" }); }
+
+/* ================= Gerar ================= */
+const REGIOES = [...Array(6)].map((_, i) => `TRF ${i + 1}ª Região`).concat([...Array(24)].map((_, i) => `TRT ${i + 1}ª Região`), UFS.map(u => `TRE-${u}`), ["Conselho Regional (CRM, CREA, CRC…)"]);
+function viewGerar(main) {
+  const pre = state.genPrefill || {}; state.genPrefill = null;
+  const last = { ...EXEMPLO.cfg, ...(state.cads[0]?.cfg || {}) };
+  if (pre.disc) state.genMode = state.genMode || "certame";
+  main.append(phead("Gerar caderno", "Três passos. As questões aparecem uma a uma e ficam salvas no seu banco."));
+  const form = el("form", "form"); form.autocomplete = "off";
+  let step = pre.assunto || state.genMode !== "certame" ? 1 : 0;
+
+  const stepper = el("ol", "stepper");
+  const STEPS = ["Concurso", "Conteúdo", "Prova"];
+  STEPS.forEach((t, k) => { const li = el("li"); const b = btn("", null, () => goStep(k)); b.append(el("span", "n", String(k + 1)), el("span", "t", t)); li.append(b); stepper.append(li); });
+
+  // Passo 1: concurso
+  const s1 = glass("div", "fsec");
+  s1.append(el("h3", null, "Para qual concurso?"));
+  const esf = seg("g-esfera", [["Federal", "Federal"], ["Regional", "Regional"], ["Estadual", "Estadual"], ["Distrital", "Distrital"], ["Municipal", "Municipal"]], last.esfera, true);
+  const esfHint = el("p", "hint");
+  s1.append(esf, esfHint);
+  const uf = select("g-uf", UFS, last.uf), mun = input("g-mun", last.municipio, "Ex.: Caruaru");
+  const reg = input("g-reg", last.regiao || "", "Ex.: TRF 5ª Região, TRT 6ª Região, CREA-PE");
+  reg.setAttribute("list", "g-reg-list");
+  const dl = el("datalist"); dl.id = "g-reg-list"; REGIOES.forEach(r => { const o = el("option"); o.value = r; dl.append(o); });
+  const org = input("g-org", last.orgao, "Prefeitura, Câmara, TJ, PM…"), cargo = input("g-cargo", last.cargo, "Ex.: Agente Administrativo");
+  const fUf = field("Estado", uf), fMun = field("Cidade", mun), fReg = field("Região ou tribunal", reg); fReg.append(dl);
+  const g1 = el("div", "grid3"); g1.append(fReg, fUf, fMun, field("Órgão", org)); s1.append(g1);
+  const banca = select("g-banca", BANCAS, last.banca), nivel = select("g-nivel", ["Fundamental", "Médio", "Técnico", "Superior"], last.nivel);
+  const g2 = el("div", "grid3"); g2.append(field("Cargo", cargo), field("Banca", banca), field("Escolaridade", nivel)); s1.append(g2);
+  const HINTS = { Federal: "União: ministérios, autarquias, Polícia Federal, INSS, Receita.", Regional: "Tribunais regionais (TRF, TRT, TRE) e conselhos de classe.", Estadual: "Governo do estado, TJ, MP, polícias, assembleia.", Distrital: "Governo do Distrito Federal e seus órgãos.", Municipal: "Prefeitura, câmara, autarquias e secretarias da cidade." };
+  const syncEsf = () => {
+    const e = segVal(esf); esfHint.textContent = HINTS[e];
+    fMun.hidden = e !== "Municipal"; fReg.hidden = e !== "Regional"; fUf.hidden = e === "Federal" || e === "Distrital";
+    if (e === "Distrital") uf.value = "DF";
+    upd();
+  };
+  esf.addEventListener("change", syncEsf);
+
+  // Passo 2: conteúdo
+  const s2 = glass("div", "fsec");
+  s2.append(el("h3", null, "De onde vêm as questões?"));
+  const mode = seg("g-mode", [["certame", "Das disciplinas"], ["lei", "De uma lei"], ["edital", "Do edital"]], state.genMode, true);
+  const modeHint = el("p", "hint");
+  s2.append(mode, modeHint);
+  const base = el("textarea"); base.id = "g-base"; base.placeholder = "Cole aqui os artigos da lei. As questões citam esse texto ao pé da letra.";
+  const baseF = field("Texto da lei", base, "(opcional, mas deixa as questões mais fiéis)");
+  const edital = el("textarea"); edital.id = "g-edital"; edital.placeholder = "Ex.: LÍNGUA PORTUGUESA: 1 Compreensão de textos. 2 Ortografia oficial…";
+  const edF = field("Conteúdo programático", edital);
+  const ass = input("g-assunto", pre.assunto || "", "Ex.: Lei 14.133/2021");
+  const assF = field("Qual lei?", ass);
+  const chosen = new Set(pre.disc || last.disc || []);
+  const chipBox = el("div", "chips");
+  const renderChips = () => { chipBox.textContent = ""; [...new Set([...DISCIPLINAS, ...chosen])].forEach(d => { const b = btn("chip", d, () => { chosen.has(d) ? chosen.delete(d) : chosen.add(d); renderChips(); upd(); }); b.setAttribute("aria-pressed", String(chosen.has(d))); chipBox.append(b); }); };
+  renderChips();
+  const extra = input("g-extra", "", "Outra disciplina e Enter");
+  extra.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); const v = extra.value.trim(); if (v) { chosen.add(v); extra.value = ""; renderChips(); upd(); } } });
+  const df = el("div", "field"); df.append(el("span", "lbl", "Disciplinas"), chipBox, extra);
+  s2.append(df, assF, baseF, edF);
+  const MODE_HINTS = { certame: "Escolha as matérias. As questões saem no estilo da banca, sobre o conteúdo mais cobrado.", lei: "Todas as questões sobre uma lei. Colar os artigos evita que a IA erre o texto.", edital: "Cole o conteúdo programático e as questões são distribuídas pelos tópicos." };
+  function syncMode() { const m = segVal(mode); state.genMode = m; modeHint.textContent = MODE_HINTS[m]; df.hidden = m !== "certame"; assF.hidden = baseF.hidden = m !== "lei"; edF.hidden = m !== "edital"; upd(); }
+  mode.addEventListener("change", syncMode);
+
+  // Passo 3: prova
+  const s3 = glass("div", "fsec");
+  s3.append(el("h3", null, "Como vai ser a prova?"));
+  const tipo = seg("g-tipo", [["ME5", "A a E"], ["ME4", "A a D"], ["CE", "Certo ou errado"]], last.banca === "Cebraspe" ? "CE" : "ME5", true);
+  const dif = seg("g-dif", [["facil", "Fácil"], ["medio", "Médio"], ["dificil", "Difícil"], ["mista", "Misturado"]], "mista", true);
+  const qtd = seg("g-qtd", [["5", "5"], ["10", "10"], ["15", "15"], ["20", "20"]], "10", true);
+  const est = seg("g-est", [["misto", "Equilibrado"], ["literal", "Mais lei seca"], ["pratico", "Mais casos"]], "misto", true);
+  const g3 = el("div", "grid2");
+  g3.append(field("Formato", tipo), field("Dificuldade", dif), field("Quantas questões", qtd), field("Tipo de cobrança", est));
+  s3.append(g3);
+  banca.addEventListener("change", () => { if (banca.value === "Cebraspe") tipo.querySelector('[data-v="CE"]').click(); });
+
+  const panes = [s1, s2, s3];
+  if (window.ineditasLocal) s3.append(avisoPlano());
+  const bar = glass("div", "gen-bar");
+  const back = btn("tbtn", "Voltar", () => goStep(step - 1));
+  const sum = el("span", "sum");
+  const next = btn("btn", "Continuar"); next.type = "submit";
+  bar.append(back, sum, next);
+  form.append(stepper, ...panes, bar);
+  main.append(form);
+
+  function validStep(k) {
+    if (k === 0 && segVal(esf) === "Regional" && !reg.value.trim()) return ["Diga qual região ou tribunal.", reg];
+    if (k === 1) {
+      const m = segVal(mode);
+      if (m === "certame" && !chosen.size) return ["Escolha pelo menos uma disciplina.", chipBox];
+      if (m === "lei" && !ass.value.trim() && !base.value.trim()) return ["Diga qual é a lei ou cole o texto dela.", ass];
+      if (m === "edital" && !edital.value.trim()) return ["Cole o conteúdo programático do edital.", edital];
+    }
+    return null;
+  }
+  function goStep(k) {
+    k = Math.max(0, Math.min(2, k));
+    for (let j = step; j < k; j++) { const v = validStep(j); if (v) { toast(v[0]); v[1].focus?.(); k = j; break; } }
+    step = k;
+    panes.forEach((p, j) => p.hidden = j !== step);
+    stepper.querySelectorAll("li").forEach((li, j) => { li.className = j < step ? "done" : j === step ? "cur" : ""; li.querySelector("button").setAttribute("aria-current", j === step ? "step" : "false"); });
+    back.hidden = step === 0;
+    next.textContent = ""; if (step === 2) next.insertAdjacentHTML("beforeend", I.spark);
+    next.append(step === 2 ? "Gerar " + segVal(qtd) + " questões" : "Continuar");
+    next.disabled = !caps.sample && step === 2;
+    upd();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function upd() {
+    const e = segVal(esf);
+    const onde = e === "Federal" ? (org.value.trim() || "Federal") : e === "Regional" ? (reg.value.trim() || "Regional") : e === "Estadual" ? (org.value.trim() || "Estado") + " – " + uf.value : e === "Distrital" ? "DF" : (mun.value.trim() || "Cidade") + " – " + uf.value;
+    const n = Number(segVal(qtd));
+    sum.textContent = !caps.sample && step === 2 ? "Abra dentro do Claude para gerar." : onde + " · " + banca.value + " · " + n + " questões · cerca de " + Math.max(1, Math.round(n / 8)) + " min";
+    if (step === 2) { next.lastChild.textContent = "Gerar " + n + " questões"; }
+  }
+  [uf, mun, reg, org, banca].forEach(x => x.addEventListener("input", upd)); qtd.addEventListener("change", upd);
+  syncMode(); syncEsf(); goStep(step);
+
+  form.onsubmit = e => {
+    e.preventDefault();
+    if (step < 2) { goStep(step + 1); return; }
+    if (!caps.sample || state.running) return;
+    for (let j = 0; j < 2; j++) { const v = validStep(j); if (v) { goStep(j); toast(v[0]); return; } }
+    const m = segVal(mode), es = segVal(esf);
+    const cfg = { modo: m, esfera: es, uf: es === "Federal" ? "" : uf.value, regiao: es === "Regional" ? reg.value.trim() : "", municipio: es === "Municipal" ? mun.value.trim() : "", orgao: org.value.trim(), cargo: cargo.value.trim(), nivel: nivel.value, banca: banca.value, assunto: m === "lei" ? ass.value.trim() : "", dific: segVal(dif), tipo: segVal(tipo), estilo: segVal(est), qtd: Number(segVal(qtd)), disc: m === "certame" ? [...chosen] : (m === "lei" ? ["Legislação Específica"] : []) };
+    generate(cfg, m === "lei" ? base.value.trim() : "", m === "edital" ? edital.value.trim() : "");
+  };
+}
+
+/* ================= Prompt e geração ================= */
+function buildPrompt(c, n, base, edital, avoid) {
+  const nAlt = c.tipo === "ME4" ? 4 : 5;
+  const fmt = c.tipo === "CE"
+    ? 'Formato Certo/Errado: "enunciado" é a assertiva completa a ser julgada; "gabarito" é "CERTO" ou "ERRADO"; não inclua "alternativas". Entre 40% e 60% CERTO, nunca mais de 3 gabaritos iguais seguidos.'
+    : `Múltipla escolha com ${nAlt} alternativas: "alternativas" é um array de ${nAlt} strings SEM a letra; "gabarito" é a letra (${nAlt === 4 ? "A–D" : "A–E"}). Distribua os gabaritos entre as letras, sem a mesma letra mais de 2 vezes seguidas. Distratores plausíveis e uma única correta.`;
+  const dif = c.dific === "mista" ? "Dificuldade mista: cerca de 30% fácil, 40% médio e 30% difícil."
+    : `Todas com dificuldade "${c.dific}" (fácil = conceito direto; médio = comparar dispositivos ou aplicar a um caso; difícil = pegadinhas de banca, exceções, prazos e competências).`;
+  const est = c.estilo === "literal" ? "Cerca de 70% literalidade de lei e 30% casos práticos." : c.estilo === "pratico" ? "Cerca de 70% casos práticos com nomes fictícios e 30% literalidade." : "Cerca de 50% literalidade de lei e 50% casos práticos com nomes fictícios.";
+  const local = c.esfera === "Regional" ? `Concurso regional: ${c.regiao || "órgão regional"}${c.uf ? " (" + c.uf + ")" : ""}.` : c.esfera === "Federal" ? "Concurso federal." : c.esfera === "Estadual" ? `Concurso estadual, estado: ${c.uf}.` : c.esfera === "Distrital" ? `Concurso distrital${c.municipio ? " (" + c.municipio + ")" : ""}, Distrito Federal.` : `Concurso municipal: ${c.municipio || "município não informado"} – ${c.uf}.`;
+  return [
+    "Você é um elaborador sênior de questões INÉDITAS para concursos públicos brasileiros.",
+    `Gere exatamente ${n} questão(ões) para este certame:`,
+    `- ${local}`,
+    `- Órgão: ${c.orgao || "não informado"}. Cargo: ${c.cargo || "não informado"}. Escolaridade: ${c.nivel}.`,
+    `- Imite o estilo de redação e de cobrança da banca ${c.banca}.`,
+    `- Disciplinas (distribua entre elas): ${c.disc.length ? c.disc.join("; ") : "conhecimentos gerais do cargo"}.`,
+    c.assunto ? `- Foco do assunto: ${c.assunto}.` : "",
+    "", "Regras invioláveis:",
+    "1. Questões originais, nunca copiadas de provas existentes. Contextualize no órgão e na localidade quando fizer sentido (nomes fictícios: João, Maria, Ana, Pedro).",
+    `2. Em disciplinas jurídicas: ${est} Na literalidade, gere o erro por troca de prazo, de competência, de modalidade ('poderá'/'deverá'), inversão de condição ou omissão de exceção.`,
+    "3. A mesma lei do enunciado é a que fundamenta a resposta. O campo \"fundamento\" traz o dispositivo com o texto LITERAL da lei (ex.: \"CF/88, art. 37, III – ...\"). Nunca parafraseie o texto legal.",
+    "4. Proibido inventar jurisprudência, súmulas, números de artigos ou leis. A resposta deve se sustentar só no texto legal.",
+    "5. Se a questão envolver lei municipal ou estadual específica e você NÃO tiver o texto abaixo, prefira a legislação nacional aplicável (CF/88, leis federais). Se mesmo assim citar norma local, marque \"conferir\": true e não invente número de artigo.",
+    "6. Em 'Conhecimentos do Município', cobre apenas fatos amplamente conhecidos e estáveis, e marque \"conferir\": true.",
+    "7. Releia cada questão e confirme que o gabarito está correto antes de escrevê-la.",
+    `8. ${dif}`, `9. ${fmt}`,
+    base ? "\nTEXTO DA LEI fornecido pelo usuário (fonte principal; cite literalmente; o fundamento deve vir deste texto):\n\"\"\"\n" + base.slice(0, 80000) + "\n\"\"\"" : "",
+    edital ? "\nCONTEÚDO PROGRAMÁTICO DO EDITAL (distribua as questões pelos tópicos, preenchendo \"assunto\" com o tópico do edital):\n\"\"\"\n" + edital.slice(0, 30000) + "\n\"\"\"" : "",
+    avoid && avoid.length ? "\nNão repita nem parafraseie estes enunciados já existentes:\n- " + avoid.map(s => s.slice(0, 160)).join("\n- ") : "",
+    "", "SAÍDA: um objeto JSON por LINHA (JSON Lines), sem markdown, sem texto antes ou depois, sem vírgulas entre linhas. Cada objeto:",
+    '{"tipo":"ME"|"CE","dificuldade":"facil"|"medio"|"dificil","disciplina":string,"assunto":string,"estilo":"literalidade"|"caso prático"|"aplicação","enunciado":string,"alternativas":[string],"gabarito":string,"comentario":string,"fundamento":string,"conferir":boolean}',
+    '"comentario": 1 a 3 frases explicando o gabarito e, na múltipla escolha, por que os principais distratores estão errados. "fundamento": "" quando não houver base legal (ex.: Português, Raciocínio Lógico).'
+  ].filter(s => s !== "").join("\n");
+}
+function parseLine(line) {
+  const s = line.trim().replace(/^```(json)?/i, "").replace(/```$/, "").replace(/,\s*$/, "").trim();
+  if (!s.startsWith("{")) return null;
+  try {
+    const q = JSON.parse(s);
+    if (!q || typeof q.enunciado !== "string" || !q.gabarito) return null;
+    q.tipo = q.tipo === "CE" ? "CE" : "ME";
+    if (q.tipo === "ME" && !Array.isArray(q.alternativas)) return null;
+    if (q.tipo === "CE") q.gabarito = /^C/i.test(q.gabarito) ? "CERTO" : "ERRADO";
+    else q.gabarito = norm(q.gabarito).slice(0, 1);
+    q.dificuldade = fold(q.dificuldade);
+    return q;
+  } catch { return null; }
+}
+const ERR = {
+  not_granted: "O uso do Claude não foi autorizado nesta página.",
+  sampling_disabled: "O Claude não está disponível para esta conta.",
+  rate_limited: "Muitas gerações seguidas ou o limite do seu plano acabou. Espere um pouco e tente de novo.",
+  not_logged: "Entre com a sua conta do Claude ou do ChatGPT em Preferências.",
+  not_configured: "Instale o Claude Code ou o app do ChatGPT neste Mac para gerar questões.",
+  session_expired: "Sua sessão expirou. Entre de novo no Claude.",
+  refused: "O Claude recusou este pedido. Ajuste o assunto ou o texto.",
+  prompt_too_large: "O texto colado é grande demais. Cole só os artigos que interessam."
+};
+const errMsg = e => ERR[e && e.code] || "A geração falhou no meio do caminho. Tente de novo.";
+async function generate(cfg, base, edital) {
+  const ctl = new AbortController();
+  const cad = { id: "cad_" + Date.now().toString(36), ts: Date.now(), cfg, questions: [], answers: {} };
+  state.running = ctl; state.runningCad = cad; state.genStatus = ["A Gabi está elaborando as questões…", "busy"];
+  go("caderno", { cur: cad.id, showAll: false });
+  let pending = "";
+  const push = line => { const q = parseLine(line); if (q && cad.questions.length < cfg.qtd) { cad.questions.push(q); state.genStatus = [`Questão ${cad.questions.length} de ${cfg.qtd} pronta…`, "busy"]; if (state.view === "caderno" && state.cur === cad.id) appendStreamed(cad); } };
+  try {
+    await caps.sample(buildPrompt(cfg, cfg.qtd, base, edital), { signal: ctl.signal, cache: false, onText: ({ delta }) => { const ls = (pending + delta).split("\n"); pending = ls.pop(); ls.forEach(push); } });
+    if (pending.trim()) push(pending);
+    state.genStatus = cad.questions.length ? [`${cad.questions.length} questões prontas e salvas no seu banco.`, ""] : ["Nenhuma questão veio no formato esperado. Tente de novo.", "err"];
+  } catch (err) {
+    if (pending.trim()) push(pending);
+    state.genStatus = err && err.code === "cancelled" ? [`Parado com ${cad.questions.length} questões.`, ""] : [errMsg(err), "err"];
+  } finally {
+    state.running = null; state.runningCad = null;
+    if (cad.questions.length) Store.saveCad(cad);
+    if (state.view === "caderno" && state.cur === cad.id) render();
+  }
+}
+
+/* ================= Cartão de questão ================= */
+function renderQ(ctx) {
+  const { q, cad, i } = ctx;
+  const qid = cad.id + ":" + i;
+  const card = glass("article", "q");
+  const head = el("div", "q-head");
+  head.append(el("span", "q-num", "Questão " + (ctx.num ?? i + 1)));
+  if (DIF_LABEL[q.dificuldade]) head.append(el("span", "tag d-" + q.dificuldade, DIF_LABEL[q.dificuldade]));
+  if (q.disciplina) head.append(el("span", "tag", q.disciplina));
+  head.append(el("span", "sp"));
+  if (ctx.mode !== "exam") {
+    const a = el("div", "q-acts");
+    const fav = state.prefs.favs.includes(qid), rep = state.prefs.reports.includes(qid);
+    a.append(iconBtn(fav ? I.starF : I.star, fav ? "Remover das favoritas" : "Favoritar", () => { toggleFav(qid); card.replaceWith(renderQ(ctx)); }, fav));
+    a.append(iconBtn(I.flag, rep ? "Remover reporte de erro" : "Reportar erro", () => { toggleReport(qid); card.replaceWith(renderQ(ctx)); }, rep));
+    if (ctx.swap && caps.sample && !state.running && !cad.exemplo) a.append(iconBtn(I.swap, "Trocar por outra questão", e => swapQuestion(cad, i, e.currentTarget)));
+    head.append(a);
+  }
+  card.append(head);
+  if (ctx.showSrc) card.append(el("p", "q-src", cadTitle(cad) + " · " + (q.assunto || cad.cfg.banca)));
+  card.append(el("p", "stem", q.enunciado));
+  const ans = ctx.mode === "exam" ? null : (cad.answers || {})[i];
+  const answered = ans != null;
+  const reveal = ctx.mode === "review" || answered || (ctx.mode === "study" && state.showAll);
+  const isCE = q.tipo === "CE";
+  const opts = isCE ? [["C", "CERTO", "Certo"], ["E", "ERRADO", "Errado"]] : (q.alternativas || []).map((a, k) => ["ABCDE"[k], "ABCDE"[k], a]);
+  const box = el(isCE ? "div" : "ol", isCE ? "ce" : "alts");
+  const mine = ctx.mode === "review" ? ctx.picked : ans;
+  const struck = ctx.struck || (ctx.struck = new Set());
+  const redraw = () => card.replaceWith(renderQ(ctx));
+  opts.forEach(([bub, val, txt]) => {
+    const b = el("button", "alt"); b.type = "button";
+    b.append(el("span", "bubble", bub), el("span", null, txt));
+    const isStruck = !reveal && struck.has(val);
+    if (isStruck) b.classList.add("struck");
+    if (ctx.mode === "exam") { if (norm(ctx.picked) === norm(val)) b.classList.add("picked"); b.onclick = () => { struck.delete(val); ctx.onPick(val); }; }
+    else if (reveal) {
+      b.disabled = true;
+      if (norm(val) === norm(q.gabarito)) b.classList.add("right");
+      else if (mine != null && norm(mine) === norm(val)) b.classList.add("wrong");
+    } else {
+      if (ctx.pending != null && norm(ctx.pending) === norm(val)) b.classList.add("picked");
+      b.onclick = () => { struck.delete(val); ctx.pending = val; redraw(); };
+    }
+    b.setAttribute("aria-label", (isCE ? txt : "Alternativa " + bub + ": " + txt) + (isStruck ? " (riscada)" : ""));
+    let node = b;
+    if (!isCE && !reveal) {
+      const row = el("div", "altrow");
+      const cut = iconBtn(I.cut, isStruck ? "Desfazer risco da " + bub : "Riscar alternativa " + bub, () => {
+        if (struck.has(val)) struck.delete(val); else { struck.add(val); if (norm(ctx.pending) === norm(val)) ctx.pending = null; }
+        if (ctx.mode === "exam" && norm(ctx.picked) === norm(val) && struck.has(val)) { ctx.onPick(null); return; }
+        redraw();
+      }, isStruck);
+      cut.classList.add("cut");
+      row.append(b, cut); node = row;
+    }
+    if (isCE) box.append(node); else { const li = el("li"); li.append(node); box.append(li); }
+  });
+  card.append(box);
+  if (ctx.mode === "study" && !reveal) {
+    const ar = el("div", "answer-row");
+    const rb = btn("btn sm", "Responder", () => {
+      cad.answers = cad.answers || {}; cad.answers[i] = ctx.pending; ctx.pending = null;
+      Store.saveAnswers(cad); redraw(); ctx.after && ctx.after();
+    });
+    rb.disabled = ctx.pending == null;
+    const lbl = ctx.pending == null ? (isCE ? "Julgue o item como certo ou errado." : "Escolha uma alternativa. Use a tesoura para riscar as que você descartou.") : "Marcada: " + (isCE ? (ctx.pending === "CERTO" ? "Certo" : "Errado") : ctx.pending);
+    ar.append(rb, el("span", "hint", lbl));
+    card.append(ar);
+  }
+  if (reveal) {
+    const sol = el("div", "sol");
+    const m = mine;
+    if (m != null) sol.append(el("div", "verdict " + (isRight(q, m) ? "ok" : "bad"), (isRight(q, m) ? "Você acertou · " : "Você errou · ") + "Gabarito " + q.gabarito));
+    else sol.append(el("div", "verdict", (ctx.mode === "review" ? "Em branco · " : "") + "Gabarito " + q.gabarito));
+    if (q.comentario) sol.append(el("p", null, q.comentario));
+    if (q.fundamento) { const l = el("div", "law"); l.append(el("span", "lab", "Fundamento legal"), document.createTextNode(q.fundamento)); sol.append(l); }
+    if (q.conferir) sol.append(el("div", "check", "Esta questão cita norma local. Confirme o artigo no texto oficial antes de usar."));
+    if (answered && ctx.mode === "study") { const r = el("div"); r.append(btn("tbtn", "Tentar de novo", () => { delete cad.answers[i]; ctx.struck = new Set(); Store.saveAnswers(cad); redraw(); ctx.after && ctx.after(); }, I.redo)); sol.append(r); }
+    card.append(sol);
+  }
+  return card;
+}
+function toggleFav(qid) { const f = state.prefs.favs; const k = f.indexOf(qid); k >= 0 ? f.splice(k, 1) : f.push(qid); Store.savePrefs(); toast(k >= 0 ? "Removida das favoritas" : "Adicionada às favoritas"); }
+function toggleReport(qid) { const f = state.prefs.reports; const k = f.indexOf(qid); k >= 0 ? f.splice(k, 1) : f.push(qid); Store.savePrefs(); toast(k >= 0 ? "Reporte removido" : "Erro reportado. A questão fica marcada para revisão."); }
+async function swapQuestion(cad, i, b) {
+  if (!caps.sample || state.running) return;
+  const c = { ...cad.cfg }; const old = cad.questions[i];
+  if (old.disciplina) c.disc = [old.disciplina];
+  if (DIF_LABEL[old.dificuldade]) c.dific = old.dificuldade;
+  b.disabled = true; toast("Trocando a questão " + (i + 1) + "…");
+  try {
+    const { text } = await caps.sample(buildPrompt(c, 1, "", "", cad.questions.map(q => q.enunciado)), { cache: false });
+    const q = text.split("\n").map(parseLine).find(Boolean);
+    if (!q) throw { code: "invalid" };
+    cad.questions[i] = q; if (cad.answers) delete cad.answers[i];
+    Store.saveCad(cad); render(); toast("Questão " + (i + 1) + " trocada");
+  } catch (e) { b.disabled = false; toast(errMsg(e)); }
+}
+
+/* ================= Caderno ================= */
+function viewCaderno(main) {
+  const cad = getCad(state.cur);
+  if (!cad) { state.view = "cadernos"; viewCadernos(main); return; }
+  const live = state.running && state.runningCad === cad;
+  const cover = glass("section", "cover");
+  const l = el("div", "left");
+  const h1 = el("h1", null, cadTitle(cad)); if (cad.exemplo) { h1.append(" "); h1.append(el("span", "badge", "Exemplo")); }
+  l.append(h1, el("p", null, cadSub(cad.cfg) + " · " + fmtDate(cad.ts)));
+  const r = el("div", "right"); r.id = "cadScore";
+  cover.append(l, r);
+  main.append(cover);
+  const tb = el("div", "toolbar");
+  const st = el("span", "status"); st.id = "genStatus";
+  tb.append(st, el("span", "sp"));
+  if (live) tb.append(btn("tbtn", "Parar", () => state.running && state.running.abort()));
+  else {
+    tb.append(btn("tbtn", state.showAll ? "Esconder gabarito" : "Ver gabarito", () => { state.showAll = !state.showAll; render(); }, I.eye),
+      btn("tbtn", "Simulado", () => startSimFrom(cad.questions.map((q, i) => ({ q, i, cad }))), I.clock),
+      iconBtn(I.redo, "Apagar respostas", () => { cad.answers = {}; Store.saveAnswers(cad); render(); toast("Respostas apagadas"); }),
+      iconBtn(I.copy, "Copiar caderno", () => copyText(asText(cad))));
+    if (caps.downloads) tb.append(iconBtn(I.doc, "Baixar .doc", () => downloadDoc(cad)));
+    if (!cad.exemplo) tb.append(confirmBtn("Excluir caderno?", () => { Store.delCad(cad.id); go("cadernos"); toast("Caderno excluído"); }));
+  }
+  main.append(tb);
+  const qs = el("div", "list"); qs.id = "qlist";
+  cad.questions.forEach((q, i) => qs.append(renderQ({ q, cad, i, mode: "study", swap: true, after: () => scoreCad(cad) })));
+  if (live) qs.append(el("div", "skeleton"));
+  if (!cad.questions.length && !live) qs.append(emptyState("Nenhuma questão neste caderno.", btn("btn sm", "Gerar de novo", () => go("gerar"))));
+  main.append(qs);
+  scoreCad(cad);
+  const gs = state.genStatus;
+  if (gs) setStatus(gs[0], gs[1]);
+  if (!state.running) state.genStatus = null;
+}
+function appendStreamed(cad) {
+  const qs = $("qlist"); if (!qs) return;
+  const sk = qs.querySelector(".skeleton");
+  const i = cad.questions.length - 1;
+  const card = renderQ({ q: cad.questions[i], cad, i, mode: "study", after: () => scoreCad(cad) });
+  sk ? qs.insertBefore(card, sk) : qs.append(card);
+  setStatus(state.genStatus[0], state.genStatus[1]); scoreCad(cad);
+}
+function setStatus(txt, kind) { const s = $("genStatus"); if (!s) return; s.textContent = ""; s.className = "status" + (kind === "err" ? " err" : ""); if (kind === "busy") s.append(mascot("float")); s.append(document.createTextNode(txt)); }
+function scoreCad(cad) {
+  const sc = $("cadScore"); if (!sc) return;
+  const s = cadStats(cad); sc.textContent = "";
+  [[s.ans + "/" + s.total, "respondidas"], [String(s.ok), "acertos"]].forEach(([b, l]) => { const d = el("div", "mini-stat"); d.append(el("b", null, b), el("span", null, l)); sc.append(d); });
+  sc.append(ring(s.ans ? pct(s.ok, s.ans) : null));
+}
+function confirmBtn(question, onYes) {
+  const wrap = el("span", "confirm");
+  const b = iconBtn(I.trash, "Excluir", () => { wrap.textContent = ""; wrap.append(el("span", null, question), btn("tbtn danger", "Excluir", onYes), btn("tbtn", "Cancelar", () => { wrap.textContent = ""; wrap.append(b); })); });
+  wrap.append(b); return wrap;
+}
+function emptyState(text, action) { const e = glass("div", "empty"); e.append(mascot(), el("span", null, text)); if (action) e.append(action); return e; }
+
+/* ================= Cadernos ================= */
+function viewCadernos(main) {
+  main.append(phead("Cadernos", Store.mode === "db" ? "Salvos na sua conta. Só você vê." : "Salvos neste navegador.", btn("btn sm", "Novo", () => go("gerar"), I.spark)));
+  const sb = el("div", "searchbox"); sb.innerHTML = I.search;
+  const fi = el("input"); fi.type = "search"; fi.id = "cadFilter"; fi.placeholder = "Buscar por órgão, cidade ou banca"; sb.append(fi);
+  main.append(sb);
+  const grid = el("div", "cads");
+  const draw = () => {
+    grid.textContent = "";
+    const f = fold(fi.value);
+    const list = visibleCads().filter(c => !f || fold(cadTitle(c) + " " + cadSub(c.cfg) + " " + (c.cfg.disc || []).join(" ")).includes(f));
+    list.forEach(c => {
+      const s = cadStats(c);
+      const card = glass("button", "cad"); card.type = "button"; card.onclick = () => go("caderno", { cur: c.id, showAll: false });
+      card.append(el("span", "date", fmtDate(c.ts) + " · " + c.cfg.banca + (c.exemplo ? " · exemplo" : "")), el("h3", null, cadTitle(c)));
+      const bar = el("span", "bar"); const bi = el("i"); bi.style.width = pct(s.ans, s.total) + "%"; bar.append(bi);
+      const ft = el("span", "foot"); ft.append(el("span", null, s.ans + " de " + s.total + " respondidas"), el("span", null, s.ans ? pct(s.ok, s.ans) + "% acertos" : ""));
+      card.append(bar, ft); grid.append(card);
+    });
+    if (!list.length) grid.append(emptyState("Nenhum caderno com essa busca."));
+  };
+  fi.oninput = draw; draw();
+  main.append(grid);
+}
+
+/* ================= Banco ================= */
+function bancoFiltered() {
+  const f = state.banco, qf = fold(f.q);
+  return allQs().filter(({ q, i, cad, qid }) => {
+    if (f.disc && q.disciplina !== f.disc) return false;
+    if (f.banca && cad.cfg.banca !== f.banca) return false;
+    if (f.esfera && cad.cfg.esfera !== f.esfera) return false;
+    if (f.uf && cad.cfg.uf !== f.uf) return false;
+    if (f.dific && q.dificuldade !== f.dific) return false;
+    if (f.tipo && q.tipo !== f.tipo) return false;
+    const a = (cad.answers || {})[i];
+    if (f.status === "nao" && a != null) return false;
+    if (f.status === "acertei" && !(a != null && isRight(q, a))) return false;
+    if (f.status === "errei" && !(a != null && !isRight(q, a))) return false;
+    if (f.status === "fav" && !state.prefs.favs.includes(qid)) return false;
+    if (f.status === "rep" && !state.prefs.reports.includes(qid)) return false;
+    if (qf && !fold(q.enunciado + " " + (q.alternativas || []).join(" ") + " " + q.assunto + " " + q.disciplina + " " + cadTitle(cad)).includes(qf)) return false;
+    return true;
+  });
+}
+function viewBanco(main) {
+  main.append(phead("Banco de questões", "Todas as questões que você gerou."));
+  const f = state.banco;
+  const all = allQs();
+  const uniq = fn => [...new Set(all.map(fn).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const box = glass("div", "filters");
+  const sb = el("div", "searchbox"); sb.innerHTML = I.search;
+  const q = el("input"); q.type = "search"; q.id = "b-q"; q.placeholder = "Buscar no enunciado"; q.value = f.q; sb.append(q);
+  const stt = seg("b-st", [["", "Todas"], ["nao", "Não feitas"], ["acertei", "Acertei"], ["errei", "Errei"], ["fav", "Favoritas"]], f.status);
+  const fr = el("div", "frow");
+  const sDisc = select("b-disc", uniq(x => x.q.disciplina), f.disc, "Todas as disciplinas");
+  const sBanca = select("b-banca", uniq(x => x.cad.cfg.banca), f.banca, "Todas as bancas");
+  const sDif = select("b-dif", ["facil", "medio", "dificil"], f.dific, "Qualquer dificuldade");
+  [...sDif.options].forEach(o => { if (o.value) o.textContent = DIF_LABEL[o.value]; });
+  const sTipo = select("b-tipo", ["ME", "CE"], f.tipo, "Todos os formatos");
+  [...sTipo.options].forEach(o => { if (o.value) o.textContent = o.value === "ME" ? "Múltipla escolha" : "Certo/Errado"; });
+  const sUf = select("b-uf", uniq(x => x.cad.cfg.esfera === "Federal" ? "" : x.cad.cfg.uf), f.uf, "Todas as UFs");
+  [sDisc, sBanca, sDif, sTipo, sUf].forEach(s => { s.setAttribute("aria-label", s.options[0].textContent); fr.append(s); });
+  box.append(sb, stt, fr);
+  const apply = () => { Object.assign(state.banco, { q: q.value.trim(), disc: sDisc.value, banca: sBanca.value, uf: sUf.value, dific: sDif.value, tipo: sTipo.value, status: segVal(stt), limit: 20 }); renderBancoResults(); };
+  q.oninput = apply; [sDisc, sBanca, sDif, sTipo, sUf, stt].forEach(c => c.addEventListener("change", apply));
+  main.append(box);
+  const res = el("div", "list"); res.id = "bancoRes";
+  main.append(res);
+  renderBancoResults();
+}
+function renderBancoResults() {
+  const res = $("bancoRes"); if (!res) return;
+  res.textContent = "";
+  const items = bancoFiltered();
+  const tb = el("div", "toolbar");
+  tb.append(el("span", "status", items.length + (items.length === 1 ? " questão" : " questões") + (state.cads.length ? "" : " do caderno de exemplo")), el("span", "sp"));
+  if (items.length) tb.append(btn("tbtn", "Simulado com estas", () => startSimFrom(items), I.clock));
+  res.append(tb);
+  items.slice(0, state.banco.limit).forEach((it, k) => res.append(renderQ({ q: it.q, cad: it.cad, i: it.i, num: k + 1, mode: "study", showSrc: true })));
+  if (!items.length) res.append(emptyState("Nenhuma questão com esses filtros.", btn("btn sm", "Gerar questões", () => go("gerar"))));
+  if (items.length > state.banco.limit) { const w = el("div"); w.style.textAlign = "center"; w.append(btn("tbtn", "Carregar mais", () => { state.banco.limit += 20; renderBancoResults(); })); res.append(w); }
+}
+
+/* ================= Simulado ================= */
+function startSimFrom(items) { if (!items.length) return; state.sim = { phase: "setup", pool: items.slice() }; go("simulado"); }
+function viewSimulado(main) { const s = state.sim; if (!s || s.phase === "setup") return simSetup(main); if (s.phase === "run") return simRun(main); return simResult(main); }
+function simSetup(main) {
+  const pre = state.sim && state.sim.pool;
+  main.append(phead("Simulado", "Questões do seu banco, com tempo. O gabarito aparece quando você entregar."));
+  const all = allQs();
+  const uniq = fn => [...new Set(all.map(fn).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const card = glass("div", "fsec");
+  const sDisc = select("s-disc", uniq(x => x.q.disciplina), "", "Todas as disciplinas"), sBanca = select("s-banca", uniq(x => x.cad.cfg.banca), "", "Todas as bancas");
+  const st = seg("s-st", [["", "Todas"], ["nao", "Só não feitas"], ["errei", "Só as que errei"]], "", true);
+  const qtd = seg("s-qtd", [["5", "5"], ["10", "10"], ["20", "20"], ["30", "30"]], "10", true);
+  const tempo = seg("s-tempo", [["0", "Livre"], ["2", "2 min"], ["3", "3 min"], ["4", "4 min"]], "3", true);
+  if (pre) card.append(el("h3", null, pre.length + " questões selecionadas"));
+  else { const r = el("div", "grid2"); r.append(field("Disciplina", sDisc), field("Banca", sBanca)); card.append(r, field("Quais questões", st)); }
+  const r2 = el("div", "grid2"); r2.append(field("Quantidade", qtd), field("Tempo por questão", tempo)); card.append(r2);
+  const info = el("p", "hint");
+  const pool = () => pre || all.filter(({ q, i, cad }) => {
+    if (sDisc.value && q.disciplina !== sDisc.value) return false;
+    if (sBanca.value && cad.cfg.banca !== sBanca.value) return false;
+    const a = (cad.answers || {})[i];
+    if (segVal(st) === "nao" && a != null) return false;
+    if (segVal(st) === "errei" && !(a != null && !isRight(q, a))) return false;
+    return true;
+  });
+  const startB = btn("btn lg", "Começar", () => {
+    const p = pool().slice().sort(() => Math.random() - 0.5).slice(0, Number(segVal(qtd)));
+    const per = Number(segVal(tempo));
+    state.sim = { phase: "run", items: p, picks: {}, cur: 0, start: Date.now(), limit: per ? per * 60 * p.length : 0 };
+    render(); window.scrollTo({ top: 0 });
+  });
+  const upd = () => { const p = pool(); const n = Math.min(p.length, Number(segVal(qtd))); info.textContent = p.length ? n + " questões" + (Number(segVal(tempo)) ? " · " + n * Number(segVal(tempo)) + " minutos" : " · sem limite de tempo") : "Nenhuma questão com esses filtros."; startB.disabled = !p.length; };
+  [sDisc, sBanca, st, qtd, tempo].forEach(c => c.addEventListener("change", upd));
+  const act = el("div", "toolbar"); act.append(startB, info);
+  card.append(act); upd();
+  main.append(card);
+  const sims = state.prefs.sims || [];
+  if (sims.length) {
+    const sec = el("section", "sec"); sec.append(el("h2", "sec-title", "Anteriores"));
+    const grp = glass("div", "group");
+    sims.slice(0, 8).forEach(x => {
+      const r = el("div", "row"); r.style.cursor = "default";
+      r.innerHTML = `<span class="ic">${I.clock}</span>`;
+      const tx = el("span", "tx"); tx.append(el("b", null, x.ok + " de " + x.total + " · " + pct(x.ok, x.total) + "%"), el("span", null, "Tempo " + fmtTime(x.secs)));
+      r.append(tx, el("span", "meta", fmtDate(x.ts))); grp.append(r);
+    });
+    sec.append(grp); main.append(sec);
+  }
+}
+const fmtTime = s => { s = Math.max(0, Math.round(s)); const m = Math.floor(s / 60), ss = s % 60; return (m >= 60 ? Math.floor(m / 60) + ":" + String(m % 60).padStart(2, "0") : m) + ":" + String(ss).padStart(2, "0"); };
+let simTimer = null;
+function simRun(main) {
+  const s = state.sim;
+  const top = glass("section", "cover");
+  const t = el("div", "left"); t.append(el("h1", null, "Simulado"), el("p", null, s.items.length + " questões · " + (s.limit ? "tempo total " + fmtTime(s.limit) : "sem limite de tempo")));
+  const tm = el("div", "timer"); tm.id = "simTimer";
+  top.append(t, tm); main.append(top);
+  const split = el("div", "split");
+  const side = glass("aside", "sidecard");
+  side.append(el("span", "lbl", "Cartão-resposta"));
+  const sheetA = el("div", "sheet-ans");
+  s.items.forEach((_, k) => { const b = btn("", String(k + 1), () => { s.cur = k; drawQ(); }); b.dataset.k = k; sheetA.append(b); });
+  const prog = el("p", "hint");
+  const fin = el("div", "toolbar");
+  const drawFin = () => {
+    fin.textContent = "";
+    fin.append(btn("btn sm", "Entregar", () => { fin.textContent = ""; fin.append(el("span", "hint", "Entregar agora?"), btn("btn sm", "Sim, entregar", finishSim), btn("tbtn", "Voltar", drawFin)); }),
+      btn("tbtn", "Abandonar", () => { clearInterval(simTimer); state.sim = null; render(); }));
+  };
+  drawFin();
+  side.append(sheetA, prog, fin);
+  const area = el("div", "list");
+  split.append(side, area); main.append(split);
+  function drawSheet() { sheetA.querySelectorAll("button").forEach(b => { const k = Number(b.dataset.k); b.classList.toggle("done", s.picks[k] != null); b.setAttribute("aria-current", String(k === s.cur)); }); prog.textContent = Object.keys(s.picks).length + " de " + s.items.length + " respondidas"; }
+  function drawQ() {
+    area.textContent = "";
+    const it = s.items[s.cur];
+    area.append(renderQ({ q: it.q, cad: it.cad, i: it.i, num: s.cur + 1, mode: "exam", picked: s.picks[s.cur], struck: (s.struck = s.struck || {})[s.cur] || (s.struck[s.cur] = new Set()), onPick: v => { if (v == null) delete s.picks[s.cur]; else s.picks[s.cur] = v; drawQ(); } }));
+    const nav = el("div", "toolbar");
+    const prev = btn("tbtn", "Anterior", () => { s.cur--; drawQ(); }); prev.disabled = s.cur === 0;
+    const next = btn("btn sm", "Próxima", () => { s.cur++; drawQ(); }); next.disabled = s.cur === s.items.length - 1;
+    nav.append(prev, el("span", "sp"), next); area.append(nav);
+    drawSheet();
+  }
+  drawQ();
+  clearInterval(simTimer);
+  const tick = () => {
+    const e = $("simTimer"); if (!e || state.sim !== s) { clearInterval(simTimer); return; }
+    const gone = (Date.now() - s.start) / 1000;
+    if (s.limit) { const left = s.limit - gone; e.textContent = fmtTime(left); e.classList.toggle("low", left < 60); if (left <= 0) { clearInterval(simTimer); toast("Tempo esgotado. Simulado entregue."); finishSim(); } }
+    else e.textContent = fmtTime(gone);
+  };
+  tick(); simTimer = setInterval(tick, 1000);
+}
+function finishSim() {
+  clearInterval(simTimer);
+  const s = state.sim;
+  s.secs = (Date.now() - s.start) / 1000;
+  s.ok = s.items.filter((it, k) => s.picks[k] != null && isRight(it.q, s.picks[k])).length;
+  const touched = new Set();
+  s.items.forEach((it, k) => { if (s.picks[k] != null && !it.cad.exemplo) { it.cad.answers = it.cad.answers || {}; it.cad.answers[it.i] = s.picks[k]; touched.add(it.cad); } });
+  touched.forEach(c => Store.saveAnswers(c));
+  state.prefs.sims = [{ ts: Date.now(), total: s.items.length, ok: s.ok, secs: Math.round(s.secs) }, ...(state.prefs.sims || [])];
+  Store.savePrefs();
+  s.phase = "result"; render(); window.scrollTo({ top: 0 });
+}
+function simResult(main) {
+  const s = state.sim;
+  const top = glass("section", "cover");
+  const t = el("div", "left"); t.append(el("h1", null, pct(s.ok, s.items.length) >= 70 ? "Mandou bem!" : "Simulado entregue"), el("p", null, s.ok + " de " + s.items.length + " acertos · tempo " + fmtTime(s.secs)));
+  const r = el("div", "right"); r.append(mascot("float"), ring(pct(s.ok, s.items.length)));
+  top.append(t, r); main.append(top);
+  const tb = el("div", "toolbar"); tb.append(btn("btn sm", "Novo simulado", () => { state.sim = null; render(); }), btn("tbtn", "Ver desempenho", () => { state.sim = null; go("desempenho"); }));
+  main.append(tb);
+  const sheetA = el("div", "sheet-ans");
+  s.items.forEach((it, k) => { const b = btn("", String(k + 1), () => $("rq" + k)?.scrollIntoView({ behavior: "smooth", block: "start" })); b.classList.add(s.picks[k] != null && isRight(it.q, s.picks[k]) ? "right" : "wrong"); sheetA.append(b); });
+  main.append(sheetA);
+  const list = el("div", "list");
+  s.items.forEach((it, k) => { const c = renderQ({ q: it.q, cad: it.cad, i: it.i, num: k + 1, mode: "review", picked: s.picks[k] }); c.id = "rq" + k; list.append(c); });
+  main.append(list);
+}
+
+/* ================= Desempenho ================= */
+function viewDesempenho(main) {
+  main.append(phead("Desempenho", "Onde você acerta e onde precisa revisar."));
+  const rows = state.cads.flatMap(c => c.questions.map((q, i) => ({ q, cad: c, a: (c.answers || {})[i] }))).filter(x => x.a != null);
+  const ok = rows.filter(x => isRight(x.q, x.a)).length;
+  const st = glass("section", "stats");
+  st.append(ring(rows.length ? pct(ok, rows.length) : null));
+  [[String(rows.length), "respondidas"], [String(ok), "acertos"]].forEach(([b, s]) => { const d = el("div", "stat"); d.append(el("b", null, b), el("span", null, s)); st.append(d); });
+  main.append(st);
+  if (!rows.length) { main.append(emptyState("Responda questões ou faça um simulado. Seu desempenho aparece aqui por disciplina, dificuldade e banca.", btn("btn sm", "Ir para o banco", () => go("banco")))); return; }
+  const grp = (fn, order) => {
+    const m = new Map();
+    rows.forEach(x => { const k = fn(x) || "Sem classificação"; const v = m.get(k) || { n: 0, ok: 0 }; v.n++; if (isRight(x.q, x.a)) v.ok++; m.set(k, v); });
+    const arr = [...m.entries()]; return order ? arr.sort((a, b) => order.indexOf(a[0]) - order.indexOf(b[0])) : arr.sort((a, b) => b[1].n - a[1].n);
+  };
+  const weak = grp(x => x.q.disciplina).filter(([, v]) => v.n >= 2 && pct(v.ok, v.n) < 60);
+  if (weak.length) {
+    const w = glass("section", "hello");
+    const l = el("div"); l.append(el("h1", null, "Revise " + weak[0][0]), el("p", null, "É onde você mais erra entre as disciplinas que mais respondeu."));
+    const a = el("div", "acts"); a.append(btn("btn", "Gerar caderno de revisão", () => { state.genPrefill = { disc: [weak[0][0]] }; go("gerar", { genMode: "certame" }); }, I.spark)); l.append(a);
+    w.append(l, mascot()); main.append(w);
+  }
+  const card = (title, data) => {
+    const c = glass("div", "perf-card"); c.append(el("h3", null, title));
+    data.forEach(([k, v]) => {
+      const p = pct(v.ok, v.n);
+      const r = el("div", "prow"); const bar = el("div", "bar"); const bi = el("i", p >= 70 ? "ok" : p >= 50 ? "mid" : "low"); bi.style.width = p + "%"; bar.append(bi);
+      const nm = el("span", "nm", k); nm.title = k;
+      r.append(nm, bar, el("span", "vl", p + "% · " + v.ok + "/" + v.n)); c.append(r);
+    });
+    return c;
+  };
+  const perf = el("div", "perf");
+  perf.append(card("Por disciplina", grp(x => x.q.disciplina)), card("Por dificuldade", grp(x => DIF_LABEL[x.q.dificuldade], ["Fácil", "Médio", "Difícil", "Sem classificação"])), card("Por banca", grp(x => x.cad.cfg.banca)), card("Por tipo de questão", grp(x => x.q.estilo)));
+  main.append(perf);
+}
+
+/* ================= Leis ================= */
+function viewLeis(main) {
+  main.append(phead("Leis", "As mais cobradas, com o texto oficial e um atalho para gerar questões."));
+  const sb = el("div", "searchbox"); sb.innerHTML = I.search;
+  const fi = el("input"); fi.type = "search"; fi.id = "lawFilter"; fi.placeholder = "Buscar lei"; sb.append(fi);
+  const areas = seg("lawArea", [["", "Todas"], ["Constitucional", "Constitucional"], ["Administrativo", "Administrativo"], ["Financeiro", "Financeiro"], ["Penal", "Penal"], ["Social", "Social"]], "");
+  main.append(sb, areas);
+  const grid = el("div", "laws");
+  const link = (href, label) => { const a = el("a", "tbtn"); a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = label + " "; a.insertAdjacentHTML("beforeend", I.arrow); return a; };
+  const draw = () => {
+    grid.textContent = "";
+    const f = fold(fi.value), a = segVal(areas);
+    LEIS.filter(l => (!a || l.area === a) && (!f || fold(l.nome + " " + l.num + " " + l.desc).includes(f))).forEach(l => {
+      const c = glass("div", "lawcard");
+      c.append(el("span", "n", l.num + " · " + l.area), el("h3", null, l.nome), el("p", "hint", l.desc));
+      const acts = el("div", "acts"); acts.append(btn("btn sm", "Gerar questões", () => genFromLaw(l)), link(l.url, "Planalto"));
+      c.append(acts); grid.append(c);
+    });
+    const ext = glass("div", "lawcard");
+    ext.append(el("span", "n", "Municipais e estaduais"), el("h3", null, "Buscar no LexML"), el("p", "hint", "Copie os artigos da lei local e cole no gerador, aba Por lei."));
+    const acts = el("div", "acts"); acts.append(btn("btn sm", "Colar lei", () => go("gerar", { genMode: "lei" })), link("https://www.lexml.gov.br/", "LexML"));
+    ext.append(acts); grid.append(ext);
+  };
+  fi.oninput = draw; areas.addEventListener("change", draw); draw();
+  main.append(grid);
+}
+
+/* ================= Exportação ================= */
+function asText(cad) {
+  const out = [cadTitle(cad), cadSub(cad.cfg), ""];
+  cad.questions.forEach((q, i) => {
+    out.push(`Questão ${i + 1} (${DIF_LABEL[q.dificuldade] || "—"} · ${q.disciplina || ""})`, q.enunciado);
+    if (q.tipo === "ME") q.alternativas.forEach((a, k) => out.push(`(${"ABCDE"[k]}) ${a}`));
+    out.push(`Gabarito: ${q.gabarito}`);
+    if (q.comentario) out.push(`Comentário: ${q.comentario}`);
+    if (q.fundamento) out.push(`Fundamento: ${q.fundamento}`);
+    out.push("");
+  });
+  return out.join("\n");
+}
+async function copyText(txt) {
+  try { await navigator.clipboard.writeText(txt); toast("Caderno copiado"); }
+  catch { const t = el("textarea"); t.value = txt; document.body.append(t); t.select(); try { document.execCommand("copy"); toast("Caderno copiado"); } catch { toast("Não deu para copiar neste app."); } t.remove(); }
+}
+const esc = s => String(s || "").replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+function asDoc(cad) {
+  const c = cad.cfg;
+  const P = (html, st = "") => `<p style="margin:0;line-height:115%;font-family:Arial;font-size:11pt;${st}">${html}</p>`;
+  let out = `<html><head><meta charset="utf-8"><style>@page{margin:2.54cm}</style></head><body>`;
+  cad.questions.forEach((q, i) => {
+    const ce = q.tipo === "CE";
+    const gc = ce ? (q.gabarito === "CERTO" ? "#00B050" : "#FF0000") : "#000";
+    out += P(`<b>Questão ${i + 1}</b>`, "font-size:14pt;color:#363642;background:#d0cece");
+    out += P("Aba Cadastro de Questão", "font-size:12pt;color:#0070C0");
+    out += P(`<b>PROVA:</b> ${esc(cadTitle(cad))} / ${esc(c.cargo)} / estilo ${esc(c.banca)} / ${new Date().getFullYear()}`);
+    out += P(`<b>TIPO:</b> ${ce ? "Certo/Errado" : "Múltipla Escolha"}`);
+    out += P(`<b>DIFICULDADE:</b> ${DIF_LABEL[q.dificuldade] || ""} · <b>DISCIPLINA:</b> ${esc(q.disciplina)}`);
+    out += P("<b>ENUNCIADO:</b>") + P(esc(q.enunciado));
+    if (!ce) q.alternativas.forEach((a, k) => out += P(`(${"ABCDE"[k]}) ${esc(a)}`));
+    out += P(`<b>GABARITO:</b> <b style="color:${gc}">${esc(q.gabarito)}</b>`);
+    out += P(`<b>CLASSIFICAÇÃO:</b> ${esc(q.assunto || q.disciplina)}`);
+    out += P("<b>ID DA QUESTÃO:</b>");
+    out += P("Aba Cadastro de Solução", "font-size:12pt;color:#0070C0");
+    out += P(`<b>${esc(q.gabarito)}.</b> ${esc(q.comentario)}`);
+    if (q.fundamento) out += P(esc(q.fundamento), "font-size:10.5pt;color:#333333");
+    if (q.conferir) out += P("<b>[CONFERIR NORMA LOCAL]</b>", "color:#FF0000");
+    out += P("&nbsp;");
+  });
+  return out + "</body></html>";
+}
+async function downloadDoc(cad) {
+  if (!caps.downloads) return;
+  const slug = fold(cad.cfg.municipio || cad.cfg.orgao || "caderno").replace(/[^a-z0-9]+/g, "-");
+  try { await caps.downloads.save({ filename: `questoes-ineditas-${slug}.doc`, data: new Blob([asDoc(cad)], { type: "application/msword" }) }); toast("Arquivo salvo"); }
+  catch (e) { if (e && e.code !== "cancelled" && e.code !== "declined") toast("Não foi possível salvar o arquivo."); }
+}
+
+/* ================= Boot ================= */
+(function () { const old = lsGet("ineditas.theme", null); if (old && !lsGet("ineditas.ui", null)) lsSet("ineditas.ui", { theme: old }); applyUI(getUI()); })();
+let capsPromise = null;
+function waitCaps() {
+  if (capsPromise) return capsPromise;
+  capsPromise = (async () => {
+    const c = window.claude;
+    if (c && c.use) {
+      const [s, d, db, u] = await Promise.all(["sample", "downloads", "db", "user"].map(n => c.use(n).catch(() => null)));
+      caps = { sample: s, downloads: d, db, user: u, ready: true };
+    } else caps.ready = true;
+  })();
+  return capsPromise;
+}
+if (state.logged) state.user = { name: "" };
+render();
+waitCaps().then(async () => {
+  if (state.logged) {
+    let name = ""; try { name = caps.user ? (await caps.user.me()).name : ""; } catch {}
+    state.user = { name: name || (caps.db ? "" : "Visitante") };
+    await Store.init();
+  }
+});
+</script>
