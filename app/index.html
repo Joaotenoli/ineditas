@@ -1,4 +1,5 @@
 <title>Inédita Questões</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20x%3D%225%22%20y%3D%225%22%20width%3D%22190%22%20height%3D%22190%22%20rx%3D%2246%22%20fill%3D%22%23fff%22/%3E%3Cg%20fill%3D%22%23111%22%3E%3Cpath%20d%3D%22M94%2074%20C82%2063%2066%2059%2054%2060%20Q47%2061%2047%2068%20L47%20136%20Q47%20143%2054%20143%20C68%20143%2082%20147%2094%20158%20Z%22/%3E%3Cpath%20d%3D%22M106%2092%20C117%2084%20130%2081%20141%2082%20Q148%2083%20148%2090%20L148%20136%20Q148%20143%20141%20143%20C128%20143%20116%20147%20106%20158%20Z%22/%3E%3Cpath%20d%3D%22M134%2034%20Q136%2056%20158%2058%20Q136%2060%20134%2082%20Q132%2060%20110%2058%20Q132%2056%20134%2034%20Z%22/%3E%3C/g%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -178,14 +179,14 @@ main.page { padding-block: 44px 64px; display: flex; flex-direction: column; gap
 
 /* Mascote */
 .mascot { display: block; width: 120px; height: 120px; flex: none; filter: drop-shadow(0 10px 14px rgba(120, 60, 20, 0.22)); }
-.appicon { display: block; width: 40px; height: 40px; flex: none; filter: drop-shadow(0 4px 8px rgba(255, 90, 50, 0.3)); }
+.appicon { display: block; width: 40px; height: 40px; flex: none; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12)); }
 .mascot.float { animation: float 4s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(-6px); } }
 
 /* Login */
 .login { min-height: 100vh; display: grid; place-items: center; padding: 32px 0; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 .login-card { width: 100%; max-width: 420px; border-radius: 32px; padding: 36px 30px 28px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; box-shadow: var(--shadow-lg); }
-.login-card .appicon { width: 104px; height: 104px; filter: drop-shadow(0 14px 24px rgba(255, 90, 50, 0.35)); }
+.login-card .appicon { width: 104px; height: 104px; filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.16)); }
 .login-card h1 { font-size: 34px; font-weight: 700; }
 .login-card .lead { font-size: 16px; color: var(--muted); max-width: 30ch; }
 .login-card .acts { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
@@ -356,6 +357,24 @@ details.more[open] summary { margin-bottom: 14px; }
 .modal { width: min(460px, 100%); border-radius: 28px; padding: 22px; display: flex; flex-direction: column; gap: 18px; background: var(--glass-strong); -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%); border: 1px solid var(--glass-line); box-shadow: var(--shadow-lg); }
 .modal-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .modal-h h2 { font-size: 21px; font-weight: 700; }
+.logo-mark { color: var(--ink); filter: none !important; opacity: .9; }
+.hello .logo-mark, .empty .logo-mark { width: 64px; height: 64px; }
+.status .logo-mark { width: 22px; height: 22px; }
+.cover .logo-mark { width: 56px; height: 56px; }
+.appicon.hero { width: 84px; height: 84px; margin-bottom: 8px; }
+.edit-form { display: flex; flex-direction: column; gap: 14px; }
+.edit-form textarea { min-height: 90px; }
+.edit-acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.edit-acts .sp { flex: 1; }
+.modal.wide { width: min(620px, 100%); }
+.cad-notas { color: var(--ink-2); font-size: 14px; margin-top: 8px; white-space: pre-wrap; }
+.title-row { display: flex; align-items: center; gap: 6px; }
+.title-row .iconbtn { width: 32px; height: 32px; background: transparent; color: var(--muted); flex: none; }
+.title-row .iconbtn:hover { background: var(--fill); }
+.sim-acts { display: flex; gap: 2px; margin-left: 6px; }
+.sim-acts .iconbtn { width: 30px; height: 30px; background: transparent; color: var(--muted); }
+.sim-acts .iconbtn:hover { background: var(--fill); }
+
 @media (max-width: 1000px) { .modal-wrap { align-items: end; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); } }
 .preview-q { background: var(--fill); border-radius: 14px; padding: 12px 14px; font-family: var(--f-read); font-size: 15.5px; line-height: 1.55; }
 :root[data-size="lg"] .preview-q { font-size: 17.5px; }
@@ -515,6 +534,7 @@ const I = {
   cut: sv('<circle cx="6" cy="7" r="2.6"/><circle cx="6" cy="17" r="2.6"/><path d="M8.2 8.4L20 16.5M8.2 15.6L20 7.5"/>'),
   gear: sv('<circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.2 7.5l2.1 1.2M17.7 15.3l2.1 1.2M4.2 16.5l2.1-1.2M17.7 8.7l2.1-1.2"/><circle cx="12" cy="12" r="7"/>'),
   close: sv('<path d="M6 6l12 12M18 6L6 18"/>'),
+  pencil: sv('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>'),
   lock: sv('<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/>')
 };
 
@@ -548,23 +568,15 @@ function puppy(n) {
   </g>`;
 }
 function mascot(cls = "") {
-  const n = ++mascotN;
   const w = document.createElement("span");
-  w.innerHTML = `<svg class="mascot ${cls}" viewBox="14 20 172 170" role="img" aria-label="Gabi, a mascote do Inédita">${puppy(n)}</svg>`;
+  w.innerHTML = `<svg class="mascot logo-mark ${cls}" viewBox="30 22 140 150" role="img" aria-label="Inédita"><g fill="currentColor"><path d="M94 74 C82 63 66 59 54 60 Q47 61 47 68 L47 136 Q47 143 54 143 C68 143 82 147 94 158 Z"/><path d="M106 92 C117 84 130 81 141 82 Q148 83 148 90 L148 136 Q148 143 141 143 C128 143 116 147 106 158 Z"/><path d="M134 34 Q136 56 158 58 Q136 60 134 82 Q132 60 110 58 Q132 56 134 34 Z"/></g></svg>`;
   return w.firstElementChild;
 }
 function logoIcon(cls = "") {
-  const n = ++mascotN;
   const w = document.createElement("span");
   w.innerHTML = `<svg class="appicon ${cls}" viewBox="0 0 200 200" aria-hidden="true">
-  <defs>
-    <linearGradient id="ig${n}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb26b"/><stop offset=".55" stop-color="#ff7a45"/><stop offset="1" stop-color="#ff4b3a"/></linearGradient>
-    <linearGradient id="is${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
-  </defs>
-  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#ig${n})"/>
-  <rect x="4" y="4" width="192" height="192" rx="46" fill="url(#is${n})"/>
-  <rect x="5" y="5" width="190" height="190" rx="45" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
-  <g transform="translate(18 26) scale(.82)">${puppy(n)}</g>
+  <rect x="5" y="5" width="190" height="190" rx="46" fill="#fff" stroke="rgba(0,0,0,.1)" stroke-width="2"/>
+  <g fill="#111"><path d="M94 74 C82 63 66 59 54 60 Q47 61 47 68 L47 136 Q47 143 54 143 C68 143 82 147 94 158 Z"/><path d="M106 92 C117 84 130 81 141 82 Q148 83 148 90 L148 136 Q148 143 141 143 C128 143 116 147 106 158 Z"/><path d="M134 34 Q136 56 158 58 Q136 60 134 82 Q132 60 110 58 Q132 56 134 34 Z"/></g>
 </svg>`;
   return w.firstElementChild;
 }
@@ -638,7 +650,7 @@ const Store = {
     this.fallback();
   },
   fallback() { this.mode = "local"; state.cads = lsGet("ineditas.v2.cads", []); state.prefs = { favs: [], reports: [], sims: [], ...lsGet("ineditas.v2.prefs", {}) }; render(); },
-  plain(c) { return JSON.parse(JSON.stringify({ ts: c.ts, cfg: c.cfg, titulo: c.titulo || "", questions: c.questions, answers: c.answers || {} })); },
+  plain(c) { return JSON.parse(JSON.stringify({ ts: c.ts, cfg: c.cfg, titulo: c.titulo || "", notas: c.notas || "", questions: c.questions, answers: c.answers || {} })); },
   saveCad(c) {
     if (c.exemplo) return;
     if (!state.cads.find(x => x.id === c.id)) state.cads.unshift(c);
@@ -661,7 +673,7 @@ const Store = {
   savePrefs() {
     clearTimeout(this.timers.prefs);
     this.timers.prefs = setTimeout(() => {
-      const p = { favs: state.prefs.favs.slice(-500), reports: state.prefs.reports.slice(-200), sims: state.prefs.sims.slice(0, 40) };
+      const p = { favs: state.prefs.favs.slice(-500), reports: state.prefs.reports.slice(-200), sims: state.prefs.sims.slice(0, 40), nome: state.prefs.nome || "" };
       if (this.mode === "db") this.col.doc("prefs").set(p).catch(() => toast("Não foi possível salvar suas preferências."));
       else lsSet("ineditas.v2.prefs", p);
     }, 500);
@@ -704,7 +716,7 @@ function render() {
   const col = el("div", "content");
   const mtop = el("div", "mtop page");
   const mb = btn("brand", null, () => go("inicio"));  const mbt = el("span"); mbt.append(el("b", null, "Inédita")); mb.append(mbt);
-  const nm = (state.user && state.user.name) || "Visitante";
+  const nm = meuNome() || "Visitante";
   const av = btn("avatar", nm.trim()[0]?.toUpperCase() || "V", openSheet); av.setAttribute("aria-label", "Conta e mais opções");
   mtop.append(mb, av);
   const main = el("main", "page"); main.id = "main";
@@ -738,7 +750,7 @@ function sidebar() {
     });
   });
   const me = el("div", "me");
-  const nm = (state.user && state.user.name) || "Visitante";
+  const nm = meuNome() || "Visitante";
   me.append(el("span", "avatar", nm.trim()[0]?.toUpperCase() || "V"), el("span", "uname", nm), iconBtn(I.gear, "Preferências", openSettings), iconBtn(I.logout, "Sair", logout));
   inner.append(b, nav, me);
   side.append(inner);
@@ -781,7 +793,7 @@ function setUI(patch) { const ui = { ...getUI(), ...patch }; lsSet("ineditas.ui"
 function openSettings() {
   const ui = getUI();
   const wrap = el("div", "modal-wrap");
-  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); if (window.ineditasLocal && ["inicio", "gerar"].includes(state.view)) render(); };
+  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); if (state.logged && !state.sim) render(); };
   const onKey = e => { if (e.key === "Escape") close(); };
   document.addEventListener("keydown", onKey);
   wrap.onclick = e => { if (e.target === wrap) close(); };
@@ -796,7 +808,9 @@ function openSettings() {
   const pv = el("p", "preview-q", "João tomou posse e entrou em exercício. Após dois anos, afirmou que já era estável.");
   if (window.ineditasLocal) { const ia = el("div", "ia-box"); ia.append(el("h3", null, "Sua IA"), planoBox()); m.append(hd, ia); hd.after(ia); m.append(el("h3", "sub-h", "Leitura")); }
   else m.append(hd);
-  m.append(field("Tema", th), field("Letra das questões", rd), field("Tamanho do texto", sz), pv, el("p", "hint", "Vale só para este navegador."));
+  const nmI = input("u-nome", meuNome(), "Como quer ser chamado");
+  nmI.onchange = () => { state.prefs.nome = nmI.value.trim(); Store.savePrefs(); softRefresh(); };
+  m.append(field("Seu nome", nmI), field("Tema", th), field("Letra das questões", rd), field("Tamanho do texto", sz), pv, el("p", "hint", "Vale só para este navegador."));
   wrap.append(m);
   document.body.append(wrap);
   th.querySelector("[aria-pressed=true]")?.focus();
@@ -861,7 +875,7 @@ function loginShell() {
   th.classList.add("l-theme");
   const wrap = el("div", "l-wrap");
   const hero = el("section", "l-hero");
-  hero.append(mascot("float"), el("h1", null, "Questões inéditas para o seu concurso."),
+  hero.append(logoIcon("hero"), el("h1", null, "Questões inéditas para o seu concurso."),
     el("p", null, "Da prefeitura pequena ao tribunal federal. Cadernos no estilo da banca, com gabarito comentado e o artigo da lei."));
   const ul = el("ul", "l-feats");
   [[I.spark, "Cadernos por cidade, órgão e banca"], [I.clock, "Simulados com cartão-resposta"], [I.chart, "Desempenho por disciplina"]].forEach(([ic, t]) => { const li = el("li"); li.innerHTML = `<span class="ic">${ic}</span>`; li.append(t); ul.append(li); });
@@ -954,7 +968,7 @@ async function doLogin(withAccount, name) {
 
 /* ================= Início ================= */
 function viewInicio(main) {
-  const nm = state.user && state.user.name;
+  const nm = meuNome();
   const hello = glass("section", "hello");
   const l = el("div");
   l.append(el("h1", null, nm ? "Olá, " + nm.split(" ")[0] : "Olá"), el("p", null, state.cads.length ? "O que vamos estudar hoje?" : "Gere seu primeiro caderno. Leva cerca de um minuto."));
@@ -1071,7 +1085,8 @@ function viewGerar(main) {
   const est = seg("g-est", [["misto", "Equilibrado"], ["literal", "Mais lei seca"], ["pratico", "Mais casos"]], "misto", true);
   const g3 = el("div", "grid2");
   g3.append(field("Formato", tipo), field("Dificuldade", dif), field("Quantas questões", qtd), field("Tipo de cobrança", est));
-  s3.append(g3);
+  const gTit = input("g-tit", "", "Ex.: Revisão para a prova de março");
+  s3.append(g3, field("Nome do caderno", gTit, "opcional, dá para mudar depois"));
   banca.addEventListener("change", () => { if (banca.value === "Cebraspe") tipo.querySelector('[data-v="CE"]').click(); });
 
   const panes = [s1, s2, s3];
@@ -1124,6 +1139,7 @@ function viewGerar(main) {
     for (let j = 0; j < 2; j++) { const v = validStep(j); if (v) { goStep(j); toast(v[0]); return; } }
     const m = segVal(mode), es = segVal(esf);
     const cfg = { modo: m, esfera: es, uf: es === "Federal" ? "" : uf.value, regiao: es === "Regional" ? reg.value.trim() : "", municipio: es === "Municipal" ? mun.value.trim() : "", orgao: org.value.trim(), cargo: cargo.value.trim(), nivel: nivel.value, banca: banca.value, assunto: m === "lei" ? ass.value.trim() : "", dific: segVal(dif), tipo: segVal(tipo), estilo: segVal(est), qtd: Number(segVal(qtd)), disc: m === "certame" ? [...chosen] : (m === "lei" ? ["Legislação Específica"] : []) };
+    cfg.titulo = gTit.value.trim();
     generate(cfg, m === "lei" ? base.value.trim() : "", m === "edital" ? edital.value.trim() : "");
   };
 }
@@ -1190,8 +1206,9 @@ const ERR = {
 const errMsg = e => ERR[e && e.code] || "A geração falhou no meio do caminho. Tente de novo.";
 async function generate(cfg, base, edital) {
   const ctl = new AbortController();
-  const cad = { id: "cad_" + Date.now().toString(36), ts: Date.now(), cfg, questions: [], answers: {} };
-  state.running = ctl; state.runningCad = cad; state.genStatus = ["A Gabi está elaborando as questões…", "busy"];
+  const cad = { id: "cad_" + Date.now().toString(36), ts: Date.now(), titulo: cfg.titulo || "", cfg, questions: [], answers: {} };
+  delete cfg.titulo;
+  state.running = ctl; state.runningCad = cad; state.genStatus = ["Elaborando as questões…", "busy"];
   go("caderno", { cur: cad.id, showAll: false });
   let pending = "";
   const push = line => { const q = parseLine(line); if (q && cad.questions.length < cfg.qtd) { cad.questions.push(q); state.genStatus = [`Questão ${cad.questions.length} de ${cfg.qtd} pronta…`, "busy"]; if (state.view === "caderno" && state.cur === cad.id) appendStreamed(cad); } };
@@ -1224,6 +1241,7 @@ function renderQ(ctx) {
     const fav = state.prefs.favs.includes(qid), rep = state.prefs.reports.includes(qid);
     a.append(iconBtn(fav ? I.starF : I.star, fav ? "Remover das favoritas" : "Favoritar", () => { toggleFav(qid); card.replaceWith(renderQ(ctx)); }, fav));
     a.append(iconBtn(I.flag, rep ? "Remover reporte de erro" : "Reportar erro", () => { toggleReport(qid); card.replaceWith(renderQ(ctx)); }, rep));
+    if (ctx.swap && !state.running && !cad.exemplo) a.append(iconBtn(I.pencil, "Editar questão", () => editQ(cad, i)));
     if (ctx.swap && caps.sample && !state.running && !cad.exemplo) a.append(iconBtn(I.swap, "Trocar por outra questão", e => swapQuestion(cad, i, e.currentTarget)));
     head.append(a);
   }
@@ -1317,7 +1335,10 @@ function viewCaderno(main) {
   const cover = glass("section", "cover");
   const l = el("div", "left");
   const h1 = el("h1", null, cadTitle(cad)); if (cad.exemplo) { h1.append(" "); h1.append(el("span", "badge", "Exemplo")); }
-  l.append(h1, el("p", null, cadSub(cad.cfg) + " · " + fmtDate(cad.ts)));
+  const tr = el("div", "title-row"); tr.append(h1);
+  if (!cad.exemplo && !live) tr.append(iconBtn(I.pencil, "Editar caderno", () => editCad(cad)));
+  l.append(tr, el("p", null, cadSub(cad.cfg) + " · " + fmtDate(cad.ts)));
+  if (cad.notas) l.append(el("p", "cad-notas", cad.notas));
   const r = el("div", "right"); r.id = "cadScore";
   cover.append(l, r);
   main.append(cover);
@@ -1331,6 +1352,7 @@ function viewCaderno(main) {
       iconBtn(I.redo, "Apagar respostas", () => { cad.answers = {}; Store.saveAnswers(cad); render(); toast("Respostas apagadas"); }),
       iconBtn(I.copy, "Copiar caderno", () => copyText(asText(cad))));
     if (caps.downloads) tb.append(iconBtn(I.doc, "Baixar .doc", () => downloadDoc(cad)));
+    if (!cad.exemplo) tb.append(iconBtn(I.plus, "Adicionar questão", () => editQ(cad, null)), iconBtn(I.pencil, "Editar caderno", () => editCad(cad)));
     if (!cad.exemplo) tb.append(confirmBtn("Excluir caderno?", () => { Store.delCad(cad.id); go("cadernos"); toast("Caderno excluído"); }));
   }
   main.append(tb);
@@ -1365,6 +1387,100 @@ function confirmBtn(question, onYes) {
   wrap.append(b); return wrap;
 }
 function emptyState(text, action) { const e = glass("div", "empty"); e.append(mascot(), el("span", null, text)); if (action) e.append(action); return e; }
+
+
+/* ================= Edição (tudo que a pessoa pode personalizar) ================= */
+const meuNome = () => (state.prefs && state.prefs.nome) || (state.user && state.user.name) || "";
+function modal(title, body, wide) {
+  const wrap = el("div", "modal-wrap");
+  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); };
+  const onKey = e => { if (e.key === "Escape") close(); };
+  document.addEventListener("keydown", onKey);
+  wrap.onclick = e => { if (e.target === wrap) close(); };
+  const m = el("div", "modal" + (wide ? " wide" : "")); m.setAttribute("role", "dialog"); m.setAttribute("aria-label", title);
+  const hd = el("div", "modal-h"); hd.append(el("h2", null, title), iconBtn(I.close, "Fechar", close));
+  m.append(hd, body); wrap.append(m); document.body.append(wrap);
+  setTimeout(() => body.querySelector("input, textarea")?.focus(), 30);
+  return close;
+}
+function area(id, value, ph, rows) { const t = el("textarea"); t.id = id; t.value = value || ""; if (ph) t.placeholder = ph; if (rows) t.rows = rows; return t; }
+function editActs(onSave, onDel, delAsk) {
+  const a = el("div", "edit-acts");
+  a.append(btn("btn sm", "Salvar", onSave));
+  if (onDel) { a.append(el("span", "sp")); a.append(confirmBtn(delAsk, onDel)); }
+  return a;
+}
+function editCad(cad) {
+  const f = el("form", "edit-form");
+  const auto = (cad.cfg.orgao || "Órgão") + (cad.cfg.esfera === "Federal" ? "" : " · " + localLabel(cad.cfg));
+  const tit = input("e-tit", cad.titulo || "", auto);
+  const org = input("e-org", cad.cfg.orgao, "Ex.: Prefeitura de Caruaru"), car = input("e-car", cad.cfg.cargo, "Ex.: Agente administrativo"), ban = input("e-ban", cad.cfg.banca, "Ex.: FGV");
+  const nt = area("e-notas", cad.notas, "Ex.: revisar artigos 37 a 41 antes da prova", 3);
+  const g = el("div", "grid2"); g.append(field("Órgão", org), field("Cargo", car));
+  f.append(field("Nome do caderno", tit, "vazio usa o órgão e o local"), g, field("Banca", ban), field("Anotações", nt));
+  let close;
+  const save = () => {
+    cad.titulo = tit.value.trim(); cad.notas = nt.value.trim();
+    cad.cfg = { ...cad.cfg, orgao: org.value.trim(), cargo: car.value.trim(), banca: ban.value.trim() || cad.cfg.banca };
+    Store.saveCad(cad); close(); render(); toast("Caderno atualizado");
+  };
+  f.onsubmit = e => { e.preventDefault(); save(); };
+  f.append(editActs(save));
+  close = modal("Editar caderno", f);
+}
+function editQ(cad, i) {
+  const novo = i == null;
+  const q = novo ? { tipo: cad.cfg.tipo === "CE" ? "CE" : "ME", dificuldade: "medio", disciplina: (cad.cfg.disc || [])[0] || "", assunto: "", enunciado: "", alternativas: cad.cfg.tipo === "ME4" ? ["", "", "", ""] : ["", "", "", "", ""], gabarito: cad.cfg.tipo === "CE" ? "CERTO" : "A", comentario: "", fundamento: "" } : cad.questions[i];
+  const f = el("form", "edit-form");
+  const tp = seg("e-tipo", [["ME", "Múltipla escolha"], ["CE", "Certo ou errado"]], q.tipo, true);
+  const en = area("e-enun", q.enunciado, "Texto da questão", 5);
+  const alts = area("e-alts", (q.alternativas || []).join("\n"), "Uma alternativa por linha (A, B, C…)", 5);
+  const altsF = field("Alternativas", alts, "uma por linha");
+  const gab = el("select"); gab.id = "e-gab";
+  const df = seg("e-dif", [["facil", "Fácil"], ["medio", "Médio"], ["dificil", "Difícil"]], DIF_LABEL[q.dificuldade] ? q.dificuldade : "medio", true);
+  const di = input("e-disc", q.disciplina, "Ex.: Direito Administrativo"), as = input("e-ass", q.assunto, "Ex.: Lei 8.112/1990");
+  const co = area("e-com", q.comentario, "Por que o gabarito é esse", 3), fu = input("e-fund", q.fundamento, "Ex.: Art. 41 da CF");
+  const g = el("div", "grid2"); g.append(field("Disciplina", di), field("Assunto", as));
+  const drawGab = () => {
+    const t = segVal(tp), cur = gab.value || q.gabarito; gab.textContent = "";
+    const ops = t === "CE" ? [["CERTO", "Certo"], ["ERRADO", "Errado"]] : alts.value.split("\n").filter(s => s.trim()).map((_, k) => ["ABCDE"[k], "ABCDE"[k]]).slice(0, 5);
+    ops.forEach(([v, l]) => { const o = el("option", null, l); o.value = v; if (v === cur) o.selected = true; gab.append(o); });
+    altsF.hidden = t === "CE";
+  };
+  tp.addEventListener("change", drawGab); alts.addEventListener("input", drawGab); drawGab();
+  f.append(field("Formato", tp), field("Enunciado", en), altsF, field("Gabarito", gab), field("Dificuldade", df), g, field("Comentário", co), field("Fundamento legal", fu));
+  let close;
+  const save = () => {
+    const t = segVal(tp), lst = alts.value.split("\n").map(s => s.trim()).filter(Boolean).slice(0, 5);
+    if (!en.value.trim()) { toast("Escreva o enunciado."); en.focus(); return; }
+    if (t === "ME" && lst.length < 2) { toast("Coloque pelo menos duas alternativas, uma por linha."); alts.focus(); return; }
+    const nq = { ...q, tipo: t, enunciado: en.value.trim(), alternativas: t === "ME" ? lst : [], gabarito: gab.value || (t === "CE" ? "CERTO" : "A"), dificuldade: segVal(df), disciplina: di.value.trim(), assunto: as.value.trim(), comentario: co.value.trim(), fundamento: fu.value.trim(), editada: true };
+    if (novo) cad.questions.push(nq); else { cad.questions[i] = nq; if (cad.answers) delete cad.answers[i]; }
+    Store.saveCad(cad); close(); render(); toast(novo ? "Questão adicionada" : "Questão salva");
+  };
+  const del = novo ? null : () => {
+    cad.questions.splice(i, 1);
+    const ans = {}; Object.keys(cad.answers || {}).forEach(k => { k = Number(k); if (k < i) ans[k] = cad.answers[k]; else if (k > i) ans[k - 1] = cad.answers[k]; }); cad.answers = ans;
+    const shift = arr => arr.map(id => { const [c, n] = id.split(":"); if (c !== cad.id) return id; const k = Number(n); return k === i ? null : c + ":" + (k > i ? k - 1 : k); }).filter(Boolean);
+    state.prefs.favs = shift(state.prefs.favs); state.prefs.reports = shift(state.prefs.reports); Store.savePrefs();
+    Store.saveCad(cad); close(); render(); toast("Questão excluída");
+  };
+  f.onsubmit = e => { e.preventDefault(); save(); };
+  f.append(editActs(save, del, "Excluir questão?"));
+  close = modal(novo ? "Nova questão" : "Editar questão " + (i + 1), f, true);
+}
+function editSim(k) {
+  const x = state.prefs.sims[k]; if (!x) return;
+  const f = el("form", "edit-form");
+  const nm = input("e-sim", x.nome || "", "Simulado de " + fmtDate(x.ts));
+  f.append(field("Nome do simulado", nm));
+  let close;
+  const save = () => { x.nome = nm.value.trim(); Store.savePrefs(); close(); render(); toast("Simulado renomeado"); };
+  const del = () => { state.prefs.sims.splice(k, 1); Store.savePrefs(); close(); render(); toast("Simulado excluído"); };
+  f.onsubmit = e => { e.preventDefault(); save(); };
+  f.append(editActs(save, del, "Excluir simulado?"));
+  close = modal("Editar simulado", f);
+}
 
 /* ================= Cadernos ================= */
 function viewCadernos(main) {
@@ -1490,11 +1606,12 @@ function simSetup(main) {
   if (sims.length) {
     const sec = el("section", "sec"); sec.append(el("h2", "sec-title", "Anteriores"));
     const grp = glass("div", "group");
-    sims.slice(0, 8).forEach(x => {
+    sims.slice(0, 8).forEach((x, k) => {
       const r = el("div", "row"); r.style.cursor = "default";
       r.innerHTML = `<span class="ic">${I.clock}</span>`;
-      const tx = el("span", "tx"); tx.append(el("b", null, x.ok + " de " + x.total + " · " + pct(x.ok, x.total) + "%"), el("span", null, "Tempo " + fmtTime(x.secs)));
-      r.append(tx, el("span", "meta", fmtDate(x.ts))); grp.append(r);
+      const tx = el("span", "tx"); tx.append(el("b", null, (x.nome ? x.nome + " · " : "") + x.ok + " de " + x.total + " · " + pct(x.ok, x.total) + "%"), el("span", null, "Tempo " + fmtTime(x.secs)));
+      const sa = el("span", "sim-acts"); sa.append(iconBtn(I.pencil, "Editar simulado", () => editSim(k)));
+      r.append(tx, el("span", "meta", fmtDate(x.ts)), sa); grp.append(r);
     });
     sec.append(grp); main.append(sec);
   }
