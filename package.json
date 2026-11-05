@@ -1,7 +1,7 @@
 {
   "name": "ineditas",
   "productName": "Inedita",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Questões inéditas para concursos, geradas com o seu plano do Claude ou do ChatGPT.",
   "author": "Inédita",
   "license": "MIT",
@@ -43,7 +43,8 @@
       "identity": null,
       "extendInfo": {
         "CFBundleDisplayName": "Inédita"
-      }
+      },
+      "hardenedRuntime": false
     },
     "dmg": {
       "title": "Inédita",
@@ -71,6 +72,7 @@
       ],
       "icon": "build/icon.png",
       "signAndEditExecutable": false
-    }
+    },
+    "afterPack": "scripts/assinar.cjs"
   }
 }

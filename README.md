@@ -19,9 +19,12 @@ Vá em **[Releases](../../releases/latest)** e baixe o arquivo do seu computador
 
 ### Instalar no Mac
 
-1. Abra o `.dmg` e arraste o **Inedita** para a pasta Aplicativos.
-2. Na primeira vez, clique com o botão direito no app e escolha **Abrir** (o app ainda não é assinado pela Apple, então o Mac pede essa confirmação uma vez).
-3. Se o Mac disser que o app "está danificado", abra o Terminal e rode `xattr -cr /Applications/Inedita.app`. Depois abra de novo.
+1. Abra o `.dmg` e arraste o **Inedita** para a pasta **Aplicativos**.
+2. Abra o Inedita. Como o app ainda não é assinado pela Apple, o Mac avisa que não pode verificar o app. Clique em **OK** (não em "Mover para o Lixo").
+3. Abra **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado de "Inedita foi bloqueado". Confirme com a sua senha do Mac.
+4. Pronto: das próximas vezes ele abre direto.
+
+Se o Mac disser que o app "está danificado", abra o Terminal e rode `xattr -cr /Applications/Inedita.app`. Depois abra de novo.
 
 ### Instalar no Windows
 
@@ -35,7 +38,7 @@ O Inédita usa os programas oficiais para entrar na sua conta:
 - **Claude:** o [Claude Code](https://claude.com/claude-code) precisa estar instalado.
 - **ChatGPT:** no Mac, basta o app do ChatGPT (ele já traz o Codex). No Windows, instale o Codex (`npm install -g @openai/codex`).
 
-Depois, no Inédita: crie a sua conta (nome, e-mail e senha, salvos só no seu computador), clique em **Entrar** e escolha **Entrar com Claude** ou **Entrar com ChatGPT**. O login oficial abre no navegador. O app recusa logins por chave de API.
+Depois, no Inédita: entre com qualquer e-mail e senha (se ainda não tiver conta, ela é criada na hora e fica só no seu computador) ou como visitante, clique em **Entrar** e escolha **Entrar com Claude** ou **Entrar com ChatGPT**. O login oficial abre no navegador. O app recusa logins por chave de API.
 
 Os cadernos ficam na pasta **Documentos/Inédita** do seu computador.
 

@@ -58,29 +58,35 @@ function gravarDoc(id, data) {                  // grava num arquivo temporário
   fs.renameSync(tmp, alvo);
 }
 /* ---------- conta deste Mac (nome, e-mail e senha; a senha fica só como hash) ---------- */
-const PERFIL = path.join(LOCAL, "perfil.json");
-function lerPerfil() { try { return JSON.parse(fs.readFileSync(PERFIL, "utf8")); } catch { return null; } }
+// várias contas no mesmo computador: uma por e-mail. Entrar com um e-mail novo já cria a conta.
+const PERFIS = path.join(LOCAL, "perfis"), ULTIMO = path.join(LOCAL, "perfil.json");
+fs.mkdirSync(PERFIS, { recursive: true });
+const arqPerfil = email => path.join(PERFIS, crypto.createHash("sha256").update(email).digest("hex").slice(0, 32) + ".json");
+function lerJson(f) { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return null; } }
+// conta antiga (uma só, em perfil.json com senha): passa para a pasta de contas
+(() => { const v = lerJson(ULTIMO); if (v && v.hash && v.email && !fs.existsSync(arqPerfil(v.email))) fs.writeFileSync(arqPerfil(v.email), JSON.stringify(v), { mode: 0o600 }); })();
+function lerPerfil() { const u = lerJson(ULTIMO); return u && u.nome ? { nome: u.nome, email: u.email } : null; }
 const hashSenha = (senha, sal) => crypto.scryptSync(senha, Buffer.from(sal, "hex"), 64).toString("hex");
+function novaConta(nome, email, senha) {
+  const sal = crypto.randomBytes(16).toString("hex");
+  const c = { nome, email, sal, hash: hashSenha(senha, sal), criada: Date.now() };
+  fs.writeFileSync(arqPerfil(email), JSON.stringify(c), { mode: 0o600 });
+  return c;
+}
+function usar(c) { fs.writeFileSync(ULTIMO, JSON.stringify({ nome: c.nome, email: c.email }), { mode: 0o600 }); return [200, { nome: c.nome, id: "mac" }]; }
 function perfil(d) {
   const acao = d.acao, email = String(d.email || "").trim().toLowerCase(), senha = String(d.senha || "");
+  if (acao === "visitante") return usar({ nome: "Visitante", email: "" });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return [400, { erro: "Digite um e-mail válido." }];
-  if (senha.length < 8) return [400, { erro: "A senha precisa ter pelo menos 8 caracteres." }];
-  const atual = lerPerfil();
-  if (acao === "criar") {
-    const nome = String(d.nome || "").trim().slice(0, 60);
-    if (!nome) return [400, { erro: "Diga como podemos te chamar." }];
-    if (atual) return [409, { erro: "Já existe uma conta neste Mac. Entre com o seu e-mail e a sua senha." }];
-    const sal = crypto.randomBytes(16).toString("hex");
-    fs.writeFileSync(PERFIL, JSON.stringify({ nome, email, sal, hash: hashSenha(senha, sal), criada: Date.now() }), { mode: 0o600 });
-    return [200, { nome, id: "mac" }];
+  if (!senha) return [400, { erro: "Digite uma senha." }];
+  const atual = lerJson(arqPerfil(email));
+  if (!atual) {
+    const nome = String(d.nome || "").trim().slice(0, 60) || email.split("@")[0];
+    return usar(novaConta(nome, email, senha));
   }
-  if (acao === "entrar") {
-    if (!atual || atual.email !== email) return [401, { erro: "E-mail ou senha incorretos." }];
-    const a = Buffer.from(hashSenha(senha, atual.sal), "hex"), b = Buffer.from(atual.hash, "hex");
-    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return [401, { erro: "E-mail ou senha incorretos." }];
-    return [200, { nome: atual.nome, id: "mac" }];
-  }
-  return [400, { erro: "Ação desconhecida." }];
+  const a = Buffer.from(hashSenha(senha, atual.sal), "hex"), b = Buffer.from(atual.hash, "hex");
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return [401, { erro: "Esse e-mail já tem conta neste computador com outra senha." }];
+  return usar(atual);
 }
 function nomeDoMac() { if (MAC) { try { return execFileSync("id", ["-F"], { encoding: "utf8" }).trim(); } catch {} } return os.userInfo().username; }
 

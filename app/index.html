@@ -222,6 +222,8 @@ main.page { padding-block: 44px 64px; display: flex; flex-direction: column; gap
 .or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13px; }
 .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--hair); }
 .l-form .tbtn.plain { align-self: center; }
+.btn-sec { width: 100%; border: 0; border-radius: 999px; padding: 14px 20px; font-size: 16px; font-weight: 600; cursor: pointer; background: var(--fill-2); color: var(--ink); }
+.btn-sec:hover { background: var(--fill); box-shadow: inset 0 0 0 1px var(--hair); }
 .l-note { text-align: center; font-size: 12.5px; color: var(--muted); }
 .l-who { display: flex; align-items: center; gap: 12px; padding: 4px 2px; }
 @media (max-width: 900px) {
@@ -888,7 +890,7 @@ function contaForm(card, api, extra) {
     title.textContent = c ? "Crie sua conta" : "Entre na sua conta";
     sub.textContent = c ? "Leva menos de um minuto." : "Que bom te ver de novo.";
     fNome.hidden = !c; go.textContent = c ? "Criar conta" : "Entrar";
-    senha.placeholder = c ? "Crie uma senha (8 ou mais caracteres)" : "Sua senha"; senha.autocomplete = c ? "new-password" : "current-password"; msg.textContent = "";
+    senha.placeholder = c && (api.senhaMin || 8) > 1 ? "Crie uma senha (8 ou mais caracteres)" : c ? "Crie uma senha" : "Sua senha"; senha.autocomplete = c ? "new-password" : "current-password"; msg.textContent = "";
   };
   modo.addEventListener("change", sync); sync();
   card.onsubmit = async e => {
@@ -896,7 +898,8 @@ function contaForm(card, api, extra) {
     const acao = segVal(modo);
     if (acao === "criar" && !nome.value.trim()) { msg.textContent = "Diga como podemos te chamar."; nome.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { msg.textContent = "Digite um e-mail válido."; email.focus(); return; }
-    if (senha.value.length < 8) { msg.textContent = "A senha precisa ter pelo menos 8 caracteres."; senha.focus(); return; }
+    const min = api.senhaMin || 8;
+    if (senha.value.length < min) { msg.textContent = min > 1 ? "A senha precisa ter pelo menos " + min + " caracteres." : "Digite uma senha."; senha.focus(); return; }
     go.disabled = true; msg.textContent = "";
     try {
       const r = await api.enviar(acao, { nome: nome.value.trim(), email: email.value.trim(), senha: senha.value });
@@ -912,19 +915,19 @@ function viewLogin() {
     // app do Mac: conta com nome, e-mail e senha neste Mac; a IA (plano do Claude ou do ChatGPT) se conecta depois, em Preferências
     const L = window.ineditasLocal;
     contaForm(card, {
-      modoInicial: "criar",
+      modoInicial: "criar", senhaMin: 1,
       async enviar(acao, d) { return L.perfil(acao, d); },
       async pronto(d) {
         await doLogin(true, d.nome);
       }
-    }, c => c.append(el("p", "l-note", "Seus cadernos ficam salvos neste Mac.")));
+    }, c => c.append(el("div", "or", "ou"), btn("btn-sec", "Entrar como visitante", async () => { await L.perfil("visitante", {}); doLogin(true, "Visitante"); }), el("p", "l-note", "Qualquer e-mail funciona: se ainda não tiver conta, ela é criada na hora. Seus cadernos ficam neste computador.")));
     L.perfilInfo().then(i => { if (i && i.existe) card.querySelector('#l-modo [data-v="entrar"]')?.click(); });
     return root;
   }
   card.append(el("h2", "l-title", "Entre no Inédita"), el("p", "l-sub", "Use a sua conta do Claude. Sem senha."));
   const who = el("div", "l-who"); const av = el("span", "avatar", "…"); const wt = el("div"); const wn = el("b", null, "Conectando…"); const ws = el("div", "hint", ""); wt.append(wn, ws); who.append(av, wt);
   const enter = btn("btn lg block", "Conectando…"); enter.disabled = true;
-  const guest = btn("tbtn plain", "Entrar como visitante", () => doLogin(false)); guest.hidden = true;
+  const guest = btn("btn-sec", "Entrar como visitante", () => doLogin(false)); guest.hidden = true;
   card.append(who, enter, el("div", "or", "ou"), guest, el("p", "l-note", "As questões usam o seu plano do Claude."));
   waitCaps().then(() => {
     if (caps.user && caps.db) {
